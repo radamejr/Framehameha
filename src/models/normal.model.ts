@@ -1,0 +1,18 @@
+export interface Normal {
+    id: string,
+    input: string,
+    startup: string,
+    active: string,
+    recovery: string,
+    advantage: string,
+    immune_to: string,
+    character_id: string,
+    picture: {"url": string},
+    gaurd: string,
+    properties: string,
+    special_notes: string,
+    move_type: string,
+    list_order: string,
+    created_at: string,
+    updated_at: string,
+}
