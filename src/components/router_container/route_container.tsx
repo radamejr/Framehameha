@@ -1,10 +1,12 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import React from "react";
 import Home from "../static/home/home";
+import styles from './route_container.module.scss';
 
 const RouteContainer = () => {
     return (
-        <Switch>
+        <div className={styles.mainContainer}>
+            <Switch>
             <Route exact path = '/'>
                 <Home />
             </Route>
@@ -12,6 +14,7 @@ const RouteContainer = () => {
                 <Redirect to = '/' />
             </Route>
         </Switch>
+        </div>
     )
 }
 

@@ -5,6 +5,6 @@ import "../node_modules/jquery/dist/jquery.min.js";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app/App';
+import App from './framehameha/app';
 
 ReactDOM.render(<App />,document.getElementById('root'));
