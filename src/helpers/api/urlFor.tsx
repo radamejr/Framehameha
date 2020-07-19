@@ -5,8 +5,8 @@ let hostname = ''
 
 env === 'development' ? hostname = 'http://localhost:3000/' : hostname = 'https://dbfztech-api.herokuapp.com/'
 
-const charactersAPI = (character_id: string) => {
-    return `${hostname}api/v1/characters/${character_id}`;
+const charactersAPI = () => {
+    return `${hostname}api/v1/characters/`;
 }
 
 const twitterSearchBasic = (char_tag: string) => {

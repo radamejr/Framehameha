@@ -1,7 +1,8 @@
 import React from "react"
 import Header from "./header/header.container"
 
-const Navigation: React.FunctionComponent = () => {
+const Navigation = () => {
+    
     return(
         <React.Fragment>
             <Header />
