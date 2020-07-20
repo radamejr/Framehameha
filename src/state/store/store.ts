@@ -1,4 +1,6 @@
 import { createStore } from 'redux';
-import characterReducer from '../reducers/character.data.reducer';
+import appReducers from '../reducers';
 
-export default createStore(characterReducer);
+const store = createStore(appReducers, (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());
+
+export default store

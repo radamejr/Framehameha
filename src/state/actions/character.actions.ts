@@ -1,8 +1,8 @@
-import { Character } from "../../models/character.model";
+import { Character } from "../../models/app/character.model";
 
-export const addCharacter = (character: Character) => {
+export const addCharacters = (characters: Character[]) => {
     return {
-        type: 'ADD_CHARACTER',
-        character
+        type: 'ADD_CHARACTERS',
+        characters
     };
 }
