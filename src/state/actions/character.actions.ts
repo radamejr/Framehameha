@@ -1,9 +1,11 @@
 import { Character } from "../../models/app/character.model";
-import { getCharacters } from "../../helpers/api/api_methods";
+import { charactersAPI } from "../../helpers/api/urlFor";
+import axios from 'axios'
+import { Action, ActionCreator, AnyAction } from "redux";
 
-
-export const loadCharacters = () => {
+export const loadCharacters = (characters: Character[]) => {
     return {
-        type: 'GET_CHARACTERS',
-        payload: getCharacters() }
+        type: 'GET_CHARACTERS_SUCCESS',
+        payload: characters
+    }
 }
