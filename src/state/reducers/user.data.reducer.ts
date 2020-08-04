@@ -1,13 +1,20 @@
-const userReducer = (state={user: []}, action: any) => {
+import { UserDataReducerModel, defaultUserDataModel } from "../../models/reducer/userData.reducer.model"
+
+export default (state: UserDataReducerModel = defaultUserDataModel, action: any): UserDataReducerModel => {
     switch(action.type) {
-        case 'ADD_CHARACTER':
-            return Object.assign({}, state,
-                {
-                    userData: [...state.user, action.user]
-                });
-            default:
-                return state
+        case 'GET_USER':
+            return {
+                ...state,
+                user: action.payload
+            }
+
+        case 'GET_USER_FAILED':
+            return {
+                ...state,
+                error: action.payload
+            }
+
+        default:
+            return state
     }
 }
-
-export default userReducer
