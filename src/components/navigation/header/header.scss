@@ -1,0 +1,39 @@
+.header-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 50px;
+    align-items: center;
+    overflow: hidden;
+    & .links-container {
+        width: 80%;
+        display: flex;
+        margin: 0px 20px 0px 20px;
+        & .home-container {
+            margin: 0px 10px 0px 10px;
+        }
+        & .character-container {
+            margin: 0px 10px 0px 10px;
+        }
+    }
+    & .user-container {
+        float: right;
+        margin: 0px 10px 0px 10px;
+    }
+}
+
+.MuiList-root {
+    display: flex;
+    & ul {
+        padding: 8px 8px 8px 8px;
+    }
+    & li {
+        height: 90px;
+        width: 115px;
+        padding: 0px 0px 0px 0px;
+
+        & img {
+            max-width:100%;
+            max-height:100%;
+        }
+    }
+}

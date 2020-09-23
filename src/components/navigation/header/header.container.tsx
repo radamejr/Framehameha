@@ -1,61 +1,78 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Link , Menu, MenuItem } from '@material-ui/core';
+import { Character } from "../../../models/app/character.model";
+import { Dispatch } from "redux";
 
-const Header = () => {
+
+export interface StateProps {
+  characters: Character[] | null,
+  
+}
+
+export interface DispatchProps {
+  dispatch: Dispatch;
+  getCharacters: () => void;
+}
+
+export interface MergeProps {
+  
+}
+
+export type HeaderProps = MergeProps & StateProps & DispatchProps;
+
+const Header = (props: HeaderProps) => {
+  const { characters, getCharacters} = props;
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const characterMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    setAnchorEl(event.currentTarget);
+  }
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  
+  if(!characters){
+      getCharacters();
+  }
     return(
       <React.Fragment>
-        <div>
-          <nav className="navbar navbar-expand-md navbar-light bg-light fixed-top">
-            <p className="navbar-brand">
-              <Link to="/">Home</Link>
-            </p>
-          
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="line"></span> 
-            <span className="line"></span> 
-            <span className="line"></span>
-          </button>
-        
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
-                            
-                {/* <li className="nav-item dropdown">
-                    <p className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Character Data
-                    </p>
-
-                    <div className="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdown">
-                    <ul className="character-selector">
-                        {selections}
-                    </ul>
-                    {this.props.user && this.props.user.admin ? <button className="nav-link btn" onClick={this.toggleModal}>Add Character +</button> : null}
-                    
-                    </div>
-                </li> */}
-
-                {/* <li className="nav-item">
-                    <Link to="/universal" onClick={() => this.toggleMenu()} className="nav-link">Universal Data</Link>
-                </li>
-
-                <li className="nav-item">
-                    <Link to="/learning" onClick={() => this.toggleMenu()} className="nav-link">Kame House</Link>
-                </li> */}
-                </ul>
-
-
-                {/* <div className="nav-link">
-                    {this.props.loggedInStatus 
-                    ? 
-                    <div>
-                    Welcome, {user.username}!
-                        <button type="button" onClick={this.logoutClick} className="btn btn-link">Logout</button>
-                    </div>  
-                    : 
-                    <Link to='/login' onClick={() => this.toggleMenu()}>Login</Link>}
-                </div> */}
+        <div className="header-bar">
+          <div className="links-container">
+            <div className="home-container">
+              <Link href="/">
+                Home
+              </Link>
             </div>
-          </nav>
+            <div className="character-container">
+              <Link href="#" onClick={characterMenuClick} aria-controls="character-select-menu" aria-haspopup="true">
+                Characters
+              </Link>
+            </div>
+          </div>
+          <div className="user-container">
+              <div>
+                Login go here soon
+              </div>
+            </div>
         </div>
+        <Menu 
+          id="character-select-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+          >
+          {characters?.map((c: Character, key: number) => {
+            return (
+              <MenuItem key={key}onClick={handleClose}>
+                <a href={`/characters/${c.id}`}>
+                  <img src={c.icon.url} alt={c.name + 'icon'}/>
+                </a>
+              </MenuItem>
+            )
+            
+          })}
+        </Menu>
       </React.Fragment>
     )
 }

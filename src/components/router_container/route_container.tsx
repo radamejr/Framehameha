@@ -1,14 +1,17 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import React from "react";
 import Home from "../static/home/home";
-import styles from './route_container.module.scss';
+import Character from "../character/character";
 
 const RouteContainer = () => {
     return (
-        <div className={styles.mainContainer}>
+        <div>
             <Switch>
             <Route exact path = '/'>
                 <Home />
+            </Route>
+            <Route exact path = '/characters/:id'>
+                <Character />
             </Route>
             <Route path='*'>
                 <Redirect to = '/' />
