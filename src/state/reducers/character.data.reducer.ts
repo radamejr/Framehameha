@@ -1,15 +1,15 @@
 import { CharacterDataReducerModel, defaultCharacterDataModel } from "../../models/reducer/characterData.reducer.model";
-import { Actions, ActionPromise } from "../actions/actions";
+import { Actions } from "../actions/actions";
 
 export default (state: CharacterDataReducerModel = defaultCharacterDataModel, action: any): CharacterDataReducerModel => {
     switch(action.type) {       
-        case ActionPromise(Actions.GET_CHARACTERS).pending:
+        case Actions.GET_CHARACTERS_PENDING:
             return {
                 ...state,
                 loading: true
             }
 
-        case ActionPromise(Actions.GET_CHARACTERS).fulfilled:
+        case Actions.GET_CHARACTERS_FULFILLED:
             return {
                 ...state,
                 characters: action.payload,
@@ -17,7 +17,7 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
                 loading: false
             }
 
-        case ActionPromise(Actions.GET_CHARACTERS).rejected:
+        case Actions.GET_CHARACTERS_REJECTED:
             return {
                 ...state,
                 error: action.payload,

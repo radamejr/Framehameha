@@ -1,10 +1,11 @@
+import { getCharactersAPI } from "../../helpers/api/fetch/app_methods";
 import { Character } from "../../models/app/character.model";
-import { Actions } from "./actions";
+import { Action, Actions } from "./actions";
 
 
-export const loadCharacters = (characters: Character[]) => {
+export const loadCharacters = (): Action<Promise<Character[]>> => {
     return {
         type: Actions.GET_CHARACTERS,
-        payload: characters
+        payload: getCharactersAPI()
     }
 }

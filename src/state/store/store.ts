@@ -1,11 +1,14 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import appReducers from '../reducers';
+import promiseMiddleware from 'redux-promise-middleware';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+const middlewares = [promiseMiddleware]
 
 const store = createStore(
     appReducers, 
-    compose((window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
-    applyMiddleware()));
-
+    composeWithDevTools(applyMiddleware(...middlewares))
+);
     
 store.subscribe(() => {
     console.log('state updated')

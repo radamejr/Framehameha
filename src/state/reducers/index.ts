@@ -9,7 +9,7 @@ export default combineReducers({
     userData: UserReducer,
 })
 
-export interface StoreModel {
+export interface State {
     characterData: CharacterDataReducerModel | undefined;
     userData: UserDataReducerModel | undefined;
     error: string | undefined;

@@ -2,7 +2,9 @@ import 'isomorphic-fetch';
 
 const env = process.env.NODE_ENV
 
-const hostname = () => process.env.FRAMEHAMEHA_API_HOST || '';
+let hostname = ''
+
+env === 'development' ? hostname = 'http://localhost:3000/api/v1' : hostname = 'https://api.framehameha.com/api/v1/'
 
 const makeDisplayMessage = (response: Response) => {
     return env === 'production' ? 'Unexpected error' : `${response.status} calling ${response.url}`
@@ -16,20 +18,21 @@ const handleResponse = async (response: Response): Promise<string | null> => {
         return makeDisplayMessage(response);
     }
 }
-export const fetchGet = <T>(address: string): Promise<string | null> => {
-    const url = `${hostname()}${address}`;
+export const fetchGet = <T>(address: string): Promise<T> => {
+    const url = `${hostname}${address}`;
     return new Promise((resolve, reject) => {
         fetchMethod('GET', url, null)
             .then(fetchThen(resolve, reject))
             .catch((err) => {
                 reject(err)
+                console.log(url)
                 console.log(`Error retrieiving data from ${url}`);
             })
     })
 }
 
 export const fetchPost = <S, T>(address: string, data: S): Promise<T> => {
-    const url = `${hostname()}${address}`;
+    const url = `${hostname}${address}`;
     return new Promise((resolve, reject) => {
         fetchMethod('POST', url, data)
             .then(fetchThen(resolve, reject))
