@@ -12,6 +12,6 @@ export default combineReducers({
 export interface StoreModel {
     characterData: CharacterDataReducerModel | undefined;
     userData: UserDataReducerModel | undefined;
-    error: string | undefined
+    error: string | undefined;
 }
 
