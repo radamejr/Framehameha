@@ -1,10 +1,14 @@
 import React from 'react'
 import { RouteComponentProps } from 'react-router-dom';
-import { Character } from '../../models/app/character.model';
+import { Assist, Character, Normal, Special, Super } from "../../models/app/index";
 
 
 export interface StateProps {
-    character: Character | null
+    character: Character | null,
+    normals: Normal[] | undefined,
+    specials: Special[] | undefined,
+    supers: Super[] | undefined,
+    assists: Assist[] | undefined,
 }
 export interface OwnProps extends RouteComponentProps<{id: string}> {
     id?: string | null,

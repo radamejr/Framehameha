@@ -1,7 +1,7 @@
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Character } from "../../models/app/character.model";
+import { Assist, Character, Normal, Special, Super } from "../../models/app/index";
 import { State } from "../../state/reducers";
 import { selectCharacter } from "../../state/selectors";
 import CharacterContainer, { CharacterProps, OwnProps, StateProps } from "./character.container";
@@ -10,7 +10,11 @@ import CharacterContainer, { CharacterProps, OwnProps, StateProps } from "./char
 export const mapStateToProps = (state: State, ownProps: OwnProps):StateProps => {
     const route = ownProps.match.params.id
     const character: Character | null = selectCharacter(state, {id: route});
-    return { character }
+    const normals: Normal[] | undefined = character?.normals
+    const specials: Special[] | undefined = character?.specials
+    const supers: Super[] | undefined = character?.supers
+    const assists: Assist[] | undefined = character?.assists
+    return { character, normals, specials, supers, assists }
 }
 
 export const mergeProps = (stateProps: StateProps, dispatchProps: null, ownProps: OwnProps): CharacterProps => {
