@@ -16,7 +16,7 @@ export interface Character {
     normals: Normal[],
     specials: Special[],
     supers: Super[],
-    assosts: Assist[],
+    assists: Assist[],
     created_at: string,
     updated_at: string,
 }

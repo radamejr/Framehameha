@@ -6,6 +6,7 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
         case Actions.GET_CHARACTERS_PENDING:
             return {
                 ...state,
+                characters: state.characters,
                 loading: true
             }
 
