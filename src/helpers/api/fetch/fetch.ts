@@ -25,7 +25,6 @@ export const fetchGet = <T>(address: string): Promise<T> => {
             .then(fetchThen(resolve, reject))
             .catch((err) => {
                 reject(err)
-                console.log(url)
                 console.log(`Error retrieiving data from ${url}`);
             })
     })

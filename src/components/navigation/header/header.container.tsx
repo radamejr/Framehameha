@@ -1,12 +1,12 @@
 import React from "react";
-import { Link , Menu, MenuItem } from '@material-ui/core';
-import { Character } from "../../../models/app/character.model";
 import { Dispatch } from "redux";
+import { Link , Menu, MenuItem } from '@material-ui/core';
+import ArrowDropDownIcon  from '@material-ui/icons/ArrowDropDown';
+import { Character } from "../../../models/app/character.model";
 
 
 export interface StateProps {
   characters: Character[] | null,
-  
 }
 
 export interface DispatchProps {
@@ -14,14 +14,14 @@ export interface DispatchProps {
   getCharacters: () => void;
 }
 
-export interface MergeProps {
-  
+export interface MergeProps  {
+   handleCharacterClick: (id: number) => any;
 }
 
 export type HeaderProps = MergeProps & StateProps & DispatchProps;
 
 const Header = (props: HeaderProps) => {
-  const { characters, getCharacters} = props;
+  const { characters, handleCharacterClick, getCharacters} = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const characterMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -30,7 +30,12 @@ const Header = (props: HeaderProps) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
+  const characterSelected = (id: number) => {
+    handleClose();
+    handleCharacterClick(id);
+  }
+
   if(!characters){
       getCharacters();
   }
@@ -45,8 +50,10 @@ const Header = (props: HeaderProps) => {
             </div>
             <div className="character-container">
               <Link href="#" onClick={characterMenuClick} aria-controls="character-select-menu" aria-haspopup="true">
-                Characters
+                Characters 
+                <ArrowDropDownIcon />
               </Link>
+              
             </div>
           </div>
           <div className="user-container">
@@ -64,10 +71,8 @@ const Header = (props: HeaderProps) => {
           >
           {characters?.map((c: Character, key: number) => {
             return (
-              <MenuItem key={key}onClick={handleClose}>
-                <a href={`/characters/${c.id}`}>
-                  <img src={c.icon.url} alt={c.name + 'icon'}/>
-                </a>
+              <MenuItem key={key} onClick={() => characterSelected(c.id)}>
+                 <img src={c.icon.url} alt={c.name + 'icon'}/>
               </MenuItem>
             )
             

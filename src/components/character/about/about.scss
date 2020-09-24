@@ -1,0 +1,17 @@
+.about-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    & .character-img {
+        height: 500px;
+        min-width: 275px;
+        & img {
+            height: 100%
+        }
+    }
+    & .about-text {
+        width: 400px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}

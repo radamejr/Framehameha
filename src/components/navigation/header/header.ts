@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { loadCharacters } from '../../../state/actions/character.actions';
 import { State } from '../../../state/reducers'
@@ -21,10 +21,15 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
 }
 export const mergeProps = (
     stateProps: StateProps, 
-    dispatchProps: DispatchProps): HeaderProps => {
+    dispatchProps: DispatchProps,
+    ownProps: RouteComponentProps): HeaderProps => {
+    const { history } = ownProps;
     return {
         ...stateProps,
         ...dispatchProps,
+        handleCharacterClick: (id: number) => {
+            history.push(`/characters/${id}`)
+        }
     }
 }
 

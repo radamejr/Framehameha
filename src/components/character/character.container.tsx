@@ -1,7 +1,8 @@
 import React from 'react'
 import { RouteComponentProps } from 'react-router-dom';
 import { Assist, Character, Normal, Special, Super } from "../../models/app/index";
-
+import AboutContainer from './about/about.container';
+import './character.scss'
 
 export interface StateProps {
     character: Character | null,
@@ -16,9 +17,19 @@ export interface OwnProps extends RouteComponentProps<{id: string}> {
 export type CharacterProps = StateProps & OwnProps;
 
 const CharacterContainer = (props: CharacterProps) => {
-    return (
-        <div>Characters go here soon.</div>
-    )
+    const { character, normals, specials, supers, assists } = props;
+    if(!character){
+        return ( 
+            null 
+            )
+    } else {
+        return (
+            <div className="character-container">
+                <AboutContainer character={character} />
+            </div>
+        )
+    }
+    
 }
 
 export default CharacterContainer
