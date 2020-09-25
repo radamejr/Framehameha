@@ -46,6 +46,7 @@
                 }
                 & .special-variants-container {
                     margin: 10px auto 10px auto;
+                    min-width: 90%;
                     & .special-variant-card {
                         width: 100%;
                         margin: 0px auto 0px auto;
@@ -64,6 +65,8 @@
                             }
                             & .variant-graph {
                                 margin: 15px auto 15px auto;
+                                display: flex;
+                                justify-content: center;
                             }
                         }
                     }
