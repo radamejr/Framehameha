@@ -1,3 +1,10 @@
 .character-container {
-    margin: 0px 50px 0px 50px;
+    margin: 0px 150px 0px 150px;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .character-container {
+        margin: 0px 50px 0px 50px;
+    }
 }

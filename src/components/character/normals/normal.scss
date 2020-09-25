@@ -6,4 +6,32 @@
         display: flex;
         margin-bottom: 25px;
     }
+
+    & .normal-card {
+        width: 80%;
+        margin: 15px auto 15px auto;
+        align-items: center;
+        & .normal-content {
+            display: flex;
+            align-items: center;
+            padding: 24px 24px 24px 24px;
+            & .normal-image {
+                width: 615px;
+                & img{
+                    width: 100%;
+                }
+            }
+            
+            & .normal-data {
+                width: 100%;
+                margin: auto 0px auto 0px;
+                & .notes-row {
+                    & td {
+                        height: 65px;
+                    }
+                }
+            }
+        }
+    }
+        
 }
