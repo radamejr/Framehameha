@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent, Divider, Table, TableCell, TableContainer, TableRow, TableBody } from '@material-ui/core';
 import { Normal } from '../../../models/app';
+import VisualGraph from '../../../helpers/visual_frame_data_graph/frame_data_graph';
 
 interface OwnProps {
     normal: Normal | undefined;
@@ -47,6 +48,9 @@ const NormalsCard = (props: NormalsCardProps) => {
                                 </TableBody>
                             </Table>
                         </TableContainer>
+                        <div className="normal-graph">
+                            <VisualGraph startup={normal.startup} active={normal.active} recovery={normal.recovery} />
+                        </div>
                     </div>
                 </CardContent>
             </Card>        
