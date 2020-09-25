@@ -1,0 +1,9 @@
+.normals-container {
+    margin-top: 75px;
+
+    & .normals-header {
+        justify-content: center;
+        display: flex;
+        margin-bottom: 25px;
+    }
+}
