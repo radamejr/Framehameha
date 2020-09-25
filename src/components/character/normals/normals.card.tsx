@@ -37,7 +37,7 @@ const NormalsCard = (props: NormalsCardProps) => {
                                     <TableRow>
                                         <TableCell>Active:</TableCell>
                                         <TableCell>{normal.active}</TableCell>
-                                        <TableCell>Gaurd:</TableCell>
+                                        <TableCell>Guard:</TableCell>
                                         <TableCell>{normal.gaurd}</TableCell>
                                     </TableRow>
                                     <TableRow className="notes-row"> 

@@ -1,5 +1,6 @@
 .normals-container {
     margin-top: 75px;
+    margin-bottom: 75px;
 
     & .normals-header {
         justify-content: center;
@@ -27,9 +28,12 @@
                 margin: auto 0px auto 0px;
                 display: flex;
                 flex-direction: column;
-                & .notes-row {
-                    & td {
-                        height: 65px;
+                & .MuiTableContainer-root {
+                    overflow-wrap: break-word;
+                    & .notes-row {
+                        & td {
+                            height: 65px;
+                        }
                     }
                 }
             }

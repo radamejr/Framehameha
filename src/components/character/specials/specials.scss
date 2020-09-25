@@ -1,0 +1,79 @@
+.specials-container {
+    margin-top: 75px;
+    margin-bottom: 75px;
+    
+    & .specials-header {
+        justify-content: center;
+        display: flex;
+        margin-bottom: 25px;
+    }
+
+    & .special-card {
+        width: 80%;
+        margin: 15px auto 0px auto;
+        align-items: center;
+        & .special-content {
+            display: flex;
+            align-items: center;
+            padding: 24px 24px 24px 24px;
+            & .special-image {
+                width: 615px;
+                & img{
+                    width: 100%;
+                }
+            }
+            
+            & .special-info {
+                width: 100%;
+                margin: auto 0px auto 0px;
+                display: flex;
+                flex-direction: column;
+                & .MuiTableContainer-root {
+                    overflow-wrap: break-word;
+                    & .MuiTableRow-root {
+                        & .notes-row {
+                            & td {
+                                height: 65px;
+                            }
+                        }
+                    }
+                }  
+            }
+            & .MuiAccordion-root {
+                width: 100%;
+                & .MuiAccordionSummary-content {
+                    flex-grow: 0;
+                }
+                & .special-variants-container {
+                    margin: 10px auto 10px auto;
+                    & .special-variant-card {
+                        width: 100%;
+                        margin: 0px auto 0px auto;
+                        align-items: center;
+                        & .special-variant-content {
+                            display: flex;
+                            flex-direction: column;
+                            & .special-variant-image {
+                                padding: 24px 24px 24px 24px;
+                                max-width: 340px;
+                                margin: auto;
+
+                                & img {
+                                    width: 100%;
+                                }
+                            }
+                            & .variant-graph {
+                                margin: 15px auto 15px auto;
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        & .special-graph {
+            margin: 15px auto 15px auto;
+        }
+    }
+        
+}

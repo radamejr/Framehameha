@@ -23,14 +23,15 @@ const NormalsContainer = (props: NormalsContainerProps) => {
                 </h2>
             </div>
             {
-                normals ?
-                    normals.map((n: Normal, key: number) => { 
-                        return (
-                        makeNormalCard(n, key)   
-                        )                
-                    }) 
-                    : 
-                    null
+                normals 
+                ?
+                normals.map((n: Normal, key: number) => { 
+                    return (
+                    makeNormalCard(n, key)   
+                    )                
+                }) 
+                : 
+                null
             }      
         </div>
     )

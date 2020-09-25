@@ -2,6 +2,7 @@ import { SpecialVariant } from "./special_variant.model";
 
 export interface Special {
     id: string,
+    input: string,
     name: string,
     character_id: string,
     picture: {'url' : string},

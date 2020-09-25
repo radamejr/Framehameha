@@ -5,6 +5,7 @@ import AboutContainer from './about/about.container';
 import NormalsContainer from './normals/normals.container';
 import './character.scss'
 import { Divider } from '@material-ui/core';
+import SpecialsContainer from './specials/specials.container';
 
 
 export interface StateProps {
@@ -29,6 +30,8 @@ const CharacterContainer = (props: CharacterProps) => {
                 <AboutContainer character={character} />
                 <Divider variant="middle" />
                 <NormalsContainer normals={normals}/>
+                <Divider variant="middle" />
+                <SpecialsContainer specials={specials}/>
             </div>
         )
     }

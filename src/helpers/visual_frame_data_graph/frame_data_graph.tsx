@@ -28,7 +28,7 @@ const VisualGraph = (props: VisualGraphProps) => {
     const { startup, active, recovery } = props;
     
     if(startup && active && recovery) {
-        const totalFrames = parseInt(startup) + parseInt(active) + parseInt(recovery)
+        const totalFrames = parseInt(startup) + parseInt(active) - 1 + parseInt(recovery)
         const frameData: string[] = generateBlocks(totalFrames, parseInt(active), parseInt(startup))
         return (
             <div className="frame-data-container">
