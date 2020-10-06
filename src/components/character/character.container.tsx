@@ -1,11 +1,16 @@
 import React from 'react'
 import { RouteComponentProps } from 'react-router-dom';
+import { Divider } from '@material-ui/core';
 import { Assist, Character, Normal, Special, Super } from "../../models/app/index";
 import AboutContainer from './about/about.container';
 import NormalsContainer from './normals/normals.container';
-import './character.scss'
-import { Divider } from '@material-ui/core';
 import SpecialsContainer from './specials/specials.container';
+import SupersContainer from './supers/supers.container'
+import AssistsContainer from './assists/assists.container';
+import './character.scss'
+
+
+
 
 
 export interface StateProps {
@@ -32,6 +37,10 @@ const CharacterContainer = (props: CharacterProps) => {
                 <NormalsContainer normals={normals}/>
                 <Divider variant="middle" />
                 <SpecialsContainer specials={specials}/>
+                <Divider variant="middle" />
+                <SupersContainer supers={supers} />
+                <Divider variant="middle" />
+                <AssistsContainer assists={assists} />
             </div>
         )
     }

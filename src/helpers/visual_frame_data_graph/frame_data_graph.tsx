@@ -40,11 +40,7 @@ const VisualGraph = (props: VisualGraphProps) => {
             </div>
         );
     } else {
-        return (
-            <div>
-                Missing some frame data, whoops!
-            </div>
-        )
+        return (null)
     }
     
         

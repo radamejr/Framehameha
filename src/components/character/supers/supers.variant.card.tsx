@@ -1,25 +1,25 @@
 import { TableContainer, Table, TableBody, TableRow, TableCell } from '@material-ui/core';
 import React from 'react';
 import VisualGraph from '../../../helpers/visual_frame_data_graph/frame_data_graph';
-import { SpecialVariant } from '../../../models/app';
+import { SuperVariant } from '../../../models/app';
 
-import './specials.scss'
+import './supers.scss'
 
 interface OwnProps {
-    variant: SpecialVariant;
+    variant: SuperVariant;
     key: number
 }
 
-type SpecialVariantsProps = OwnProps;
+type SuperVariantsProps = OwnProps;
 
-const SpecialVariantsCard = (props: SpecialVariantsProps) => {
+const SuperVariantsCard = (props: SuperVariantsProps) => {
     const { variant } = props;
     return (
-        <div className="special-variant-card">
-            <div className="special-variant-content">
+        <div className="super-variant-card">
+            <div className="super-variant-content">
                 {variant.picture 
                 ? 
-                <div className="special-variant-image">
+                <div className="super-variant-image">
                     <img src={variant.picture.url} alt={variant.input_type}/>
                 </div>
                 : 
@@ -65,4 +65,4 @@ const SpecialVariantsCard = (props: SpecialVariantsProps) => {
     )
 }
 
-export default SpecialVariantsCard;
+export default SuperVariantsCard;
