@@ -7,6 +7,9 @@
             margin: auto 10px auto 10px;
         }
     }
+    & .kame-page-details {
+        margin: 15px 0 15px 0;
+    }
     & .basics-container {
         & .basics-card {
             & .basics-card-title-container {
@@ -30,6 +33,117 @@
                     }
                 }
                 & .basics-card-details {
+                    margin: auto;
+                    max-width: 50%;
+                    & p {
+                        font-size: 14px;
+                    }
+                    & ul {
+                        font-size: 14px;
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    & .defense-container {
+        & .defense-card {
+            & .defense-card-title-container {
+                display: flex;
+                & .defense-card-title {
+                    margin: 0px auto 0px auto;
+                    font-size: 26px;
+                    text-decoration: underline;
+                }
+            }
+            & .defense-card-details-container {
+                display: flex;
+                margin: 15px;
+                &.flip-true {
+                    flex-direction: row-reverse;
+                }
+                & .defense-card-embed {
+                    margin: auto 10px auto 10px;
+                    & img {
+                        max-width: 400px;
+                    }
+                }
+                & .defense-card-details {
+                    margin: auto;
+                    max-width: 50%;
+                    & p {
+                        font-size: 14px;
+                    }
+                    & ul {
+                        font-size: 14px;
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    & .neutral-container {
+        & .neutral-card {
+            & .neutral-card-title-container {
+                display: flex;
+                & .neutral-card-title {
+                    margin: 0px auto 0px auto;
+                    font-size: 26px;
+                    text-decoration: underline;
+                }
+            }
+            & .neutral-card-details-container {
+                display: flex;
+                margin: 15px;
+                &.flip-true {
+                    flex-direction: row-reverse;
+                }
+                & .neutral-card-embed {
+                    margin: auto 10px auto 10px;
+                    & img {
+                        max-width: 400px;
+                    }
+                }
+                & .neutral-card-details {
+                    margin: auto;
+                    max-width: 50%;
+                    & p {
+                        font-size: 14px;
+                    }
+                    & ul {
+                        font-size: 14px;
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    & .offense-container {
+        & .offense-card {
+            & .offense-card-title-container {
+                display: flex;
+                & .offense-card-title {
+                    margin: 0px auto 0px auto;
+                    font-size: 26px;
+                    text-decoration: underline;
+                }
+            }
+            & .offense-card-details-container {
+                display: flex;
+                margin: 15px;
+                &.flip-true {
+                    flex-direction: row-reverse;
+                }
+                & .offense-card-embed {
+                    margin: auto 10px auto 10px;
+                    & img {
+                        max-width: 400px;
+                    }
+                }
+                & .offense-card-details {
                     margin: auto;
                     max-width: 50%;
                     & p {

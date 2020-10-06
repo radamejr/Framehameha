@@ -23,7 +23,7 @@ const LearningCard = (props: OwnProps) => {
                         { 
                             section.contributor 
                             ? 
-                            '' 
+                            <iframe title={`${type}`} className="embed-responsive-item" width="570" height="315" src={section.embedContent} frameBorder="0" data-allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             : 
                             <img src={section.embedContent}/>
                         }
@@ -54,16 +54,16 @@ const LearningCard = (props: OwnProps) => {
                             </div>
                             :
                             <div className={`${type}-card-details`}>
-                                {section.details.map((detail: string) => {
+                                {section.details.map((detail: string, key: number) => {
                                     return (
-                                    <p>{detail}</p>
+                                    <p key={key}>{detail}</p>
                                     )
                                 })}
                                 {
                                 section.contributor ? 
-                                ''
+                                <p>Please make sure to visit the video creators channel, even subscribe <a href={section.contributor} target="_blank" rel="noopener noreferrer" role="button">here!</a></p>
                                 :
-                                ''
+                                null
                                 }
                             </div>
                         }

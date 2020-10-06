@@ -74,20 +74,20 @@ const LearningPage = () => {
                         <Tab label="Offense" {...learningTabProps(2)} />
                         <Tab label="Defense" {...learningTabProps(3)} />
                     </Tabs>
-                </Paper>                
+                </Paper>
+                <TabPanel value={currentContent} index={0} >
+                    <BasicsContent />
+                </TabPanel>
+                <TabPanel value={currentContent} index={1} >
+                    <NeutralContent />
+                </TabPanel>
+                <TabPanel value={currentContent} index={2} >
+                    <OffenseContent />
+                </TabPanel>
+                <TabPanel value={currentContent} index={3} >
+                    <DefenseContent />
+                </TabPanel>                
             </div>
-            <TabPanel value={currentContent} index={0} >
-                <BasicsContent />
-            </TabPanel>
-            <TabPanel value={currentContent} index={1} >
-                <NeutralContent />
-            </TabPanel>
-            <TabPanel value={currentContent} index={2} >
-                <OffenseContent />
-            </TabPanel>
-            <TabPanel value={currentContent} index={3} >
-                <DefenseContent />
-            </TabPanel>
         </div>
         
     )

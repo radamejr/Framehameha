@@ -8,7 +8,6 @@ const BasicsContent = () => {
         <div className="basics-container">
             {
                 LearningBasicData.map((data: LearningData, key: number) => {
-                    console.log(key)
                     let flip: boolean;
                     if(key%2 === 0){
                         flip = false;
