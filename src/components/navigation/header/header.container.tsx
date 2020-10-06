@@ -59,6 +59,11 @@ const Header = (props: HeaderProps) => {
                 Universal Data
               </Link>
             </div>
+            <div className="learning-page-container">
+              <Link href="/learning" >
+                Kame House
+              </Link>
+            </div>
           </div>
           <div className="user-container">
               <div>

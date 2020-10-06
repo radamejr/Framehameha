@@ -1,0 +1,47 @@
+.kame-container {
+    margin: 75px 150px 75px 150px;
+    & .kame-row {
+        display: flex;
+        & .kame-details {
+            max-width: 60%;
+            margin: auto 10px auto 10px;
+        }
+    }
+    & .basics-container {
+        & .basics-card {
+            & .basics-card-title-container {
+                display: flex;
+                & .basics-card-title {
+                    margin: 0px auto 0px auto;
+                    font-size: 26px;
+                    text-decoration: underline;
+                }
+            }
+            & .basics-card-details-container {
+                display: flex;
+                margin: 15px;
+                &.flip-true {
+                    flex-direction: row-reverse;
+                }
+                & .basics-card-embed {
+                    margin: auto 10px auto 10px;
+                    & img {
+                        max-width: 400px;
+                    }
+                }
+                & .basics-card-details {
+                    margin: auto;
+                    max-width: 50%;
+                    & p {
+                        font-size: 14px;
+                    }
+                    & ul {
+                        font-size: 14px;
+                    }
+                }
+                
+            }
+        }
+        
+    }
+}

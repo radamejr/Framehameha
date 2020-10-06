@@ -3,6 +3,7 @@ import React from "react";
 import Home from "../static/home/home";
 import Character from "../character/character";
 import UniversalDataPage from "../static/universal_data/universal_data";
+import LearningPage from "../static/learning/learning";
 
 const RouteContainer = () => {
     return (
@@ -16,6 +17,9 @@ const RouteContainer = () => {
             </Route>
             <Route exact path = '/universal'>
                 <UniversalDataPage />
+            </Route>
+            <Route exact path = '/learning'>
+                <LearningPage />
             </Route>
             <Route path='*'>
                 <Redirect to = '/' />
