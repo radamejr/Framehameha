@@ -18,10 +18,12 @@
             padding: 24px 24px 24px 24px;
             & .assist-image {
                 width: 615px;
+                display: flex;
                 & img{
                     max-height: 300px;
                     vertical-align: middle;
                     max-width: 100%;
+                    margin: 0 auto 0 auto
                 }
             }
             

@@ -16,8 +16,7 @@ const UniversalDataPage = () => {
                    ) 
                 })
             }
-        </div>
-        
+        </div> 
     )
 }
 

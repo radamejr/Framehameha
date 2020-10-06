@@ -60,10 +60,12 @@
                                 padding: 24px 24px 24px 24px;
                                 max-width: 340px;
                                 margin: auto;
-
-                                & img {
+                                display: flex;
+                                & img{
                                     max-height: 300px;
+                                    vertical-align: middle;
                                     max-width: 100%;
+                                    margin: 0 auto 0 auto
                                 }
                             }
                             & .variant-graph {
