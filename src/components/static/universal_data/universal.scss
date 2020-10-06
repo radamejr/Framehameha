@@ -1,0 +1,50 @@
+.universals-container {
+    margin-top: 75px;
+    margin-bottom: 75px;
+
+    & .universals-header {
+        justify-content: center;
+        display: flex;
+        margin-bottom: 25px;
+    }
+
+    & .universal-card {
+        width: 80%;
+        margin: 15px auto 0px auto;
+        align-items: center;
+        & .universal-content {
+            display: flex;
+            align-items: center;
+            padding: 24px 24px 24px 24px;
+            & .universal-image {
+                width: 615px;
+                display: flex;
+                & img{
+                    max-height: 300px;
+                    vertical-align: middle;
+                    max-width: 100%;
+                    margin: 0 auto 0 auto
+                }
+            }
+            
+            & .universal-data {
+                width: 100%;
+                margin: auto 0px auto 0px;
+                display: flex;
+                flex-direction: column;
+                & .MuiTableContainer-root {
+                    overflow-wrap: break-word;
+                    & .notes-row {
+                        & td {
+                            height: 65px;
+                        }
+                    }
+                }
+            }
+        }
+        & .universal-graph {
+            margin: 15px auto 15px auto;
+        }
+    }
+        
+}

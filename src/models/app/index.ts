@@ -5,4 +5,4 @@ export * from './special.model'
 export * from './special_variant.model'
 export * from './super.model'
 export * from './super_variant.model'
-
+export * from './universal_data.model'

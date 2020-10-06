@@ -53,7 +53,11 @@ const Header = (props: HeaderProps) => {
                 Characters 
                 <ArrowDropDownIcon />
               </Link>
-              
+            </div>
+            <div className="univseral-page-container">
+              <Link href="/universal" >
+                Universal Data
+              </Link>
             </div>
           </div>
           <div className="user-container">
