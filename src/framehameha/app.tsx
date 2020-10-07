@@ -5,6 +5,7 @@ import './app.css';
 import store from '../state/store/store'
 import RouteContainer from '../components/router_container/route_container';
 import Navigation from '../components/navigation/navigation.container';
+import ScrollToTop from '../helpers/scroll_to_top/scroll_to_top';
 
 const App = () => {
     return (
@@ -12,6 +13,7 @@ const App = () => {
           <Router>
             <Navigation />
             <RouteContainer />
+            <ScrollToTop />
           </Router>
       </Provider>
     )
