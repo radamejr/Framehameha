@@ -1,9 +1,9 @@
-import React from 'react';
-import LearningNeutralData from '../../../../helpers/static_data/neutral_data';
-import { LearningData } from '../../../../models/app';
 import LearningCard from '../learning.card';
+import { LearningData } from '../../../../models/app';
+import LearningNeutralData from '../../../../helpers/static_data/neutral_data';
+import React from 'react';
 
-const NeutralContent = () => {
+const NeutralContent = () => {  
     return (
         <div className="neutral-container">
             {

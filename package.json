@@ -40,6 +40,7 @@
     "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
+    "import/order": ["error", {"groups": ["index", "sibling", "parent", "internal", "external", "builtin", "object"]}],
     "extends": "react-app"
   },
   "browserslist": {
