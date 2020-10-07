@@ -1,4 +1,4 @@
-import { Link, Menu, MenuItem } from '@material-ui/core';
+import { Button, Link, Menu, MenuItem } from '@material-ui/core';
 
 import ArrowDropDownIcon  from '@material-ui/icons/ArrowDropDown';
 import { Character } from "../../../models/app/character.model";
@@ -52,31 +52,31 @@ const Header = (props: HeaderProps) => {
         <div className="header-bar">
           <div className="links-container">
             <div className="home-container">
-              <Link href="/">
+              <Button href="/">
                 Home
-              </Link>
+              </Button>
             </div>
             <div className="character-container">
-              <Link href="#" onClick={characterMenuClick} aria-controls="character-select-menu" aria-haspopup="true">
+              <Button onClick={characterMenuClick} aria-controls="character-select-menu" aria-haspopup="true">
                 Characters 
                 <ArrowDropDownIcon />
-              </Link>
+              </Button>
             </div>
             <div className="univseral-page-container">
-              <Link href="/universal" >
+              <Button href="/universal" >
                 Universal Data
-              </Link>
+              </Button>
             </div>
             <div className="learning-page-container">
-              <Link href="/learning" >
+              <Button href="/learning" >
                 Kame House
-              </Link>
+              </Button>
             </div>
           </div>
           <div className="user-container">
-              <Link href='#' onClick={loginToggleClick}>
+              <Button onClick={loginToggleClick}>
                 {user ? `Hello, ${user}` : 'Login'}
-              </Link>
+              </Button>
             </div>
         </div>
         <Menu 

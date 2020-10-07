@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
 import './scroll_to_top.scss'
 
+import React, { useEffect } from 'react';
 
+import { Fab } from '@material-ui/core';
 
 const ScrollToTop = () => {
     const [isVisible, setIsVisible] = React.useState<boolean>(false);
@@ -34,9 +35,9 @@ const ScrollToTop = () => {
         <div className="scroll-to-top">
             {
                 isVisible ?
-                <div onClick={() => handleScrollToTop()}>
-                    <button type="submit">Top</button>
-                </div>
+                <Fab onClick={() => handleScrollToTop()}>
+                   Top
+                </Fab>
                 :
                 null
             }

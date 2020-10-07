@@ -1,4 +1,4 @@
-import UserDialog, { DispatchProps, OwnProps, StateProps } from './user_dialog.container';
+import UserDialog, { DispatchProps, StateProps } from './user_dialog.container';
 import { selectLoggingIn, selectLoginStatus, selectUser } from '../../../state/selectors';
 
 import { Dispatch } from 'redux';
@@ -23,8 +23,8 @@ export const mapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 
-export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: DispatchProps, ownProps: OwnProps) => {
-    const { close } = mapDispatchToProps;
+export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: DispatchProps) => {
+    const { close, dispatch } = mapDispatchToProps;
     return {
         ...mapStateToProps,
         ...mapDispatchToProps,
@@ -35,7 +35,10 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
                 event.preventDefault();
                 close();
             }
-        }
+        },
+        toggleLogin: (status: string) => {
+            dispatch(setLoginStatus(status))
+        },
     }
 }
 
