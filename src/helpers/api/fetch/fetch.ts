@@ -4,8 +4,8 @@ const env = process.env.NODE_ENV
 
 let hostname = ''
 
-env === 'development' ? hostname = 'http://localhost:3000/api/v1' : hostname = 'https://api.framehameha.com/api/v1/'
-
+env === 'development' ? hostname = 'http://localhost:3000/' : hostname = 'https://api.framehameha.com/'
+const api = 'api/v1'
 const makeDisplayMessage = (response: Response) => {
     return env === 'production' ? 'Unexpected error' : `${response.status} calling ${response.url}`
 }
@@ -18,8 +18,9 @@ const handleResponse = async (response: Response): Promise<string | null> => {
         return makeDisplayMessage(response);
     }
 }
-export const fetchGet = <T>(address: string): Promise<T> => {
-    const url = `${hostname}${address}`;
+export const fetchGet = <T>(address: string, user: boolean): Promise<T> => {
+    let url: string;
+    user ? url = `${hostname}${address}` :  url = `${hostname}${api}${address}`;
     return new Promise((resolve, reject) => {
         fetchMethod('GET', url, null)
             .then(fetchThen(resolve, reject))
@@ -30,8 +31,9 @@ export const fetchGet = <T>(address: string): Promise<T> => {
     })
 }
 
-export const fetchPost = <S, T>(address: string, data: S): Promise<T> => {
-    const url = `${hostname}${address}`;
+export const fetchPost = <S, T>(address: string, user: boolean, data: S): Promise<T> => {
+    let url: string;
+    user ? url = `${hostname}${address}` :  url = `${hostname}${api}${address}`;
     return new Promise((resolve, reject) => {
         fetchMethod('POST', url, data)
             .then(fetchThen(resolve, reject))

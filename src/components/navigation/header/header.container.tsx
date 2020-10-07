@@ -1,27 +1,31 @@
-import React from "react";
-import { Dispatch } from "redux";
-import { Link , Menu, MenuItem } from '@material-ui/core';
+import { Link, Menu, MenuItem } from '@material-ui/core';
+
 import ArrowDropDownIcon  from '@material-ui/icons/ArrowDropDown';
 import { Character } from "../../../models/app/character.model";
-
+import { Dispatch } from "redux";
+import React from "react";
+import { User } from '../../../models/app/user.model';
 
 export interface StateProps {
   characters: Character[] | null,
+  user: User | null,
 }
 
 export interface DispatchProps {
   dispatch: Dispatch;
   getCharacters: () => void;
+  
 }
 
 export interface MergeProps  {
    handleCharacterClick: (id: number) => any;
+   toggleLogin: (user: User | null) => void;
 }
 
 export type HeaderProps = MergeProps & StateProps & DispatchProps;
 
 const Header = (props: HeaderProps) => {
-  const { characters, handleCharacterClick, getCharacters} = props;
+  const { characters, user, toggleLogin, handleCharacterClick, getCharacters} = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const characterMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -30,6 +34,10 @@ const Header = (props: HeaderProps) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const loginToggleClick = () => {
+    toggleLogin(user);
+  }
 
   const characterSelected = (id: number) => {
     handleClose();
@@ -66,9 +74,9 @@ const Header = (props: HeaderProps) => {
             </div>
           </div>
           <div className="user-container">
-              <div>
-                Login go here soon
-              </div>
+              <Link href='#' onClick={loginToggleClick}>
+                {user ? `Hello, ${user}` : 'Login'}
+              </Link>
             </div>
         </div>
         <Menu 
