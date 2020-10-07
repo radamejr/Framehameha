@@ -25,7 +25,7 @@ const LearningCard = (props: OwnProps) => {
                             ? 
                             <iframe title={`${type}`} className="embed-responsive-item" width="570" height="315" src={section.embedContent} frameBorder="0" data-allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             : 
-                            <img src={section.embedContent}/>
+                            <img src={section.embedContent} alt={section.title}/>
                         }
                     </div>
                         {
@@ -40,7 +40,8 @@ const LearningCard = (props: OwnProps) => {
                                     {section.details.map((detail: string, key: number) => {
                                         if(key > 0){
                                             return (<li key={key}>{detail}</li>)    
-                                        }   
+                                        }
+                                        return null;
                                     })
                                     }
                                 </ul>

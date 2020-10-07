@@ -1,4 +1,4 @@
-import { Box, Paper, Tab, Tabs, Typography } from '@material-ui/core';
+import { Box, Paper, Tab, Tabs } from '@material-ui/core';
 import React from 'react';
 import BasicsContent from './basics/basics';
 import DefenseContent from './defense/defense';

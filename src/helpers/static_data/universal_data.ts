@@ -174,10 +174,7 @@ const UniversalStaticData: UniversalData[] = [
         recovery: 'N/A',
         advantage: 'N/A',
         gaurd: 'N/A',
-        notes: 'Super-Jump sends you higher into the air.  Makes jump take 42 frames. (Based on counting from first pre-jump frame until they land.)\
-        Holding 2 lets you fall down faster.\
-        Majin Buu has different values: 49 frames\
-        Master Roshi cannot fast fall.',
+        notes: 'Super-Jump sends you higher into the air. Makes jump take 42 frames. (Based on counting from first pre-jump frame until they land.) Holding 2 lets you fall down faster. Majin Buu has different values: 49 frames. Master Roshi cannot fast fall.',
         img: 'https://dbfz-image.s3.amazonaws.com/uploads/static-images/sjfastfall.gif',
     },
     {
@@ -199,8 +196,7 @@ const UniversalStaticData: UniversalData[] = [
         recovery: 'N/A',
         advantage: 'N/A',
         gaurd: 'N/A',
-        notes: 'Normal/special/SD/Vanish cancellable from frame 7 and forward. (cannot block until animation is done.)\
-        Throw invulnerable frames 1 - 15, any move cancelled from the dash will inherit throw invulnerability for the amount left on airdash recovery (i.e. cancelling to a jL on frame 11 will inherit throw invulnerability from frame 11 - 15.)',
+        notes: 'Normal/special/SD/Vanish cancellable from frame 7 and forward. (cannot block until animation is done.) Throw invulnerable frames 1 - 15, any move cancelled from the dash will inherit throw invulnerability for the amount left on airdash recovery (i.e. cancelling to a jL on frame 11 will inherit throw invulnerability from frame 11 - 15.)',
         img: 'https://dbfz-image.s3.amazonaws.com/uploads/static-images/air backdash.gif',
     },
     {
@@ -211,8 +207,7 @@ const UniversalStaticData: UniversalData[] = [
         recovery: 'N/A',
         advantage: 'N/A',
         gaurd: 'N/A',
-        notes: '4th frame of jump is airdash cancellable, airdash takes 6f until cancellable.\
-        Fastest possible IAD overhead is 19 frames, when using a 6 frame overhead [5 frame Jump start-up + 2 frame to reach cancel + 6 frame airdash + normal]',
+        notes: '4th frame of jump is airdash cancellable, airdash takes 6f until cancellable. Fastest possible IAD overhead is 19 frames, when using a 6 frame overhead [5 frame Jump start-up + 2 frame to reach cancel + 6 frame airdash + normal]',
         img: 'https://dbfz-image.s3.amazonaws.com/uploads/static-images/instant air dash.gif',
     },
     {
