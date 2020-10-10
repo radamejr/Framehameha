@@ -3,4 +3,36 @@
     margin: auto;
     width: 400px;
     height: 500px;
+    & .login-card-contents {
+        display: flex;
+        & .login-dialog-contents {
+            margin: auto;
+            display:flex;
+            flex-direction: column;
+            & .login-title {
+                margin: 20px 0 20px 0;
+                text-align: center;
+            }
+            & .credentials {
+                margin: 10px 0 10px 0;
+            }
+            & .buttons {
+                margin: 15px 0px 0px 0px;
+                text-align: center;
+                align-items: center;
+                & .login-button {
+                    width: 100px;
+                    background-color: orange;
+                    margin: 0px 0 15px 0
+                }
+                & p {
+                    font-size: 10px;
+                    & a {
+                        color: blue;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
 }

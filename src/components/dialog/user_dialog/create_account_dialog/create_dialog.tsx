@@ -1,24 +1,109 @@
 import './create_dialog.scss'
 
-import { Button, Card, CardContent } from "@material-ui/core";
+import { Button, Card, CardContent, Link } from "@material-ui/core";
 
-import React from "react";
+import React, { useState } from "react";
 
 export interface OwnProps {
     toggleLogin: (type: string) => void;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
 }
 export type CreateDialogProps = OwnProps;
 
 const CreateDialog = (props: CreateDialogProps) => {
-    const { toggleLogin } = props;
+    const { toggleLogin, onChange } = props;
+
+    const [username, usernameUpdate] = useState('');
+    const [email, emailUpdate] = useState('');
+    const [password,passwordUpdate] = useState('');
+    const [confirmPassword,confirmPasswordUpdate] = useState('');
     return (
         <Card className="create-dialog">
-            <CardContent>
-                We will be making a create Dialog here
-
-                <Button onClick={() => toggleLogin('login')}>
-                    Login
-                </Button>
+            <CardContent className='create-card-contents'>
+                <div className="create-dialog-contents">
+                    <div className="create-title">
+                        Create Account
+                    </div>
+                    <div className="credentials">
+                        <div className="label">Username:</div>
+                            <div>
+                                <input 
+                                    id="username"
+                                    name="username"
+                                    value={username}
+                                    placeholder='DBFighter'
+                                    className='username-input'
+                                    type="text"
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                        onChange(event, 'username', usernameUpdate);
+                                    }}
+                                />
+                            </div>
+                        
+                    </div>
+                    <div className="credentials">
+                        <div className="label">Email:</div>
+                            <div>
+                                <input 
+                                    id="email"
+                                    name="email"
+                                    value={email}
+                                    placeholder='DBFighter'
+                                    className='email-input'
+                                    type="text"
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                        onChange(event, 'email', emailUpdate);
+                                    }}
+                                />
+                            </div>
+                        
+                    </div>
+                    <div className="credentials">
+                        <div className="label">Password:</div>
+                            <div>
+                                <input 
+                                    id="password"
+                                    name="password"
+                                    value={password}
+                                    placeholder='rockstheDrag0n'
+                                    className='password-input'
+                                    type="password"
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                        onChange(event, 'password', passwordUpdate);
+                                    }}
+                                />
+                            </div>
+                    </div>
+                    <div className="credentials">
+                        <div className="label">Confirm:</div>
+                            <div>
+                                <input 
+                                    id="confirm-password"
+                                    name="confirm-password"
+                                    value={confirmPassword}
+                                    placeholder='rockstheDrag0n'
+                                    className='confirm-password-input'
+                                    type="confirm-password"
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                        onChange(event, 'confirm-password', confirmPasswordUpdate);
+                                    }}
+                                />
+                            </div>
+                    </div>                    
+                    <div className='buttons'>
+                        <div className='create'>
+                            <Button className='create-button' >
+                                Sign up
+                            </Button>
+                        </div>
+                        <div className="create-account">
+                            <p>
+                                Already have an account? <Link onClick={() => toggleLogin('login')}>login.</Link>
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
             </CardContent>
         </Card>
     )

@@ -30,7 +30,6 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
         ...mapDispatchToProps,
         closeDialog: (event: React.MouseEvent): void => {
             const id = event.target as HTMLElement;
-            console.log(id.className)
             if(id.className.includes('user-dialog-container')){
                 event.preventDefault();
                 close();
@@ -39,6 +38,11 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
         toggleLogin: (status: string) => {
             dispatch(setLoginStatus(status))
         },
+        handleChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>): void => {
+            if(event.target.id === id) {
+                update(event.target.value)
+            }
+        }   
     }
 }
 
