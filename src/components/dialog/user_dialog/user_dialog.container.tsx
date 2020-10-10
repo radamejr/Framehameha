@@ -32,13 +32,13 @@ const UserDialog = (props: UserDialogProps) => {
     if(loginStatus === 'login'){
         return (
             <div className="user-dialog-container" {...{ onMouseDown: closeDialog}}>
-                <LoginDialog toggleLogin={toggleLogin} onChange={handleChange} />
+                <LoginDialog toggleLogin={toggleLogin} onChange={handleChange} loggingIn={loggingIn}/>
             </div>
         )
     } else if (loginStatus === 'create_user'){
         return(
             <div className="user-dialog-container" {...{ onMouseDown: closeDialog}}>
-                <CreateDialog toggleLogin={toggleLogin} onChange={handleChange} />
+                <CreateDialog toggleLogin={toggleLogin} onChange={handleChange} loggingIn={loggingIn}/>
             </div>
         )
     } else {

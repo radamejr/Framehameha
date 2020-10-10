@@ -1,17 +1,18 @@
 import './create_dialog.scss'
 
-import { Button, Card, CardContent, Link } from "@material-ui/core";
+import { Button, Card, CardContent, CircularProgress, Link } from "@material-ui/core";
 
 import React, { useState } from "react";
 
 export interface OwnProps {
     toggleLogin: (type: string) => void;
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
+    loggingIn: boolean | undefined;
 }
 export type CreateDialogProps = OwnProps;
 
 const CreateDialog = (props: CreateDialogProps) => {
-    const { toggleLogin, onChange } = props;
+    const { toggleLogin, onChange, loggingIn } = props;
 
     const [username, usernameUpdate] = useState('');
     const [email, emailUpdate] = useState('');
@@ -48,7 +49,7 @@ const CreateDialog = (props: CreateDialogProps) => {
                                     id="email"
                                     name="email"
                                     value={email}
-                                    placeholder='DBFighter'
+                                    placeholder='dbfighter@catchthesehands.net'
                                     className='email-input'
                                     type="text"
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,8 +93,8 @@ const CreateDialog = (props: CreateDialogProps) => {
                     </div>                    
                     <div className='buttons'>
                         <div className='create'>
-                            <Button className='create-button' >
-                                Sign up
+                            <Button className='create-button' disabled={loggingIn} >
+                                {loggingIn ? <CircularProgress /> : 'Sign Up'}
                             </Button>
                         </div>
                         <div className="create-account">

@@ -1,17 +1,18 @@
 import './login_dialog.scss'
 
-import { Button, Card, CardContent, Link } from "@material-ui/core";
+import { Button, Card, CardContent, CircularProgress, Link } from "@material-ui/core";
 
 import React, { useState } from "react";
 
 export interface OwnProps {
     toggleLogin: (type: string) => void;
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
+    loggingIn: boolean | undefined;
 }
 export type LoginDialogProps = OwnProps;
 
 const LoginDialog = (props: LoginDialogProps) => {
-    const { toggleLogin, onChange } = props;
+    const { toggleLogin, onChange, loggingIn } = props;
 
     const [username, usernameUpdate] = useState('');
     const [password,passwordUpdate] = useState('');
@@ -59,8 +60,8 @@ const LoginDialog = (props: LoginDialogProps) => {
                     
                     <div className='buttons'>
                         <div className='login'>
-                            <Button className='login-button' >
-                                Login
+                            <Button className='login-button' disabled={loggingIn} >
+                                {loggingIn ? <CircularProgress /> : 'Login'}
                             </Button>
                         </div>
                         <div className="create-account">
