@@ -5,7 +5,8 @@ import { Dispatch } from 'redux';
 import React from 'react';
 import { State } from '../../../state/reducers';
 import { connect } from 'react-redux';
-import { setLoginStatus } from '../../../state/actions/user.actions';
+import { loginUser, setLoginStatus } from '../../../state/actions/user.actions';
+import { CreateUserState, LoginUserState } from '../../../models/app/helper_models/user.models';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
@@ -42,7 +43,22 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
             if(event.target.id === id) {
                 update(event.target.value)
             }
-        }   
+        },
+        loginUser: (email: string, password: string): void => {
+            const userState: LoginUserState = {
+                email: email,
+                password: password,
+            }
+            dispatch(loginUser(userState));
+        },
+        createUser: (email: string, username: string, password: string, confirmPassword: string): void => {
+            const userState: CreateUserState = {
+                username: username,
+                email: email,
+                password: password,
+                confirmPassword: confirmPassword,
+            }
+        }
     }
 }
 

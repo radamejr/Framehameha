@@ -5,16 +5,17 @@ import { Button, Card, CardContent, CircularProgress, Link } from "@material-ui/
 import React, { useState } from "react";
 
 export interface OwnProps {
+    loggingIn: boolean | undefined;
     toggleLogin: (type: string) => void;
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
-    loggingIn: boolean | undefined;
+    loginUser: (email: string, password: string)=> void;
 }
 export type LoginDialogProps = OwnProps;
 
 const LoginDialog = (props: LoginDialogProps) => {
-    const { toggleLogin, onChange, loggingIn } = props;
+    const { toggleLogin, onChange, loggingIn, loginUser } = props;
 
-    const [username, usernameUpdate] = useState('');
+    const [email, emailUpdate] = useState('');
     const [password,passwordUpdate] = useState('');
 
     return (
@@ -25,17 +26,17 @@ const LoginDialog = (props: LoginDialogProps) => {
                         Login
                     </div>
                     <div className="credentials">
-                        <div className="label">Username:</div>
+                        <div className="label">Email:</div>
                             <div>
                                 <input 
-                                    id="username"
-                                    name="username"
-                                    value={username}
+                                    id="email"
+                                    name="email"
+                                    value={email}
                                     placeholder='DBFighter'
-                                    className='username-input'
+                                    className='email-input'
                                     type="text"
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                                        onChange(event, 'username', usernameUpdate);
+                                        onChange(event, 'email', emailUpdate);
                                     }}
                                 />
                             </div>
@@ -60,7 +61,7 @@ const LoginDialog = (props: LoginDialogProps) => {
                     
                     <div className='buttons'>
                         <div className='login'>
-                            <Button className='login-button' disabled={loggingIn} >
+                            <Button className='login-button' disabled={loggingIn} onClick={() => loginUser(email, password)} >
                                 {loggingIn ? <CircularProgress /> : 'Login'}
                             </Button>
                         </div>

@@ -7,7 +7,7 @@ let hostname = ''
 env === 'development' ? hostname = 'http://localhost:3000/' : hostname = 'https://api.framehameha.com/'
 const api = 'api/v1'
 const makeDisplayMessage = (response: Response) => {
-    return env === 'production' ? 'Unexpected error' : `${response.status} calling ${response.url}`
+    return env === 'production' ? 'Unexpected error' : `${response.status} calling ${response.url} ${response}`
 }
 
 const handleResponse = async (response: Response): Promise<string | null> => {
@@ -44,9 +44,18 @@ export const fetchPost = <S, T>(address: string, user: boolean, data: S): Promis
     })
 }
 const fetchThen = (resolve: Function, reject: Function) => async (response: Response) => {
-    if (response.ok) {
+    console.log(response)
+    
+    if (response.status === 200) {
         const value = await response.json();
-        resolve(value);
+        if(value.status === 200) {
+            resolve(value);
+        } else if (!value.status) {
+            resolve(value);
+        } else {
+            reject({ displayMessage: await handleResponse(response)})
+        }
+        
     } else {
         reject({ displayMessage: await handleResponse(response)})
     }

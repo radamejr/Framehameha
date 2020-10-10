@@ -26,5 +26,7 @@ export const Actions = {
 
     LOG_OUT: "LOG_OUT",
     LOG_IN: "LOG_IN",
-    LOGIN_STATUS: "LOGIN_STATUS"
+    LOGIN_STATUS: "LOGIN_STATUS",
+
+    LOGIN_USER: "LOGIN_USER",
 }

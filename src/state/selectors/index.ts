@@ -13,7 +13,7 @@ export const selectCharacter = (state: State | null, id: {id: string}): Characte
 }
 export const selectCharacters = (state: State | null): Character[] | null => state?.characterData?.characters || null;
 
-export const selectUser = (state: State | null): User | null => state?.userData?.user || null;
+export const selectUser = (state: State | null): User | null => state?.userData?.userInfo || null;
 
 export const selectLoggingIn = (state: State | null): boolean | undefined => state?.userData?.loggingIn;
 

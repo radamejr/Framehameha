@@ -22,17 +22,18 @@ export interface MergeProps {
     closeDialog: (event: React.MouseEvent) => void
     toggleLogin: (type: string) => void;
     handleChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
+    loginUser: (email: string, password: string)=> void;
 }
 
 export type UserDialogProps = StateProps & DispatchProps & MergeProps;
 
 const UserDialog = (props: UserDialogProps) => {
-    const { user, loggingIn, loginStatus, closeDialog, toggleLogin, handleChange} = props;
+    const { user, loggingIn, loginStatus, closeDialog, toggleLogin, handleChange, loginUser} = props;
 
     if(loginStatus === 'login'){
         return (
             <div className="user-dialog-container" {...{ onMouseDown: closeDialog}}>
-                <LoginDialog toggleLogin={toggleLogin} onChange={handleChange} loggingIn={loggingIn}/>
+                <LoginDialog toggleLogin={toggleLogin} onChange={handleChange} loggingIn={loggingIn} loginUser={loginUser}/>
             </div>
         )
     } else if (loginStatus === 'create_user'){
