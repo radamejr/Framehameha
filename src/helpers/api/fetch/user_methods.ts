@@ -2,9 +2,9 @@ import { LoginUserState, CreateUserState } from "../../../models/app/helper_mode
 import { fetchPost } from "./fetch"
 
 export const logoutUserApi = (token?: string): Promise<void> => {
-    return fetchPost(`logout`, true, {key: token});
+    return fetchPost(`/logout`, {key: token});
 }
 
 export const loginUserApi = (user: LoginUserState, token?: string): Promise<void> => {
-    return fetchPost(`login`, true, {user: user, key: token})
+    return fetchPost(`/login`, {auth: { email: user.email, password: user.password }, key: token})
 }

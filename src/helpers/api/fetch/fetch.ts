@@ -31,9 +31,9 @@ export const fetchGet = <T>(address: string, user: boolean): Promise<T> => {
     })
 }
 
-export const fetchPost = <S, T>(address: string, user: boolean, data: S): Promise<T> => {
+export const fetchPost = <S, T>(address: string, data: S): Promise<T> => {
     let url: string;
-    user ? url = `${hostname}${address}` :  url = `${hostname}${api}${address}`;
+    url = `${hostname}${api}${address}`;
     return new Promise((resolve, reject) => {
         fetchMethod('POST', url, data)
             .then(fetchThen(resolve, reject))
