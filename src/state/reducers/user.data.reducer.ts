@@ -34,8 +34,13 @@ export default (state: UserDataReducerModel = defaultUserDataModel, action: any)
                 loggingIn: false,
             }
         case Actions.LOG_OUT:
-            localStorage.removeItem('state')
-            localStorage.removeItem('id')
+            try {
+                localStorage.removeItem('state')
+                localStorage.removeItem('id')
+            } catch (err){
+                console.log('error removing items')
+            }
+            
             return {
                 ...state,
                 userInfo: null
