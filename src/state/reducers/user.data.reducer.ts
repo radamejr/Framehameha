@@ -3,22 +3,29 @@ import { UserDataReducerModel, defaultUserDataModel } from "../../models/reducer
 
 export default (state: UserDataReducerModel = defaultUserDataModel, action: any): UserDataReducerModel => {
     switch(action.type) {
-        case ActionPromise(Actions.GET_USER).pending:
+        case ActionPromise(Actions.TOKEN_AUTH).pending:
         case ActionPromise(Actions.LOGIN_USER).pending:
             return {
                 ...state,
                 loggingIn: true,
             }
         
-        case ActionPromise(Actions.GET_USER).fulfilled:
+        case ActionPromise(Actions.TOKEN_AUTH).fulfilled:
         case ActionPromise(Actions.LOGIN_USER).fulfilled:
             return {
                 ...state,
-                userInfo: action.payload,
+                userInfo: {
+                    id: action.payload.user.id,
+                    username: action.payload.user.username,
+                    email: action.payload.user.email,
+                    admin: action.payload.user.admin,
+                    token: action.payload.jwt
+                },
                 loggingIn: false,
+                loginStatus: 'logged_in'
             }
 
-        case ActionPromise(Actions.GET_USER).rejected:
+        case ActionPromise(Actions.TOKEN_AUTH).rejected:
         case ActionPromise(Actions.LOGIN_USER).rejected:
             return {
                 ...state,

@@ -8,15 +8,17 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from '../helpers/scroll_to_top/scroll_to_top';
 import UserDialog from '../components/dialog/user_dialog/user_dialog';
 import store from '../state/store/store'
+import StartUp from './startup';
 
 const App = () => {
     return (
       <Provider store={store}>
+          <ScrollToTop />
+          <UserDialog />
+          <StartUp />
           <Router>
             <Navigation />
             <RouteContainer />
-            <ScrollToTop />
-            <UserDialog />
           </Router>
       </Provider>
     )

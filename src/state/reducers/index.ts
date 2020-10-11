@@ -10,8 +10,8 @@ export default combineReducers({
 })
 
 export interface State {
-    characterData: CharacterDataReducerModel | undefined;
-    userData: UserDataReducerModel | undefined;
-    error: string | undefined;
+    characterData?: CharacterDataReducerModel | undefined;
+    userData?: UserDataReducerModel | undefined;
+    error?: string | undefined;
 }
 

@@ -18,9 +18,9 @@ const handleResponse = async (response: Response): Promise<string | null> => {
         return makeDisplayMessage(response);
     }
 }
-export const fetchGet = <T>(address: string, user: boolean): Promise<T> => {
+export const fetchGet = <T>(address: string, id?: string): Promise<T> => {
     let url: string;
-    user ? url = `${hostname}${address}` :  url = `${hostname}${api}${address}`;
+    id ? url = `${hostname}${api}${address}/${id}` : url = `${hostname}${api}${address}`;
     return new Promise((resolve, reject) => {
         fetchMethod('GET', url, null)
             .then(fetchThen(resolve, reject))
@@ -31,9 +31,9 @@ export const fetchGet = <T>(address: string, user: boolean): Promise<T> => {
     })
 }
 
-export const fetchPost = <S, T>(address: string, data: S): Promise<T> => {
+export const fetchPost = <S, T>(address: string, data: S, id?: string): Promise<T> => {
     let url: string;
-    url = `${hostname}${api}${address}`;
+    id ? url = `${hostname}${api}${address}/${id}` : url = `${hostname}${api}${address}`;
     return new Promise((resolve, reject) => {
         fetchMethod('POST', url, data)
             .then(fetchThen(resolve, reject))
@@ -43,9 +43,7 @@ export const fetchPost = <S, T>(address: string, data: S): Promise<T> => {
             })
     })
 }
-const fetchThen = (resolve: Function, reject: Function) => async (response: Response) => {
-    console.log(response)
-    
+const fetchThen = (resolve: Function, reject: Function) => async (response: Response) => {    
     if (response.status === 200) {
         const value = await response.json();
         if(value.status === 200) {
@@ -62,6 +60,10 @@ const fetchThen = (resolve: Function, reject: Function) => async (response: Resp
 }
 const fetchMethod = <S>(method: string, address: string, data: S): Promise<Response> => {
     const headers: string[][] = [['Content-type', 'application/json']];
+    const token = localStorage.getItem('state');
+    if(token) {
+        headers.push(['Authorization', `Basic ${token}`]);
+    }
     const init = data
         ? {
             method: method,

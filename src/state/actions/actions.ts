@@ -29,4 +29,5 @@ export const Actions = {
     LOGIN_STATUS: "LOGIN_STATUS",
 
     LOGIN_USER: "LOGIN_USER",
+    TOKEN_AUTH: "TOKEN_AUTH",
 }

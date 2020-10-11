@@ -75,7 +75,7 @@ const Header = (props: HeaderProps) => {
           </div>
           <div className="user-container">
               <Button onClick={loginToggleClick}>
-                {user ? `Hello, ${user.user?.username}` : 'Login'}
+                {user ? `Hello, ${user.username}` : 'Login'}
               </Button>
             </div>
         </div>
