@@ -3,10 +3,10 @@ import { Action, Actions } from "./actions"
 import { getUserWithTokenApi, loginUserApi, logoutUserApi } from "../../helpers/api/fetch/user_methods"
 import { LoginUserState, CreateUserState } from "../../models/app/helper_models/user.models"
 
-export const logoutUser = (): Action<Promise<void>> => {
+export const logoutUser = () => {
     return {
         type: Actions.LOG_OUT,
-        payload: logoutUserApi(),
+        payload: null,
     }
 }
 

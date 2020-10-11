@@ -33,6 +33,13 @@ export default (state: UserDataReducerModel = defaultUserDataModel, action: any)
                 userInfo: null,
                 loggingIn: false,
             }
+        case Actions.LOG_OUT:
+            localStorage.removeItem('state')
+            localStorage.removeItem('id')
+            return {
+                ...state,
+                userInfo: null
+            }
         case Actions.LOGIN_STATUS:
             return {
                 ...state,
