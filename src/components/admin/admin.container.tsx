@@ -1,7 +1,9 @@
+import { Button } from '@material-ui/core';
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import { Dispatch } from 'redux';
 import { User } from "../../models/app/user.model";
+import './admin.scss'
 
 export interface StateProps{
     user: User | null;
@@ -21,8 +23,12 @@ const AdminContainer = (props: AdminOptionsProps) => {
     if(!loggingIn){
         if(user?.admin){
             return (
-                <div>
-                    admin stuff here soon
+                <div className="admin-container">
+                    <div className="tasks">
+                        <div className="title">
+                            <Button variant="contained" color="primary" >Add Character +</Button>
+                        </div>
+                    </div>
                 </div>
             )
         } else {
