@@ -1,6 +1,6 @@
 import { Action, Actions } from "./actions"
 
-import { createUserApi, getUserWithTokenApi, loginUserApi, logoutUserApi } from "../../helpers/api/fetch/user_methods"
+import { createUserApi, getUserWithTokenApi, loginUserApi } from "../../helpers/api/fetch/user_methods"
 import { LoginUserState, CreateUserState } from "../../models/app/helper_models/user.models"
 
 export const logoutUser = () => {

@@ -28,7 +28,7 @@ export interface MergeProps {
 export type UserDialogProps = StateProps & DispatchProps & MergeProps;
 
 const UserDialog = (props: UserDialogProps) => {
-    const { user, loggingIn, loginStatus, closeDialog, toggleLogin, handleChange, loginUser, createUser} = props;
+    const { loggingIn, loginStatus, closeDialog, toggleLogin, handleChange, loginUser, createUser} = props;
 
     if(loginStatus === 'login'){
         return (

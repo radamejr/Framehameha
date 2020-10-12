@@ -3,7 +3,6 @@ import './app.css';
 import Navigation from '../components/navigation/navigation.container';
 import { Provider } from 'react-redux';
 import React from 'react';
-import RouteContainer from '../components/router_container/route_container';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from '../helpers/scroll_to_top/scroll_to_top';
 import UserDialog from '../components/dialog/user_dialog/user_dialog';
@@ -14,13 +13,12 @@ import ToastContainer from '../components/toast/toast';
 const App = () => {
     return (
       <Provider store={store}>
+          <StartUp />
           <ScrollToTop />
           <UserDialog />
-          <StartUp />
           <ToastContainer />
           <Router>
             <Navigation />
-            <RouteContainer />
           </Router>
       </Provider>
     )

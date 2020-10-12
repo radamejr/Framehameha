@@ -1,10 +1,11 @@
-import { Button, Link, Menu, MenuItem } from '@material-ui/core';
+import { Menu, MenuItem } from '@material-ui/core';
 
 import ArrowDropDownIcon  from '@material-ui/icons/ArrowDropDown';
 import { Character } from "../../../models/app/character.model";
 import { Dispatch } from "redux";
 import React from "react";
 import { User } from '../../../models/app/user.model';
+import { Link } from 'react-router-dom';
 
 export interface StateProps {
   characters: Character[] | null,
@@ -46,40 +47,40 @@ const Header = (props: HeaderProps) => {
         <div className="header-bar">
           <div className="links-container">
             <div className="home-container">
-              <Button href="/">
+              <Link to='/'>
                 Home
-              </Button>
+              </Link>
             </div>
             <div className="character-container">
-              <Button onClick={characterMenuClick} aria-controls="character-select-menu" aria-haspopup="true">
+              <a onClick={characterMenuClick} aria-controls="character-select-menu" aria-haspopup="true">
                 Characters 
                 <ArrowDropDownIcon />
-              </Button>
+              </a>
             </div>
             <div className="univseral-page-container">
-              <Button href="/universal" >
+              <Link to='/universal'>
                 Universal Data
-              </Button>
+              </Link>
             </div>
             <div className="learning-page-container">
-              <Button href="/learning" >
+              <Link to='/learning'>
                 Kame House
-              </Button>
+              </Link>
             </div>
             {user?.admin ? 
               <div className="admin-page-container">
-                <Button href="/admin" >
+                <Link to="/admin">
                   Admin
-                </Button>
+                </Link>
               </div>
               : 
               null
             }
           </div>
           <div className="user-container">
-              <Button onClick={loginToggleClick}>
+              <Link to='' onClick={loginToggleClick}>
                 {user ? `Hello, ${user.username}` : 'Login'}
-              </Button>
+              </Link>
             </div>
         </div>
         <Menu 
