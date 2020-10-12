@@ -29,7 +29,6 @@ export default (state: UserDataReducerModel = defaultUserDataModel, action: any)
         case ActionPromise(Actions.LOGIN_USER).rejected:
             return {
                 ...state,
-                error: action.payload,
                 userInfo: null,
                 loggingIn: false,
             }

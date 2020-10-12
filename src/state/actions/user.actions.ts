@@ -1,6 +1,6 @@
 import { Action, Actions } from "./actions"
 
-import { getUserWithTokenApi, loginUserApi, logoutUserApi } from "../../helpers/api/fetch/user_methods"
+import { createUserApi, getUserWithTokenApi, loginUserApi, logoutUserApi } from "../../helpers/api/fetch/user_methods"
 import { LoginUserState, CreateUserState } from "../../models/app/helper_models/user.models"
 
 export const logoutUser = () => {
@@ -24,6 +24,12 @@ export const loginUser = (user: LoginUserState): Action<Promise<void>> => {
     }
 }
 
+export const createUser = (user: CreateUserState): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_USER,
+        payload: createUserApi(user)
+    }
+}
 export const getUserWithToken = (id: string): Action<Promise<void>> => {
     return {
         type: Actions.TOKEN_AUTH,

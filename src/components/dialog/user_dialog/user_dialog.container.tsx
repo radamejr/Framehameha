@@ -5,7 +5,6 @@ import { Dispatch } from 'redux';
 import LoginDialog from './login_dialog/login_dialog';
 import React from 'react';
 import { User } from '../../../models/app/user.model';
-import { DragHandle } from '@material-ui/icons';
 
 export interface StateProps {
     user: User | null;
@@ -22,13 +21,14 @@ export interface MergeProps {
     closeDialog: (event: React.MouseEvent) => void
     toggleLogin: (type: string) => void;
     handleChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
-    loginUser: (email: string, password: string)=> void;
+    loginUser: (email: string, password: string) => void;
+    createUser: (email: string, username: string, password: string, confirmPassword: string) => void;
 }
 
 export type UserDialogProps = StateProps & DispatchProps & MergeProps;
 
 const UserDialog = (props: UserDialogProps) => {
-    const { user, loggingIn, loginStatus, closeDialog, toggleLogin, handleChange, loginUser} = props;
+    const { user, loggingIn, loginStatus, closeDialog, toggleLogin, handleChange, loginUser, createUser} = props;
 
     if(loginStatus === 'login'){
         return (
@@ -39,7 +39,7 @@ const UserDialog = (props: UserDialogProps) => {
     } else if (loginStatus === 'create_user'){
         return(
             <div className="user-dialog-container" {...{ onMouseDown: closeDialog}}>
-                <CreateDialog toggleLogin={toggleLogin} onChange={handleChange} loggingIn={loggingIn}/>
+                <CreateDialog toggleLogin={toggleLogin} onChange={handleChange} loggingIn={loggingIn} createUser={createUser}/>
             </div>
         )
     } else {

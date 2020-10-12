@@ -5,14 +5,15 @@ import { Button, Card, CardContent, CircularProgress, Link } from "@material-ui/
 import React, { useState } from "react";
 
 export interface OwnProps {
+    loggingIn: boolean | undefined;
     toggleLogin: (type: string) => void;
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
-    loggingIn: boolean | undefined;
+    createUser: (email: string, username: string, password: string, confirmPassword: string) => void;
 }
 export type CreateDialogProps = OwnProps;
 
 const CreateDialog = (props: CreateDialogProps) => {
-    const { toggleLogin, onChange, loggingIn } = props;
+    const { loggingIn, toggleLogin, onChange, createUser } = props;
 
     const [username, usernameUpdate] = useState('');
     const [email, emailUpdate] = useState('');
@@ -76,7 +77,7 @@ const CreateDialog = (props: CreateDialogProps) => {
                             </div>
                     </div>
                     <div className="credentials">
-                        <div className="label">Confirm:</div>
+                        <div className="label">Confirm Password:</div>
                             <div>
                                 <input 
                                     id="confirm-password"
@@ -84,7 +85,7 @@ const CreateDialog = (props: CreateDialogProps) => {
                                     value={confirmPassword}
                                     placeholder='rockstheDrag0n'
                                     className='confirm-password-input'
-                                    type="confirm-password"
+                                    type="password"
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                         onChange(event, 'confirm-password', confirmPasswordUpdate);
                                     }}
@@ -93,7 +94,7 @@ const CreateDialog = (props: CreateDialogProps) => {
                     </div>                    
                     <div className='buttons'>
                         <div className='create'>
-                            <Button className='create-button' disabled={loggingIn} >
+                            <Button className='create-button' disabled={loggingIn} onClick={() => createUser(email, username, password, confirmPassword)} >
                                 {loggingIn ? <CircularProgress /> : 'Sign Up'}
                             </Button>
                         </div>

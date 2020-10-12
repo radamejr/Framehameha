@@ -14,14 +14,6 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
             return {
                 ...state,
                 characters: action.payload,
-                error: '',
-                loading: false
-            }
-
-        case Actions.GET_CHARACTERS_REJECTED:
-            return {
-                ...state,
-                error: action.payload,
                 loading: false
             }
         default:

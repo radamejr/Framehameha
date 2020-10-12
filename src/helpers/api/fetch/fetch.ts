@@ -7,12 +7,12 @@ let hostname = ''
 env === 'development' ? hostname = 'http://localhost:3000/' : hostname = 'https://api.framehameha.com/'
 const api = 'api/v1'
 const makeDisplayMessage = (response: Response) => {
-    return env === 'production' ? 'Unexpected error' : `${response.status} calling ${response.url} ${response}`
+    return env === 'production' ? ['Unexpected error'] : [`${response.status} calling ${response.url} ${response}`]
 }
 
-const handleResponse = async (response: Response): Promise<string | null> => {
+const handleResponse = async (response: Response): Promise<string[] | null> => {
     try {
-        const message = (await response.json()) as { displayMessage: string};
+        const message = (await response.json()) as { displayMessage: string[]};
         return message.displayMessage ? message.displayMessage : makeDisplayMessage(response);
     }catch (e) {
         return makeDisplayMessage(response);
@@ -51,11 +51,11 @@ const fetchThen = (resolve: Function, reject: Function) => async (response: Resp
         } else if (!value.status) {
             resolve(value);
         } else {
-            reject({ displayMessage: await handleResponse(response)})
+            reject({ error: await handleResponse(response)})
         }
         
     } else {
-        reject({ displayMessage: await handleResponse(response)})
+        reject({ error: await handleResponse(response)})
     }
 }
 const fetchMethod = <S>(method: string, address: string, data: S): Promise<Response> => {

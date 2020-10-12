@@ -5,8 +5,9 @@ import { Dispatch } from 'redux';
 import React from 'react';
 import { State } from '../../../state/reducers';
 import { connect } from 'react-redux';
-import { loginUser, setLoginStatus } from '../../../state/actions/user.actions';
+import { createUser, loginUser, setLoginStatus } from '../../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../../models/app/helper_models/user.models';
+import { setMessage } from '../../../helpers/api/fetch/app_methods';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
@@ -57,6 +58,15 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
                 email: email,
                 password: password,
                 confirmPassword: confirmPassword,
+            }
+            const emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            emailReg.test(email)
+            if(emailReg.test(email) && email !== '' && username !== '' && password !== '' && confirmPassword !== '') {
+                // dispatch(createUser(userState));
+
+                console.log('lets make a user')
+            } else {
+                dispatch(setMessage('Please fill all required fields.', 'error'))
             }
         }
     }
