@@ -9,7 +9,7 @@ export default (state: MessageDataReducerModel = defaultMessageDataReducerModel,
         case ActionPromise(Actions.CREATE_USER).rejected:
             return {
                 ...state,
-                message: action.payload.error[0],
+                message: action.payload?.error[0],
                 messageType: 'error',
             }
         case Actions.SET_MESSAGE:

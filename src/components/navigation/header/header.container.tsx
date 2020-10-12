@@ -13,8 +13,6 @@ export interface StateProps {
 
 export interface DispatchProps {
   dispatch: Dispatch;
-  getCharacters: () => void;
-  
 }
 
 export interface MergeProps  {
@@ -25,7 +23,7 @@ export interface MergeProps  {
 export type HeaderProps = MergeProps & StateProps & DispatchProps;
 
 const Header = (props: HeaderProps) => {
-  const { characters, user, toggleLogin, handleCharacterClick, getCharacters} = props;
+  const { characters, user, toggleLogin, handleCharacterClick} = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const characterMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -42,10 +40,6 @@ const Header = (props: HeaderProps) => {
   const characterSelected = (id: number) => {
     handleClose();
     handleCharacterClick(id);
-  }
-
-  if(!characters){
-      getCharacters();
   }
     return(
       <React.Fragment>
@@ -72,6 +66,15 @@ const Header = (props: HeaderProps) => {
                 Kame House
               </Button>
             </div>
+            {user?.admin ? 
+              <div className="admin-page-container">
+                <Button href="/admin" >
+                  Admin
+                </Button>
+              </div>
+              : 
+              null
+            }
           </div>
           <div className="user-container">
               <Button onClick={loginToggleClick}>

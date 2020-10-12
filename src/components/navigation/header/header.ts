@@ -9,21 +9,19 @@ import { Dispatch } from 'redux';
 import { State } from '../../../state/reducers'
 import { User } from '../../../models/app/user.model';
 import { connect } from 'react-redux';
-import { loadCharacters } from '../../../state/actions/character.actions';
 
 export const mapStateToProps = (state: State): StateProps => {
     const characters = selectCharacters(state);
     const user = selectUser(state);
     return { characters, user }
 }
+
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
     return {
         dispatch,
-        getCharacters: () => {
-            dispatch(loadCharacters());
-        },
     }
 }
+
 export const mergeProps = (
     stateProps: StateProps, 
     dispatchProps: DispatchProps,
