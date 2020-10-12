@@ -6,12 +6,24 @@ export default (state: MessageDataReducerModel = defaultMessageDataReducerModel,
         case ActionPromise(Actions.GET_CHARACTERS).rejected:
         case ActionPromise(Actions.TOKEN_AUTH).rejected:
         case ActionPromise(Actions.LOGIN_USER).rejected:
+        case ActionPromise(Actions.CREATE_USER).rejected:
             return {
                 ...state,
                 message: action.payload.error[0],
                 messageType: 'error',
             }
-
+        case Actions.SET_MESSAGE:
+            return {
+                ...state,
+                message: action.payload.message,
+                messageType: action.payload.type,
+            }
+        case Actions.CLEAR_MESSAGE:
+            return {
+                ...state,
+                message: null,
+                messageType: null
+            }
         default:
             return state
     }

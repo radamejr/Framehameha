@@ -9,6 +9,7 @@ import ScrollToTop from '../helpers/scroll_to_top/scroll_to_top';
 import UserDialog from '../components/dialog/user_dialog/user_dialog';
 import store from '../state/store/store'
 import StartUp from './startup';
+import ToastContainer from '../components/toast/toast';
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
           <ScrollToTop />
           <UserDialog />
           <StartUp />
+          <ToastContainer />
           <Router>
             <Navigation />
             <RouteContainer />

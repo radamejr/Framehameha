@@ -18,3 +18,7 @@ export const selectUser = (state: State | null): User | null => state?.userData?
 export const selectLoggingIn = (state: State | null): boolean | undefined => state?.userData?.loggingIn;
 
 export const selectLoginStatus = (state: State | null): string | undefined => state?.userData?.loginStatus
+
+export const selectMessage = (state: State): string | null | undefined => state.messageData?.message
+
+export const selectMessageType = (state: State): string | null | undefined => state.messageData?.messageType

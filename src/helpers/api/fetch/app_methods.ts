@@ -1,4 +1,5 @@
 import { Character } from "../../../models/app/character.model";
+import { Actions } from "../../../state/actions/actions";
 import { fetchGet } from "./fetch"
 
 export const getCharactersAPI = (): Promise<Character[]> => {
@@ -7,7 +8,7 @@ export const getCharactersAPI = (): Promise<Character[]> => {
 
 export const setMessage = (message: string, type: string) => {
     return {
-        message: message,
-        type: type,
+        type: Actions.SET_MESSAGE,
+        payload: { message: message, type: type},
     }
 }

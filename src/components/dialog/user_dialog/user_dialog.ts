@@ -62,9 +62,7 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
             const emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
             emailReg.test(email)
             if(emailReg.test(email) && email !== '' && username !== '' && password !== '' && confirmPassword !== '') {
-                // dispatch(createUser(userState));
-
-                console.log('lets make a user')
+                dispatch(createUser(userState));
             } else {
                 dispatch(setMessage('Please fill all required fields.', 'error'))
             }

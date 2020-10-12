@@ -31,4 +31,7 @@ export const Actions = {
 
     LOGIN_USER: "LOGIN_USER",
     TOKEN_AUTH: "TOKEN_AUTH",
+
+    CLEAR_MESSAGE: "CLEAR_MESSAGE",
+    SET_MESSAGE: "SET_MESSAGE"
 }

@@ -5,13 +5,14 @@ export default (state: UserDataReducerModel = defaultUserDataModel, action: any)
     switch(action.type) {
         case ActionPromise(Actions.TOKEN_AUTH).pending:
         case ActionPromise(Actions.LOGIN_USER).pending:
+        case ActionPromise(Actions.CREATE_USER).pending:
             return {
                 ...state,
                 loggingIn: true,
             }
-        
         case ActionPromise(Actions.TOKEN_AUTH).fulfilled:
         case ActionPromise(Actions.LOGIN_USER).fulfilled:
+        case ActionPromise(Actions.CREATE_USER).fulfilled:
             return {
                 ...state,
                 userInfo: {
@@ -24,13 +25,13 @@ export default (state: UserDataReducerModel = defaultUserDataModel, action: any)
                 loggingIn: false,
                 loginStatus: 'logged_in'
             }
-
         case ActionPromise(Actions.TOKEN_AUTH).rejected:
         case ActionPromise(Actions.LOGIN_USER).rejected:
+        case ActionPromise(Actions.CREATE_USER).rejected:
             return {
                 ...state,
-                userInfo: null,
                 loggingIn: false,
+                loginStatus: ''
             }
         case Actions.LOG_OUT:
             try {
