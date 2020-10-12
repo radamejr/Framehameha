@@ -37,6 +37,15 @@
         width: 200px;
         float: right;
         margin: 0px 10px 0px 10px;
+        & a {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        & a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
     }
 }
 

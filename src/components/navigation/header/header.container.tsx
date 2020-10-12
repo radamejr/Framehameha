@@ -78,10 +78,17 @@ const Header = (props: HeaderProps) => {
             }
           </div>
           <div className="user-container">
-              <Link to='' onClick={loginToggleClick}>
-                {user ? `Hello, ${user.username}` : 'Login'}
-              </Link>
-            </div>
+               <div>
+                 {user 
+                 ?
+                 <div>
+                   Hello, {user.username} <a onClick={loginToggleClick}>Logout</a>
+                 </div> 
+                 :
+                 <a onClick={loginToggleClick}>Login</a>
+                 }
+               </div>
+          </div>
         </div>
         <Menu 
           id="character-select-menu"
