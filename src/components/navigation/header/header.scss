@@ -23,6 +23,9 @@
         }
     }
     & .user-container {
+        display: flex;
+        justify-content: center;
+        width: 200px;
         float: right;
         margin: 0px 10px 0px 10px;
     }
