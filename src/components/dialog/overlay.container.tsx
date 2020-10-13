@@ -14,7 +14,8 @@ export interface StateProps {
     editStatus: string | undefined;
     editType: string | undefined;
     currentCharacter: string | undefined;
-    
+    target: string | undefined
+    loading: boolean;
 }
 
 export interface DispatchProps {
@@ -33,7 +34,7 @@ export interface MergeProps {
 export type OverlayDialogProps = StateProps & DispatchProps & MergeProps;
 
 const OverlayDialog = (props: OverlayDialogProps) => {
-    const { loggingIn, loginStatus, editStatus, editType, currentCharacter, closeDialog, toggleLogin, handleChange, loginUser, createUser} = props;
+    const { loggingIn, loginStatus, editStatus, editType, currentCharacter, loading, closeDialog, toggleLogin, handleChange, loginUser, createUser} = props;
 
     if(loginStatus === 'login'){
         return (
@@ -50,7 +51,7 @@ const OverlayDialog = (props: OverlayDialogProps) => {
     } else if(editStatus !== '') {
             return (
             <div className="content-dialog-container" {...{ onMouseDown: closeDialog}}>
-                <ContentDialog onChange={handleChange} editStatus={editStatus} editType={editType} />
+                <ContentDialog onChange={handleChange} editStatus={editStatus} editType={editType} loading={loading} />
             </div>
             )
     } else {

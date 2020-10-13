@@ -27,7 +27,7 @@ const AdminContainer = (props: AdminOptionsProps) => {
                 <div className="admin-container">
                     <div className="tasks">
                         <div className="title">
-                            <Button onClick={() => addCharacter()} variant="contained" color="primary" >Add Character +</Button>
+                            <Button onClick={() => addCharacter()} variant="contained" color="primary" disableElevation>Add Character +</Button>
                         </div>
                     </div>
                 </div>

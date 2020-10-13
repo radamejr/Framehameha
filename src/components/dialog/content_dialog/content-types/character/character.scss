@@ -1,0 +1,16 @@
+.character-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+
+    & .content-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 5px 0 5px 0;
+        & input {
+            width: 150px
+        }
+    }
+}

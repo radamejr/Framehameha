@@ -6,6 +6,7 @@ export interface CharacterDataReducerModel {
     loading: boolean | null,
     editStatus: string | undefined,
     editType: string | undefined,
+    target: string | undefined,
 }
 
 export const defaultCharacterDataModel: CharacterDataReducerModel = {
@@ -13,5 +14,6 @@ export const defaultCharacterDataModel: CharacterDataReducerModel = {
     currentCharacter: '',
     loading: false,
     editStatus: '',
-    editType: ''
+    editType: '',
+    target: ''
 }

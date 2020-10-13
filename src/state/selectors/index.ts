@@ -21,9 +21,13 @@ export const selectLoggingIn = (state: State | null): boolean | undefined => sta
 
 export const selectLoginStatus = (state: State | null): string | undefined => state?.userData?.loginStatus
 
+export const selectLoading = (state: State | null): boolean => state?.characterData?.loading || false;
+
 export const selectEditStatus = (state: State | null): string | undefined => state?.characterData?.editStatus;
 
 export const selectEditType= (state: State | null): string | undefined => state?.characterData?.editType;
+
+export const selectEditTarget= (state: State | null): string | undefined => state?.characterData?.target;
 
 export const selectMessage = (state: State): string | null | undefined => state.messageData?.message
 

@@ -9,16 +9,19 @@ import { CreateUserState, LoginUserState } from '../../models/app/helper_models/
 import { setMessage } from '../../helpers/api/fetch/app_methods';
 import { updateEditStatus, updateEditType } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
-import { selectCurrentCharacter, selectEditStatus, selectEditType, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
+import { selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
     const loggingIn = selectLoggingIn(state);
     const loginStatus = selectLoginStatus(state);
-    const editStatus = selectEditStatus(state);
     const currentCharacter = selectCurrentCharacter(state);
-    const editType = selectEditType(state)
-    return { user, loggingIn, loginStatus, editStatus, currentCharacter, editType}
+    const loading = selectLoading(state);
+    const editStatus = selectEditStatus(state);
+    const editType = selectEditType(state);
+    const target = selectEditTarget(state);
+
+    return { user, loggingIn, loginStatus, editStatus, currentCharacter, editType, target, loading}
 }
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -58,7 +61,20 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
         },
         handleChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>): void => {
             if(event.target.id === id) {
-                update(event.target.value)
+                if(id === 'icon' || id === 'picture') {
+                    const files = event?.target?.files
+                    const reader = new FileReader();
+                    if(files){
+                        reader.readAsDataURL(files[0]);
+                        reader.onload = () => {
+                            reader.result ? update(reader.result as string) : update('null')
+                        }
+                    } else {
+                        update('')
+                    }
+                } else {
+                    update(event.target.value)
+                }
             }
         },
         loginUser: (email: string, password: string): void => {

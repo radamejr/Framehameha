@@ -29,6 +29,12 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
                 ...state,
                 editType: action.payload,
             }
+
+        case Actions.UPDATE_TARGET:
+            return {
+                ...state,
+                target: action.payload,
+            }
         default:
             return state
     }

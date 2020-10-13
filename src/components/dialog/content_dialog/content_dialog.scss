@@ -5,34 +5,28 @@
     height: 500px;
     & .content-card-contents {
         display: flex;
+        height: 100%;
         & .content-dialog-contents {
-            margin: auto;
             display:flex;
             flex-direction: column;
+            width: 100%;
             & .content-title {
                 margin: 20px 0 20px 0;
+                font-size: 18px;
+                font-weight: bold;
                 text-align: center;
                 text-transform: capitalize;
             }
-            & .credentials {
-                margin: 10px 0 10px 0;
+            & .contents {
+                height: 100%;
+                width: 100%;
+                margin: auto;
             }
-            & .buttons {
+            & .submit {
                 margin: 15px 0px 0px 0px;
+                width: 100%;
                 text-align: center;
                 align-items: center;
-                & .content-button {
-                    width: 100px;
-                    background-color: orange;
-                    margin: 0px 0 15px 0
-                }
-                & p {
-                    font-size: 10px;
-                    & a {
-                        color: blue;
-                        cursor: pointer;
-                    }
-                }
             }
         }
     }
