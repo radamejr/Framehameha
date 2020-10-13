@@ -5,6 +5,7 @@ import { Dispatch } from 'redux';
 import LoginDialog from './login_dialog/login_dialog';
 import React from 'react';
 import { User } from '../../models/app/user.model';
+import ContentDialog from './content_dialog/content_dialog';
 
 export interface StateProps {
     user: User | null;
@@ -49,7 +50,7 @@ const OverlayDialog = (props: OverlayDialogProps) => {
     } else if(editStatus !== '') {
             return (
             <div className="content-dialog-container" {...{ onMouseDown: closeDialog}}>
-                i change content!
+                <ContentDialog onChange={handleChange} editStatus={editStatus} editType={editType} />
             </div>
             )
     } else {

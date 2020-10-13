@@ -12,12 +12,13 @@ export interface StateProps{
 
 export interface DispatchProps{
     dispatch: Dispatch;
+    addCharacter: () => void;
 }
 
 export type AdminOptionsProps = StateProps & DispatchProps;
 
 const AdminContainer = (props: AdminOptionsProps) => {
-    const { user, loggingIn } = props;
+    const { user, loggingIn, addCharacter } = props;
     const history = useHistory();
     
     if(!loggingIn){
@@ -26,7 +27,7 @@ const AdminContainer = (props: AdminOptionsProps) => {
                 <div className="admin-container">
                     <div className="tasks">
                         <div className="title">
-                            <Button variant="contained" color="primary" >Add Character +</Button>
+                            <Button onClick={() => addCharacter()} variant="contained" color="primary" >Add Character +</Button>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,4 @@
-import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
-import { selectCurrentCharacter, selectEditStatus, selectEditType, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
+
 
 import { Dispatch } from 'redux';
 import React from 'react';
@@ -8,6 +7,9 @@ import { connect } from 'react-redux';
 import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
 import { setMessage } from '../../helpers/api/fetch/app_methods';
+import { updateEditStatus, updateEditType } from '../../state/actions/character.actions';
+import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
+import { selectCurrentCharacter, selectEditStatus, selectEditType, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
@@ -23,8 +25,12 @@ export const mapDispatchToProps = (dispatch: Dispatch) => {
     return { 
         dispatch,
         close: (type: string): void  => {
-            if(type === ' auth'){
-                dispatch(setLoginStatus('undefined'))
+            if(type === 'auth'){
+                dispatch(setLoginStatus(''))
+            }
+            if(type === 'content'){
+                dispatch(updateEditStatus(''));
+                dispatch(updateEditType(''));
             }
         }
     }
@@ -40,6 +46,11 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
             if(id.className.includes('user-dialog-container')){
                 event.preventDefault();
                 close('auth');
+                
+            }
+            if(id.className.includes('content-dialog-container')){
+                event.preventDefault();
+                close('content');
             }
         },
         toggleLogin: (status: string) => {
@@ -71,7 +82,7 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
             } else {
                 dispatch(setMessage('Please fill all required fields.', 'error'))
             }
-        }
+        },
     }
 }
 

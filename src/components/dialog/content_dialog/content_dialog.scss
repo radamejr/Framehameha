@@ -1,0 +1,39 @@
+.content-dialog {
+    position: relative;
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    & .content-card-contents {
+        display: flex;
+        & .content-dialog-contents {
+            margin: auto;
+            display:flex;
+            flex-direction: column;
+            & .content-title {
+                margin: 20px 0 20px 0;
+                text-align: center;
+                text-transform: capitalize;
+            }
+            & .credentials {
+                margin: 10px 0 10px 0;
+            }
+            & .buttons {
+                margin: 15px 0px 0px 0px;
+                text-align: center;
+                align-items: center;
+                & .content-button {
+                    width: 100px;
+                    background-color: orange;
+                    margin: 0px 0 15px 0
+                }
+                & p {
+                    font-size: 10px;
+                    & a {
+                        color: blue;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

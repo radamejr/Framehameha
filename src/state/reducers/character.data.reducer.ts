@@ -16,6 +16,19 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
                 characters: action.payload,
                 loading: false
             }
+
+        case Actions.UPDATE_EDIT_STATUS:
+            return {
+                ...state,
+                editStatus: action.payload,
+            }
+
+
+        case Actions.UPDATE_EDIT_TYPE:
+            return {
+                ...state,
+                editType: action.payload,
+            }
         default:
             return state
     }

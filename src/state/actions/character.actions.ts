@@ -9,3 +9,17 @@ export const loadCharacters = (): Action<Promise<Character[]>> => {
         payload: getCharactersAPI()
     }
 }
+
+export const updateEditStatus = (type: string) => {
+    return {
+        type: Actions.UPDATE_EDIT_STATUS,
+        payload: type
+    }
+}
+
+export const updateEditType = (type: string) => {
+    return {
+        type: Actions.UPDATE_EDIT_TYPE,
+        payload: type
+    }
+}
