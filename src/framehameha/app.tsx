@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from '../helpers/scroll_to_top/scroll_to_top';
-import UserDialog from '../components/dialog/user_dialog/user_dialog';
+import UserDialog from '../components/dialog/overlay';
 import store from '../state/store/store'
 import StartUp from './startup';
 import ToastContainer from '../components/toast/toast';

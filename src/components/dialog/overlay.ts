@@ -1,26 +1,31 @@
-import UserDialog, { DispatchProps, StateProps } from './user_dialog.container';
-import { selectLoggingIn, selectLoginStatus, selectUser } from '../../../state/selectors';
+import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
+import { selectCurrentCharacter, selectEditStatus, selectEditType, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
 
 import { Dispatch } from 'redux';
 import React from 'react';
-import { State } from '../../../state/reducers';
+import { State } from '../../state/reducers';
 import { connect } from 'react-redux';
-import { createUser, loginUser, setLoginStatus } from '../../../state/actions/user.actions';
-import { CreateUserState, LoginUserState } from '../../../models/app/helper_models/user.models';
-import { setMessage } from '../../../helpers/api/fetch/app_methods';
+import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
+import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
+import { setMessage } from '../../helpers/api/fetch/app_methods';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
     const loggingIn = selectLoggingIn(state);
     const loginStatus = selectLoginStatus(state);
-    return { user, loggingIn, loginStatus}
+    const editStatus = selectEditStatus(state);
+    const currentCharacter = selectCurrentCharacter(state);
+    const editType = selectEditType(state)
+    return { user, loggingIn, loginStatus, editStatus, currentCharacter, editType}
 }
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
     return { 
         dispatch,
-        close: (): void  => {
-            dispatch(setLoginStatus('undefined'))
+        close: (type: string): void  => {
+            if(type === ' auth'){
+                dispatch(setLoginStatus('undefined'))
+            }
         }
     }
 }
@@ -34,7 +39,7 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
             const id = event.target as HTMLElement;
             if(id.className.includes('user-dialog-container')){
                 event.preventDefault();
-                close();
+                close('auth');
             }
         },
         toggleLogin: (status: string) => {
@@ -70,4 +75,4 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(UserDialog)
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(OverlayDialog)

@@ -15,9 +15,15 @@ export const selectCharacters = (state: State | null): Character[] | null => sta
 
 export const selectUser = (state: State | null): User | null => state?.userData?.userInfo || null;
 
+export const selectCurrentCharacter = (state: State | null): string | undefined => state?.characterData?.currentCharacter;
+
 export const selectLoggingIn = (state: State | null): boolean | undefined => state?.userData?.loggingIn;
 
 export const selectLoginStatus = (state: State | null): string | undefined => state?.userData?.loginStatus
+
+export const selectEditStatus = (state: State | null): string | undefined => state?.characterData?.editStatus;
+
+export const selectEditType= (state: State | null): string | undefined => state?.characterData?.editType;
 
 export const selectMessage = (state: State): string | null | undefined => state.messageData?.message
 

@@ -1,20 +1,24 @@
-import './user_dialog.scss'
+import './overlay.scss'
 
 import CreateDialog from './create_account_dialog/create_dialog';
 import { Dispatch } from 'redux';
 import LoginDialog from './login_dialog/login_dialog';
 import React from 'react';
-import { User } from '../../../models/app/user.model';
+import { User } from '../../models/app/user.model';
 
 export interface StateProps {
     user: User | null;
     loggingIn: boolean | undefined;
     loginStatus: string | undefined;
+    editStatus: string | undefined;
+    editType: string | undefined;
+    currentCharacter: string | undefined;
+    
 }
 
 export interface DispatchProps {
     dispatch: Dispatch;
-    close: () => void;
+    close: (type: string) => void;
 }
 
 export interface MergeProps {
@@ -25,10 +29,10 @@ export interface MergeProps {
     createUser: (email: string, username: string, password: string, confirmPassword: string) => void;
 }
 
-export type UserDialogProps = StateProps & DispatchProps & MergeProps;
+export type OverlayDialogProps = StateProps & DispatchProps & MergeProps;
 
-const UserDialog = (props: UserDialogProps) => {
-    const { loggingIn, loginStatus, closeDialog, toggleLogin, handleChange, loginUser, createUser} = props;
+const OverlayDialog = (props: OverlayDialogProps) => {
+    const { loggingIn, loginStatus, editStatus, editType, currentCharacter, closeDialog, toggleLogin, handleChange, loginUser, createUser} = props;
 
     if(loginStatus === 'login'){
         return (
@@ -42,9 +46,15 @@ const UserDialog = (props: UserDialogProps) => {
                 <CreateDialog toggleLogin={toggleLogin} onChange={handleChange} loggingIn={loggingIn} createUser={createUser}/>
             </div>
         )
+    } else if(editStatus !== '') {
+            return (
+            <div className="content-dialog-container" {...{ onMouseDown: closeDialog}}>
+                i change content!
+            </div>
+            )
     } else {
         return null;
     }
 }
 
-export default UserDialog;
+export default OverlayDialog;
