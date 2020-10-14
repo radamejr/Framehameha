@@ -35,7 +35,6 @@ const mergeProps = (mapStateToProps: null, mapDispatchToProps: DispatchProps, ow
         ...mapDispatchToProps,
         ...ownProps,
         openDialog: (): void => {
-            console.log(type)
             if(type === 'edit') {
                 dispatch(updateEditStatus('edit'))
                 dispatch(updateEditType(content));
@@ -46,8 +45,7 @@ const mergeProps = (mapStateToProps: null, mapDispatchToProps: DispatchProps, ow
 }
 
 const DBButton = (props: DBButtonProps) => {
-    const { type, openDialog } = props;
-    console.log(type)
+    const { type, openDialog } = props
     return (
         <Button onClick={() => openDialog()} variant='contained' color={type === 'edit' ? 'primary' : 'secondary'} disableElevation>
             {type === 'edit' ? 'Edit' : 'Delete'}
