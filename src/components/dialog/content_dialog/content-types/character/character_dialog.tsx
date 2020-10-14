@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import { Button, CircularProgress } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { CharacterState } from '../../../../../models/app/helper_models/content.models';
 import './character.scss'
 export interface OwnProps {
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
+    characterContent: (character: CharacterState, create: boolean, id?: string) => void;
+    loading: boolean;
 }
 
 export type CharacterDialogProps = OwnProps;
 
 const CharacterDialog = (props: CharacterDialogProps) => {
-    const { onChange } = props;
+    const { onChange, characterContent, loading } = props;
 
     const [name, nameUpdate] = useState('');
     const [dlc, dlcUpdate] = useState('');
@@ -17,6 +21,17 @@ const CharacterDialog = (props: CharacterDialogProps) => {
     const [picture, pictureUpdate] = useState('');
     const [twitter, twitterUpdate] = useState('');
     const [about, aboutUpdate] = useState('');
+
+    const characterState: CharacterState = {
+        name: name,
+        dlc: dlc === 'true' ? true : false,
+        discord_link: discord,
+        combo_doc_link: combo,
+        icon: icon,
+        character_picture: picture,
+        twitter_tag: twitter,
+        about: about,
+    };   
 
     return (
         <div className='character-contents'>
@@ -34,7 +49,7 @@ const CharacterDialog = (props: CharacterDialogProps) => {
                             className="name"
                             type="text"
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                                onChange(event, 'email', nameUpdate);
+                                onChange(event, 'name', nameUpdate);
                             }}
                         />
                     </div>
@@ -168,6 +183,13 @@ const CharacterDialog = (props: CharacterDialogProps) => {
                             }}
                         />
                     </div>
+                </div> 
+            </div>
+            <div className="content-row">
+                <div className="submit">
+                    <Button variant="outlined" color="primary" disabled={loading} disableElevation className='submit' onClick={() => characterContent(characterState, true)} >
+                        {loading ? <CircularProgress /> : "Submit"}
+                    </Button>
                 </div>
             </div>
         </div>

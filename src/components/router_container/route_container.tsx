@@ -8,7 +8,7 @@ import AdminContainer from "../admin/admin";
 
 const RouteContainer = () => {
     return (
-        <div>
+        <div className="route-body">
             <Switch>
                 <Route exact path = '/'>
                     <Home />
