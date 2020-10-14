@@ -5,7 +5,6 @@ import { Dispatch } from "redux";
 import { setCurrentCharacter, updateEditStatus, updateEditType } from "../../state/actions/character.actions";
 import { Button } from '@material-ui/core';
 import { Character } from '../../models/app';
-import { selectCurrentCharacter } from '../../state/selectors';
 
 export interface DispatchProps {
     dispatch: Dispatch

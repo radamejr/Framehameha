@@ -3,6 +3,7 @@
     flex-direction: row-reverse;
     justify-content: space-around;
     margin-bottom: 75px;
+    position: relative;
     & .character-img {
         height: 500px;
         min-width: 275px;
@@ -14,5 +15,9 @@
         width: 400px;
         margin-top: auto;
         margin-bottom: auto;
+    }
+    .admin-button {
+        position: absolute;
+        bottom: 55px;
     }
 }
