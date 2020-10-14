@@ -3,8 +3,8 @@ export interface CharacterState {
     dlc: boolean,
     discord_link: string,
     combo_doc_link: string,
-    icon: string,
-    character_picture: string,
+    icon?: string,
+    character_picture?: string,
     twitter_tag: string,
     about: string,
 }

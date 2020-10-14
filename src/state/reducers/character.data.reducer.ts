@@ -17,13 +17,17 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
                 loading: false
             }
 
-        case Actions.UPDATE_EDIT_STATUS:
+        case ActionPromise(Actions.CREATE_CHARACTER).fulfilled:
             return {
                 ...state,
-                editStatus: action.payload,
+                loading: false,
             }
 
-
+        case ActionPromise(Actions.CREATE_CHARACTER).pending:
+            return {
+                ...state,
+                loading: true,
+            }
         case Actions.UPDATE_EDIT_TYPE:
             return {
                 ...state,
@@ -35,16 +39,17 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
                 ...state,
                 target: action.payload,
             }
-        case ActionPromise(Actions.CREATE_CHARACTER).pending:
+        case Actions.UPDATE_EDIT_STATUS:
             return {
                 ...state,
-                loading: true,
+                editStatus: action.payload,
             }
-        case ActionPromise(Actions.CREATE_CHARACTER).fulfilled:
+        case Actions.SET_CURRENT_CHARACTER:
             return {
                 ...state,
-                loading: false,
+                currentCharacter: action.payload,
             }
+        
         default:
             return state
     }

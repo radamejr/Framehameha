@@ -1,15 +1,17 @@
 import React from 'react';
 import { Character } from '../../../models/app';
+import DBButton from '../../../helpers/ui/db_button'
 import './about.scss'
 
 interface OwnProps {
     character: Character,
+    admin: boolean | undefined,
 }
 
 type AboutContainerProps = OwnProps;
 
 const AboutContainer = (props: AboutContainerProps) => {
-    const { character } = props;
+    const { character, admin } = props;
     return (
         <div className="about-container">
             <div className="about-text">
@@ -32,6 +34,12 @@ const AboutContainer = (props: AboutContainerProps) => {
             <div className="character-img">
                 <img src={character.character_picture.url} alt={character.name}/>
             </div>
+            {admin ? 
+            <div className='admin-button'>
+                <DBButton type='edit' content='character' character={character} />
+            </div>
+            :
+            null}
         </div>
     )
 }

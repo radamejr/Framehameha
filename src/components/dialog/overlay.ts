@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
 import { setMessage } from '../../helpers/api/fetch/app_methods';
-import { createCharacter, updateEditStatus, updateEditType } from '../../state/actions/character.actions';
+import { createCharacter, updateCharacter, updateEditStatus, updateEditType } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
 import { selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
 import { CharacterState } from '../../models/app/helper_models/content.models';
@@ -100,16 +100,30 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
                 dispatch(setMessage('Please fill all required fields.', 'error'))
             }
         },
-        characterContent: (character: CharacterState, create: boolean, id?: string):void => {
+        characterContent: (character: CharacterState, create: boolean, id?: number):void => {
             if(create){
                 dispatch(createCharacter(character))
             } else {
-                // dispatch(updateCharacter())
+                const characterUpdate: CharacterState = {
+                    name: character.name,
+                    dlc: character.dlc,
+                    discord_link: character.discord_link,
+                    combo_doc_link: character.combo_doc_link,
+                    twitter_tag: character.twitter_tag,
+                    about: character.about, 
+                }; 
+                
+                if(character.icon) {
+                    characterUpdate.icon = character.icon
+                }
+
+                if(character.character_picture) {
+                    characterUpdate.character_picture = character.character_picture
+                }
+
+                dispatch(updateCharacter(characterUpdate, id))
             }
-            
-           
         }
-        //#TODO: integrate post for adding character
     }
 }
 

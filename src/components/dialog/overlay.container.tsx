@@ -7,6 +7,7 @@ import React from 'react';
 import { User } from '../../models/app/user.model';
 import ContentDialog from './content_dialog/content_dialog';
 import { CharacterState } from '../../models/app/helper_models/content.models';
+import { Character } from '../../models/app';
 
 export interface StateProps {
     user: User | null;
@@ -14,7 +15,7 @@ export interface StateProps {
     loginStatus: string | undefined;
     editStatus: string | undefined;
     editType: string | undefined;
-    currentCharacter: string | undefined;
+    currentCharacter: Character | undefined;
     target: string | undefined
     loading: boolean;
 }
@@ -30,7 +31,7 @@ export interface MergeProps {
     handleChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
     loginUser: (email: string, password: string) => void;
     createUser: (email: string, username: string, password: string, confirmPassword: string) => void;
-    characterContent: (character: CharacterState, create: boolean, id?: string) => void
+    characterContent: (character: CharacterState, create: boolean, id?: number) => void
 }
 
 export type OverlayDialogProps = StateProps & DispatchProps & MergeProps;
@@ -53,7 +54,7 @@ const OverlayDialog = (props: OverlayDialogProps) => {
     } else if(editStatus !== '') {
             return (
             <div className="content-dialog-container" {...{ onMouseDown: closeDialog}}>
-                <ContentDialog onChange={handleChange} editStatus={editStatus} editType={editType} loading={loading} characterContent={characterContent}/>
+                <ContentDialog onChange={handleChange} editStatus={editStatus} currentCharacter={currentCharacter} editType={editType} loading={loading} characterContent={characterContent}/>
             </div>
             )
     } else {

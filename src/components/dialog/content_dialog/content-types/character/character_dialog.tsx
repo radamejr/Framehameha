@@ -1,18 +1,23 @@
 import { Button, CircularProgress } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { Character } from '../../../../../models/app';
 import { CharacterState } from '../../../../../models/app/helper_models/content.models';
 import './character.scss'
+
 export interface OwnProps {
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
-    characterContent: (character: CharacterState, create: boolean, id?: string) => void;
+    characterContent: (character: CharacterState, create: boolean, id?: number) => void;
     loading: boolean;
+    editStatus: string | undefined;
+    currentCharacter: Character | undefined,
 }
 
 export type CharacterDialogProps = OwnProps;
 
 const CharacterDialog = (props: CharacterDialogProps) => {
-    const { onChange, characterContent, loading } = props;
-
+    const { onChange, characterContent, loading, currentCharacter, editStatus } = props;
+    
+    const [fieldsUpdated, updateFieldsUpdated] = useState(false);
     const [name, nameUpdate] = useState('');
     const [dlc, dlcUpdate] = useState('');
     const [discord, discordUpdate] = useState('');
@@ -22,6 +27,15 @@ const CharacterDialog = (props: CharacterDialogProps) => {
     const [twitter, twitterUpdate] = useState('');
     const [about, aboutUpdate] = useState('');
 
+    if(currentCharacter && editStatus === 'edit' && !fieldsUpdated) {
+        nameUpdate(currentCharacter.name);
+        dlcUpdate(currentCharacter.dlc ? 'true' : 'false');
+        discordUpdate(currentCharacter.discord_link);
+        comboUpdate(currentCharacter.combo_doc_link);
+        twitterUpdate(currentCharacter.twitter_tag);
+        aboutUpdate(currentCharacter.about);
+        updateFieldsUpdated(true);
+    }
     const characterState: CharacterState = {
         name: name,
         dlc: dlc === 'true' ? true : false,
@@ -187,7 +201,7 @@ const CharacterDialog = (props: CharacterDialogProps) => {
             </div>
             <div className="content-row">
                 <div className="submit">
-                    <Button variant="outlined" color="primary" disabled={loading} disableElevation className='submit' onClick={() => characterContent(characterState, true)} >
+                    <Button variant="outlined" color="primary" disabled={loading} disableElevation className='submit' onClick={() => characterContent(characterState, editStatus === 'add', currentCharacter?.id)} >
                         {loading ? <CircularProgress /> : "Submit"}
                     </Button>
                 </div>

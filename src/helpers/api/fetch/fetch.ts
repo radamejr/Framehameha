@@ -18,7 +18,7 @@ const handleResponse = async (response: Response): Promise<string[] | null> => {
         return makeDisplayMessage(response);
     }
 }
-export const fetchGet = <T>(address: string, id?: string): Promise<T> => {
+export const fetchGet = <T>(address: string, id?: number | string): Promise<T> => {
     let url: string;
     id ? url = `${hostname}${api}${address}/${id}` : url = `${hostname}${api}${address}`;
     return new Promise((resolve, reject) => {
@@ -31,11 +31,24 @@ export const fetchGet = <T>(address: string, id?: string): Promise<T> => {
     })
 }
 
-export const fetchPost = <S, T>(address: string, data: S, id?: string): Promise<T> => {
+export const fetchPost = <S, T>(address: string, data: S, id?: number | string): Promise<T> => {
     let url: string;
     id ? url = `${hostname}${api}${address}/${id}` : url = `${hostname}${api}${address}`;
     return new Promise((resolve, reject) => {
         fetchMethod('POST', url, data)
+            .then(fetchThen(resolve, reject))
+            .catch((err) => {
+                reject(err)
+                console.log(`Error retrieiving data from ${url}`);
+            })
+    })
+}
+
+export const fetchPut = <S, T>(address: string, data: S, id?: number | string): Promise<T> => {
+    let url: string;
+    id ? url = `${hostname}${api}${address}/${id}` : url = `${hostname}${api}${address}`;
+    return new Promise((resolve, reject) => {
+        fetchMethod('PUT', url, data)
             .then(fetchThen(resolve, reject))
             .catch((err) => {
                 reject(err)

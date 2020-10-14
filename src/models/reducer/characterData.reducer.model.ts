@@ -2,7 +2,7 @@ import { Character } from "../app/character.model";
 
 export interface CharacterDataReducerModel {
     characters: Character[] | null,
-    currentCharacter: string | undefined,
+    currentCharacter: Character | undefined,
     loading: boolean | null,
     editStatus: string | undefined,
     editType: string | undefined,
@@ -11,7 +11,7 @@ export interface CharacterDataReducerModel {
 
 export const defaultCharacterDataModel: CharacterDataReducerModel = {
     characters: null,
-    currentCharacter: '',
+    currentCharacter: undefined,
     loading: false,
     editStatus: '',
     editType: '',

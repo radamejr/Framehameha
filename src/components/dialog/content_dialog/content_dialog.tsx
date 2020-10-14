@@ -1,5 +1,6 @@
-import { Button, Card, CardContent, CircularProgress } from "@material-ui/core";
+import { Card, CardContent } from "@material-ui/core";
 import React from "react";
+import { Character } from "../../../models/app";
 import { CharacterState } from "../../../models/app/helper_models/content.models";
 import CharacterDialog from "./content-types/character/character_dialog";
 import './content_dialog.scss'
@@ -8,16 +9,24 @@ export interface OwnProps {
     editStatus: string | undefined;
     editType: string | undefined;
     loading: boolean;
+    currentCharacter: Character | undefined;
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
-    characterContent: (character: CharacterState, create: boolean, id?: string) => void;
+    characterContent: (character: CharacterState, create: boolean, id?: number) => void;
 }
 
 export type ContentDialogProps = OwnProps;
 
-export const renderContentType = (type: string | undefined, onChange: { (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>): void }, characterContent: { (character: CharacterState, create: boolean, id?: string): void }, loading: boolean ) => {
+export const renderContentType = (
+    type: string | undefined, 
+    loading: boolean,
+    editStatus: string | undefined, 
+    currentCharacter: Character | undefined,
+    onChange: { (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>): void }, 
+    characterContent: { (character: CharacterState, create: boolean, id?: number): void },
+    ) => {
     switch(type){
         case 'character':
-            return <CharacterDialog  onChange={onChange} characterContent={characterContent} loading={loading} />
+            return <CharacterDialog  onChange={onChange} currentCharacter={currentCharacter} characterContent={characterContent} loading={loading} editStatus={editStatus} />
         case 'normal':
             return 'normal'
         case 'special':
@@ -36,7 +45,7 @@ export const renderContentType = (type: string | undefined, onChange: { (event: 
 }
     
 const ContentDialog = (props: ContentDialogProps) => {
-    const {editStatus, editType, loading, onChange, characterContent } = props;
+    const {editStatus, editType, loading, currentCharacter, onChange, characterContent } = props;
     return (
         <Card className="content-dialog">
             <CardContent className="content-card-contents">
@@ -45,7 +54,7 @@ const ContentDialog = (props: ContentDialogProps) => {
                         {`${editStatus} ${editType}`}
                     </div>
                     <div className="contents">
-                        {renderContentType(editType, onChange, characterContent, loading)}
+                        {renderContentType(editType, loading, editStatus, currentCharacter, onChange, characterContent,)}
                     </div>
                 </div>
             </CardContent>
