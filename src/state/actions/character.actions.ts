@@ -1,5 +1,5 @@
 import { getCharactersAPI } from "../../helpers/api/fetch/app_methods";
-import { createCharacterAPI, updateCharacterAPI } from "../../helpers/api/fetch/character_methods";
+import { createCharacterAPI, deleteCharacterAPI, updateCharacterAPI } from "../../helpers/api/fetch/character_methods";
 import { Character } from "../../models/app/character.model";
 import { CharacterState } from "../../models/app/helper_models/content.models";
 import { Action, Actions } from "./actions";
@@ -35,8 +35,15 @@ export const createCharacter = (character: CharacterState): Action<Promise<void>
 
 export const updateCharacter = (character: CharacterState, id: number | undefined): Action<Promise<void>> => {
     return {
-        type: Actions.CREATE_CHARACTER,
+        type: Actions.UPDATE_CHARACTER,
         payload: updateCharacterAPI(character, id)
+    }
+}
+
+export const deleteCharacter = (id: number): Action<Promise<void>> => {
+    return {
+        type: Actions.DELETE_CHARACTER,
+        payload: deleteCharacterAPI(id)
     }
 }
 
@@ -44,5 +51,12 @@ export const setCurrentCharacter = (character: Character | null) => {
     return {
         type: Actions.SET_CURRENT_CHARACTER,
         payload: character
+    }
+}
+
+export const setTarget = (id: string) => {
+    return {
+        type: Actions.UPDATE_TARGET,
+        payload: id
     }
 }

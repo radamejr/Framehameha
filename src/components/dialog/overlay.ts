@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
 import { setMessage } from '../../helpers/api/fetch/app_methods';
-import { createCharacter, updateCharacter, updateEditStatus, updateEditType } from '../../state/actions/character.actions';
+import { createCharacter, deleteCharacter, updateCharacter, updateEditStatus, updateEditType } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
 import { selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
 import { CharacterState } from '../../models/app/helper_models/content.models';
@@ -100,10 +100,10 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
                 dispatch(setMessage('Please fill all required fields.', 'error'))
             }
         },
-        characterContent: (character: CharacterState, create: boolean, id?: number):void => {
-            if(create){
+        characterContent: (character: CharacterState, action: string | undefined, id?: number):void => {
+            if(action === 'add'){
                 dispatch(createCharacter(character))
-            } else {
+            } else if (action === 'update'){
                 const characterUpdate: CharacterState = {
                     name: character.name,
                     dlc: character.dlc,
@@ -122,6 +122,10 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
                 }
 
                 dispatch(updateCharacter(characterUpdate, id))
+            }else if (action === 'delete') {
+                if(id){
+                    dispatch(deleteCharacter(id))
+                }
             }
         }
     }

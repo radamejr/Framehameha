@@ -11,7 +11,7 @@ export interface OwnProps {
     loading: boolean;
     currentCharacter: Character | undefined;
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
-    characterContent: (character: CharacterState, create: boolean, id?: number) => void;
+    characterContent: (character: CharacterState, action: string | undefined, id?: number) => void;
 }
 
 export type ContentDialogProps = OwnProps;
@@ -22,7 +22,7 @@ export const renderContentType = (
     editStatus: string | undefined, 
     currentCharacter: Character | undefined,
     onChange: { (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>): void }, 
-    characterContent: { (character: CharacterState, create: boolean, id?: number): void },
+    characterContent: { (character: CharacterState, action: string | undefined, id?: number): void },
     ) => {
     switch(type){
         case 'character':

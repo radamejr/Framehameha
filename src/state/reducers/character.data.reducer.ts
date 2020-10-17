@@ -12,9 +12,7 @@ const sortCharacters = (a: Character, b: Character) => {
     }else if (nameA < nameB) {
       comparison = -1;
     }
-
     return comparison;
-
 } 
 
 export default (state: CharacterDataReducerModel = defaultCharacterDataModel, action: any): CharacterDataReducerModel => {
@@ -26,20 +24,20 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
                 loading: true
             }
 
-        case Actions.GET_CHARACTERS_FULFILLED:
-            return {
-                ...state,
-                characters: action.payload.sort(sortCharacters),
-                loading: false
-            }
-
+        case ActionPromise(Actions.GET_CHARACTERS).fulfilled:
         case ActionPromise(Actions.CREATE_CHARACTER).fulfilled:
+        case ActionPromise(Actions.UPDATE_CHARACTER).fulfilled:
+        case ActionPromise(Actions.DELETE_CHARACTER).fulfilled:
             return {
                 ...state,
+                characters: action.payload.characters.sort(sortCharacters),
                 loading: false,
+                editStatus: ''
             }
 
         case ActionPromise(Actions.CREATE_CHARACTER).pending:
+        case ActionPromise(Actions.UPDATE_CHARACTER).pending:
+        case ActionPromise(Actions.DELETE_CHARACTER).pending:
             return {
                 ...state,
                 loading: true,

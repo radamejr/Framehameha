@@ -1,5 +1,5 @@
 import React from 'react'
-import { RouteComponentProps } from 'react-router-dom';
+import { Redirect, RouteComponentProps, useHistory } from 'react-router-dom';
 import { Divider } from '@material-ui/core';
 import { Assist, Character, Normal, Special, Super } from "../../models/app/index";
 import { User } from '../../models/app/user.model';
@@ -25,9 +25,11 @@ export interface OwnProps extends RouteComponentProps<{id: string}> {
 export type CharacterProps = StateProps & OwnProps;
 
 const CharacterContainer = (props: CharacterProps) => {
-    const { character, normals, specials, supers, assists, user } = props;
+    const { character, normals, specials, supers, assists, user, id } = props;
+    const history = useHistory();
     if(!character){
-        return ( null )
+        history.push('/')
+        return (null)
     } else {
         return (
             <div className="character-container">

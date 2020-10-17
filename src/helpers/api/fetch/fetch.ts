@@ -25,7 +25,10 @@ export const fetchGet = <T>(address: string, id?: number | string): Promise<T> =
         fetchMethod('GET', url, null)
             .then(fetchThen(resolve, reject))
             .catch((err) => {
-                reject(err)
+                const message = {
+                    error: ['Failed to retrieve data']
+                }
+                reject(message)
                 console.log(`Error retrieiving data from ${url}`);
             })
     })
@@ -38,7 +41,10 @@ export const fetchPost = <S, T>(address: string, data: S, id?: number | string):
         fetchMethod('POST', url, data)
             .then(fetchThen(resolve, reject))
             .catch((err) => {
-                reject(err)
+                const message = {
+                    error: ['Failed to retrieve data']
+                }
+                reject(message)
                 console.log(`Error retrieiving data from ${url}`);
             })
     })
@@ -51,7 +57,29 @@ export const fetchPut = <S, T>(address: string, data: S, id?: number | string): 
         fetchMethod('PUT', url, data)
             .then(fetchThen(resolve, reject))
             .catch((err) => {
-                reject(err)
+                const message = {
+                    error: ['Failed to retrieve data']
+                }
+                reject(message)
+                console.log(`Error retrieiving data from ${url}`);
+            })
+    })
+}
+
+export const fetchDelete = <S, T>(
+    address: string, 
+    data: S, 
+    character_id: number | string
+    ): Promise<T> => {
+    const url = `${hostname}${api}${address}/${character_id}`;
+    return new Promise((resolve, reject) => {
+        fetchMethod('DELETE', url, data)
+            .then(fetchThen(resolve, reject))
+            .catch((err) => {
+                const message = {
+                    error: ['Failed to delete.']
+                }
+                reject(message)
                 console.log(`Error retrieiving data from ${url}`);
             })
     })

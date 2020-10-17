@@ -31,7 +31,7 @@ export interface MergeProps {
     handleChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
     loginUser: (email: string, password: string) => void;
     createUser: (email: string, username: string, password: string, confirmPassword: string) => void;
-    characterContent: (character: CharacterState, create: boolean, id?: number) => void
+    characterContent: (character: CharacterState, action: string | undefined, id?: number) => void
 }
 
 export type OverlayDialogProps = StateProps & DispatchProps & MergeProps;
@@ -54,7 +54,12 @@ const OverlayDialog = (props: OverlayDialogProps) => {
     } else if(editStatus !== '') {
             return (
             <div className="content-dialog-container" {...{ onMouseDown: closeDialog}}>
-                <ContentDialog onChange={handleChange} editStatus={editStatus} currentCharacter={currentCharacter} editType={editType} loading={loading} characterContent={characterContent}/>
+                <ContentDialog 
+                    onChange={handleChange} 
+                    editStatus={editStatus} 
+                    currentCharacter={currentCharacter} 
+                    editType={editType} loading={loading} 
+                    characterContent={characterContent}/>
             </div>
             )
     } else {

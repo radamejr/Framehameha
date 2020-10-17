@@ -11,6 +11,8 @@ const ScrollToTop = () => {
         const position = window.pageYOffset;
         if(position > 50){
             setIsVisible(true);
+        } else {
+            setIsVisible(false);
         }
     }
 

@@ -13,7 +13,7 @@ const twitterSearchBasic = (char_tag: string) => {
   return `https://twitter.com/search?q=%23${char_tag}&src=typed_query`
 }
 
-const auth = (action: string) => {
+const auth = (action: string | undefined) => {
   return `${hostname}${action}`
 }
 
