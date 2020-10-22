@@ -14,14 +14,19 @@
         }
         & .character-container {
             margin: 0px 10px 0px 10px;
-            & a {
+            & button {
                 color: #007bff;
                 text-decoration: none;
                 background-color: transparent;
+                border: none;
             }
-            & a:hover {
+            & button:hover {
                 color: #0056b3;
                 text-decoration: underline;
+            }
+            & button:focus {
+                border: none;
+                outline: none;
             }
         }
         & .universal-page-container {
@@ -37,15 +42,20 @@
         width: 200px;
         float: right;
         margin: 0px 10px 0px 10px;
-        & a {
+        & button {
             color: #007bff;
             text-decoration: none;
             background-color: transparent;
+            border: none;
             cursor: pointer;
         }
-        & a:hover {
+        & button:hover {
             color: #0056b3;
             text-decoration: underline;
+        }
+        & button:focus {
+            border: none;
+            outline: none;
         }
     }
 }

@@ -52,10 +52,10 @@ const Header = (props: HeaderProps) => {
               </Link>
             </div>
             <div className="character-container">
-              <a onClick={characterMenuClick} aria-controls="character-select-menu" aria-haspopup="true">
+              <button onClick={characterMenuClick} aria-controls="character-select-menu" aria-haspopup="true">
                 Characters 
                 <ArrowDropDownIcon />
-              </a>
+              </button>
             </div>
             <div className="univseral-page-container">
               <Link to='/universal'>
@@ -82,10 +82,10 @@ const Header = (props: HeaderProps) => {
                  {user 
                  ?
                  <div>
-                   Hello, {user.username} <a onClick={loginToggleClick}>Logout</a>
+                   Hello, {user.username} <button onClick={loginToggleClick}>Logout</button>
                  </div> 
                  :
-                 <a onClick={loginToggleClick}>Login</a>
+                 <button onClick={loginToggleClick}>Login</button>
                  }
                </div>
           </div>
