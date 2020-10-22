@@ -18,6 +18,7 @@ export interface StateProps {
     supers: Super[] | undefined,
     assists: Assist[] | undefined,
     user: User | null,
+    loadingCharacters: boolean,
 }
 export interface OwnProps extends RouteComponentProps<{id: string}> {
     id?: number | null,
@@ -25,10 +26,12 @@ export interface OwnProps extends RouteComponentProps<{id: string}> {
 export type CharacterProps = StateProps & OwnProps;
 
 const CharacterContainer = (props: CharacterProps) => {
-    const { character, normals, specials, supers, assists, user } = props;
+    const { character, normals, specials, supers, assists, user, loadingCharacters } = props;
     const history = useHistory();
     if(!character){
-        history.push('/')
+        if(!loadingCharacters){
+            history.push('/')
+        }
         return (null)
     } else {
         return (
