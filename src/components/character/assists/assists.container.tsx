@@ -1,11 +1,13 @@
 import React from 'react';
-import { Assist } from '../../../models/app';
+import { Assist, Character } from '../../../models/app';
 import AssistCard from './assists.card';
 
 import './assists.scss'
 
 interface OwnProps {
     assists: Assist[] | undefined;
+    admin: boolean | undefined,
+    character: Character,
 }
 type AssistsContainerProps = OwnProps;
 

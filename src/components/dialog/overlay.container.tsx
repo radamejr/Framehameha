@@ -32,12 +32,26 @@ export interface MergeProps {
     loginUser: (email: string, password: string) => void;
     createUser: (email: string, username: string, password: string, confirmPassword: string) => void;
     characterContent: (character: CharacterState, action: string | undefined, id?: number) => void
+    normalContent: (currentCharacter: number | undefined, action: string | undefined) => void
 }
 
 export type OverlayDialogProps = StateProps & DispatchProps & MergeProps;
 
 const OverlayDialog = (props: OverlayDialogProps) => {
-    const { loggingIn, loginStatus, editStatus, editType, currentCharacter, loading, closeDialog, toggleLogin, handleChange, loginUser, createUser, characterContent} = props;
+    const { 
+        loggingIn, 
+        loginStatus, 
+        editStatus, 
+        editType, 
+        currentCharacter, 
+        loading, 
+        closeDialog, 
+        toggleLogin, 
+        handleChange, 
+        loginUser, 
+        createUser, 
+        characterContent, 
+        normalContent} = props;
 
     if(loginStatus === 'login'){
         return (
@@ -59,7 +73,9 @@ const OverlayDialog = (props: OverlayDialogProps) => {
                     editStatus={editStatus} 
                     currentCharacter={currentCharacter} 
                     editType={editType} loading={loading} 
-                    characterContent={characterContent}/>
+                    characterContent={characterContent}
+                    normalContent={normalContent}
+                    />
             </div>
             )
     } else {

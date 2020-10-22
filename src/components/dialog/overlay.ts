@@ -127,6 +127,15 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
                     dispatch(deleteCharacter(id))
                 }
             }
+        },
+        normalContent: (currentCharacter: number | undefined, action: string | undefined): void => {
+            if(action === 'add'){
+
+            } else if (action === 'update'){
+
+            } else if (action === 'delete'){
+
+            }
         }
     }
 }

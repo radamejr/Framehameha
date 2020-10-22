@@ -1,16 +1,19 @@
 import React from 'react';
-import { Normal } from '../../../models/app';
+import { Character, Normal } from '../../../models/app';
+import DBButton from '../../../helpers/ui/db_button'
 import NormalsCard from './normals.card';
 
 import './normal.scss'
 
 interface OwnProps {
     normals: Normal[] | undefined;
+    admin: boolean | undefined,
+    character: Character,
 }
 type NormalsContainerProps = OwnProps;
 
 const NormalsContainer = (props: NormalsContainerProps) => {
-    const { normals } = props;
+    const { normals, admin, character } = props;
 
     const makeNormalCard = (normal: Normal, key: number) => {
         return ( <NormalsCard normal={normal} key={key} />)
@@ -22,6 +25,16 @@ const NormalsContainer = (props: NormalsContainerProps) => {
                     Normal Moves
                 </h2>
             </div>
+            {
+            admin ? 
+            <div className='admin-button'>
+                <DBButton type='add' content='normal' character={character} id={character.id} />
+                <DBButton type='edit' content='normal' character={character} id={character.id} />
+                <DBButton type='delete' content='normal' character={character} id={character.id} />
+            </div>
+            :
+            null
+            }
             {
                 normals 
                 ?

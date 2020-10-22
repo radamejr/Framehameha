@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { setCurrentCharacter, setTarget, updateEditStatus, updateEditType } from "../../state/actions/character.actions";
+import { setContentTarget, setCurrentCharacter, setTarget, updateEditStatus, updateEditType } from "../../state/actions/character.actions";
 import { Button } from '@material-ui/core';
 import { Character } from '../../models/app';
 
@@ -14,7 +14,7 @@ export interface OwnProps {
     type: string,
     content: string,
     character: Character | null,
-    id: string | null,
+    id: number | null,
 }
 
 export interface MergeProps {
@@ -32,6 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch):DispatchProps => {
 const mergeProps = (mapStateToProps: null, mapDispatchToProps: DispatchProps, ownProps: OwnProps) => {
     const { dispatch } = mapDispatchToProps;
     const { type, content, character, id} = ownProps;
+
     return {
         ...mapDispatchToProps,
         ...ownProps,
@@ -40,6 +41,9 @@ const mergeProps = (mapStateToProps: null, mapDispatchToProps: DispatchProps, ow
                 dispatch(updateEditStatus('edit'))
                 dispatch(updateEditType(content));
                 dispatch(setCurrentCharacter(character))
+                if(id){
+                    dispatch(setTarget(id))
+                }
             } else {
                 dispatch(updateEditStatus('delete'))
                 dispatch(updateEditType(content));
@@ -55,8 +59,8 @@ const mergeProps = (mapStateToProps: null, mapDispatchToProps: DispatchProps, ow
 const DBButton = (props: DBButtonProps) => {
     const { type, openDialog } = props
     return (
-        <Button onClick={() => openDialog()} variant='contained' color={type === 'edit' ? 'primary' : 'secondary'} disableElevation>
-            {type === 'edit' ? 'Edit' : 'Delete'}
+        <Button onClick={() => openDialog()} className={type === 'edit' ? 'edit' : type === 'delete' ? 'delete' : 'add'} variant='contained' color={type === 'delete' ? 'secondary' : 'primary'} disableElevation>
+            {type === 'edit' ? 'Edit' : type === 'delete' ? 'Delete' : 'Add'}
         </Button>
     )
 }

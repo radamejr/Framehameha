@@ -10,8 +10,6 @@ import CharacterContainer, { CharacterProps, OwnProps, StateProps } from "./char
 export const mapStateToProps = (state: State, ownProps: OwnProps):StateProps => {
     const route = ownProps.match.params.id
     const character = selectCharacter(state, {id: route});
-    const characters = selectCharacters(state);
-    const charCount = characters?.length;
     const user = selectUser(state);
     const normals: Normal[] | undefined = character?.normals
     const specials: Special[] | undefined = character?.specials

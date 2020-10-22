@@ -15,5 +15,5 @@ export const defaultCharacterDataModel: CharacterDataReducerModel = {
     loading: false,
     editStatus: '',
     editType: '',
-    target: ''
+    target: '',
 }

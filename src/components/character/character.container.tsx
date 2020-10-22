@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, RouteComponentProps, useHistory } from 'react-router-dom';
+import { RouteComponentProps, useHistory } from 'react-router-dom';
 import { Divider } from '@material-ui/core';
 import { Assist, Character, Normal, Special, Super } from "../../models/app/index";
 import { User } from '../../models/app/user.model';
@@ -25,7 +25,7 @@ export interface OwnProps extends RouteComponentProps<{id: string}> {
 export type CharacterProps = StateProps & OwnProps;
 
 const CharacterContainer = (props: CharacterProps) => {
-    const { character, normals, specials, supers, assists, user, id } = props;
+    const { character, normals, specials, supers, assists, user } = props;
     const history = useHistory();
     if(!character){
         history.push('/')
@@ -35,13 +35,13 @@ const CharacterContainer = (props: CharacterProps) => {
             <div className="character-container">
                 <AboutContainer character={character} admin={user?.admin}/>
                 <Divider variant="middle" />
-                <NormalsContainer normals={normals}/>
+                <NormalsContainer normals={normals} admin={user?.admin} character={character}/>
                 <Divider variant="middle" />
-                <SpecialsContainer specials={specials}/>
+                <SpecialsContainer specials={specials} admin={user?.admin} character={character}/>
                 <Divider variant="middle" />
-                <SupersContainer supers={supers} />
+                <SupersContainer supers={supers} admin={user?.admin} character={character} />
                 <Divider variant="middle" />
-                <AssistsContainer assists={assists} />
+                <AssistsContainer assists={assists} admin={user?.admin} character={character} />
             </div>
         )
     }

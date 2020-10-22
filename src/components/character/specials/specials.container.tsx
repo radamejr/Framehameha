@@ -1,11 +1,13 @@
 import React from 'react';
-import { Special } from '../../../models/app';
+import { Character, Special } from '../../../models/app';
 import SpecialCard from './specials.card';
 
 import './specials.scss'
 
 interface OwnProps {
     specials: Special[] | undefined;
+    admin: boolean | undefined,
+    character: Character,
 }
 
 type SpecialsContainerProps = OwnProps;

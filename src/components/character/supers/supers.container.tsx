@@ -1,11 +1,13 @@
 import React from 'react';
-import { Super } from '../../../models/app';
+import { Character, Super } from '../../../models/app';
 import SuperCard from './supers.card';
 
 import './supers.scss'
 
 interface OwnProps {
     supers: Super[] | undefined;
+    admin: boolean | undefined,
+    character: Character,
 }
 
 type SpecialsContainerProps = OwnProps;

@@ -54,9 +54,16 @@ export const setCurrentCharacter = (character: Character | null) => {
     }
 }
 
-export const setTarget = (id: string) => {
+export const setTarget = (id: number) => {
     return {
         type: Actions.UPDATE_TARGET,
+        payload: id
+    }
+}
+
+export const setContentTarget = (id: number) => {
+    return {
+        type: Actions.UPDATE_CONTENT_TARGET,
         payload: id
     }
 }
