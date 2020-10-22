@@ -6,6 +6,10 @@
         justify-content: center;
         display: flex;
         margin-bottom: 25px;
+        & .admin-button {
+            position: relative;
+            left: 50px;
+        }
     }
 
     & .normal-card {

@@ -24,15 +24,16 @@ const NormalsContainer = (props: NormalsContainerProps) => {
                 <h2>
                     Normal Moves
                 </h2>
+                {
+                    admin ? 
+                        <div className='admin-button'>
+                            <DBButton type='add' content='normal' character={character} id={character.id} />
+                        </div>
+                    :
+                    null
+                }
             </div>
-            {
-            admin ? 
-            <div className='admin-button'>
-                <DBButton type='add' content='normal' character={character} id={character.id} />
-            </div>
-            :
-            null
-            }
+            
             {
                 normals 
                 ?
