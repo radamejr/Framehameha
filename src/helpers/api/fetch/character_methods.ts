@@ -1,4 +1,4 @@
-import { CharacterState } from "../../../models/app/helper_models/content.models"
+import { CharacterState, NormalState } from "../../../models/app/helper_models/content.models"
 import { fetchDelete, fetchPost, fetchPut } from "./fetch"
 
 export const createCharacterAPI = (character: CharacterState): Promise<void> => {
@@ -11,4 +11,8 @@ export const updateCharacterAPI = (character: CharacterState, id: number | undef
 
 export const deleteCharacterAPI = (id: number): Promise<void> => {
     return fetchDelete(`/characters/`, {}, id);
+}
+
+export const createNormalAPI = (normal: NormalState, id: number): Promise<void> => {
+    return fetchPost(`/characters/${id}/normals`, normal);
 }

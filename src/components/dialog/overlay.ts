@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
 import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
 import { setMessage } from '../../helpers/api/fetch/app_methods';
-import { createCharacter, deleteCharacter, updateCharacter, updateEditStatus, updateEditType } from '../../state/actions/character.actions';
+import { createCharacter, createNormal, deleteCharacter, updateCharacter, updateEditStatus, updateEditType } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
 import { selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
-import { CharacterState } from '../../models/app/helper_models/content.models';
+import { CharacterState, NormalState } from '../../models/app/helper_models/content.models';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
@@ -128,9 +128,9 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
                 }
             }
         },
-        normalContent: (currentCharacter: number | undefined, action: string | undefined): void => {
+        normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined): void => {
             if(action === 'add'){
-
+                dispatch(createNormal(normal, currentCharacter || 0))
             } else if (action === 'update'){
 
             } else if (action === 'delete'){

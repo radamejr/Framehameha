@@ -16,7 +16,7 @@ export interface NormalState {
     recovery: string,
     advantage: string,
     immune_to: string,
-    picture: string,
+    picture?: string,
     gaurd: string,
     properties: string,
     special_notes: string,
@@ -27,7 +27,7 @@ export interface NormalState {
 export interface SpecialState {
     name: string,
     input: string,
-    picture: string,
+    picture?: string,
     special_notes: string,
 }
 
@@ -39,7 +39,7 @@ export interface SpecialVariantState {
     advantage: string,
     immune_to: string,
     meter_used: number,
-    picture: string,
+    picture?: string,
     gaurd: string,
     properties: string,
     special_notes: string,
@@ -54,7 +54,7 @@ export interface SuperState {
     advantage: string,
     immune_to: string,
     meter_used: number,
-    picture: string,
+    picture?: string,
     gaurd: string,
     properties: string,
     special_notes: string,
@@ -70,7 +70,7 @@ export interface SuperVariantState {
     advantage: string,
     immune_to: string,
     meter_used: number,
-    picture: string,
+    picture?: string,
     gaurd: string,
     properties: string,
     special_notes: string,
@@ -83,6 +83,6 @@ export interface AssistState {
     onscreen: string,
     hitstop: string,
     special_notes: string,
-    picture: string,
+    picture?: string,
     hit_stun: string,
 }

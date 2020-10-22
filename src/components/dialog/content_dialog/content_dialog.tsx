@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@material-ui/core";
 import React from "react";
 import { Character } from "../../../models/app";
-import { CharacterState } from "../../../models/app/helper_models/content.models";
+import { CharacterState, NormalState } from "../../../models/app/helper_models/content.models";
 import CharacterDialog from "./content-types/character/character_dialog";
 import NormalDialog from "./content-types/normal/normal_dialog";
 import './content_dialog.scss'
@@ -13,7 +13,7 @@ export interface OwnProps {
     currentCharacter: Character | undefined;
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
     characterContent: (character: CharacterState, action: string | undefined, id?: number) => void;
-    normalContent: (currentCharacter: number | undefined, action: string | undefined) => void
+    normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined) => void
 }
 
 export type ContentDialogProps = OwnProps;
@@ -25,7 +25,7 @@ export const renderContentType = (
     currentCharacter: Character | undefined,
     onChange: { (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>): void }, 
     characterContent: { (character: CharacterState, action: string | undefined, id?: number): void },
-    normalContent: { (currentCharacter: number | undefined, action: string | undefined): void }
+    normalContent: { (normal: NormalState, currentCharacter: number | undefined, action: string | undefined): void }
     ) => {
     switch(type){
         case 'character':
@@ -50,7 +50,7 @@ export const renderContentType = (
 const ContentDialog = (props: ContentDialogProps) => {
     const {editStatus, editType, loading, currentCharacter, onChange, characterContent, normalContent } = props;
     return (
-        <Card className="content-dialog">
+        <Card className={`content-dialog ${editType}`}>
             <CardContent className="content-card-contents">
                 <div className="content-dialog-contents">
                     <div className="content-title">

@@ -6,7 +6,7 @@ import './normal.scss'
 
 export interface OwnProps {
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
-    normalContent: (currentCharacter: number | undefined, action: string | undefined) => void;
+    normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined) => void;
     loading: boolean;
     editStatus: string | undefined;
     currentCharacter: Character | undefined,
@@ -16,7 +16,7 @@ export type NormalDialogProps = OwnProps;
 
 const NormalDialog = (props: NormalDialogProps) => {
     const { onChange, normalContent, loading, currentCharacter, editStatus } = props;
-    const normalCount = currentCharacter ? currentCharacter.normals?.length ? currentCharacter.normals?.length : 1 : 1
+    const normalCount = currentCharacter ? currentCharacter.normals?.length ? currentCharacter.normals?.length : 0 : 0
     const [fieldsUpdated, updateFieldsUpdated] = useState(false);
     const [input, inputUpdate] = useState('');
     const [startup, startupUpdate] = useState('');
@@ -287,7 +287,7 @@ const NormalDialog = (props: NormalDialogProps) => {
                 </div>
                 <div className="content-row">
                     <div className="submit">
-                        <Button variant="outlined" color="primary" disabled={loading} disableElevation className='submit' onClick={() => normalContent(currentCharacter?.id, 'add')} >
+                        <Button variant="outlined" color="primary" disabled={loading} disableElevation className='submit' onClick={() => normalContent(normalState, currentCharacter?.id, 'add')} >
                             {loading ? <CircularProgress /> : "Submit"}
                         </Button>
                     </div>
@@ -298,7 +298,7 @@ const NormalDialog = (props: NormalDialogProps) => {
         return (
             <div className="delete">
                 <div className='warning'>
-                    <h3>Deleting a character cannot be undone!</h3>
+                    <h3>Deleting a normal cannot be undone!</h3>
                 </div>
                 <div className="confirm">
                     <input 
@@ -318,7 +318,7 @@ const NormalDialog = (props: NormalDialogProps) => {
                             color="secondary" 
                             disabled={loading || !confirmDelete} 
                             disableElevation className='submit' 
-                            onClick={() => normalContent(currentCharacter?.id, editStatus)} >
+                            onClick={() => normalContent(normalState, currentCharacter?.id, editStatus)} >
                             {loading ? <CircularProgress /> : "Delete"}
                         </Button>
                     </div>

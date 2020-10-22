@@ -29,8 +29,6 @@ const NormalsContainer = (props: NormalsContainerProps) => {
             admin ? 
             <div className='admin-button'>
                 <DBButton type='add' content='normal' character={character} id={character.id} />
-                <DBButton type='edit' content='normal' character={character} id={character.id} />
-                <DBButton type='delete' content='normal' character={character} id={character.id} />
             </div>
             :
             null

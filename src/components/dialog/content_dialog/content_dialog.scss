@@ -2,7 +2,12 @@
     position: relative;
     margin: auto;
     width: 500px;
-    height: 500px;
+    &.character{
+        height: 475px;
+    }
+    &.normal {
+        height: 575px;
+    }
     & .content-card-contents {
         display: flex;
         height: 100%;

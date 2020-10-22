@@ -36,8 +36,8 @@ const AboutContainer = (props: AboutContainerProps) => {
             </div>
             {admin ? 
             <div className='admin-button'>
-                <DBButton type='edit' content='character' character={character} id={null} />
-                <DBButton type='delete' content='character' character={character} id={null} />
+                <DBButton type='edit' content='character' character={character} />
+                <DBButton type='delete' content='character' character={character} />
             </div>
             :
             null}

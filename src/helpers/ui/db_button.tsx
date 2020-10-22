@@ -14,7 +14,8 @@ export interface OwnProps {
     type: string,
     content: string,
     character: Character | null,
-    id: number | null,
+    id?: number,
+    contentId?: number
 }
 
 export interface MergeProps {
@@ -31,7 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch):DispatchProps => {
 
 const mergeProps = (mapStateToProps: null, mapDispatchToProps: DispatchProps, ownProps: OwnProps) => {
     const { dispatch } = mapDispatchToProps;
-    const { type, content, character, id} = ownProps;
+    const { type, content, character, id, contentId} = ownProps;
 
     return {
         ...mapDispatchToProps,
@@ -39,18 +40,18 @@ const mergeProps = (mapStateToProps: null, mapDispatchToProps: DispatchProps, ow
         openDialog: (): void => {
             if(type === 'edit') {
                 dispatch(updateEditStatus('edit'))
-                dispatch(updateEditType(content));
-                dispatch(setCurrentCharacter(character))
-                if(id){
-                    dispatch(setTarget(id))
-                }
-            } else {
+            } else if (type === 'delete'){
                 dispatch(updateEditStatus('delete'))
-                dispatch(updateEditType(content));
-                dispatch(setCurrentCharacter(character))
-                if(id){
-                    dispatch(setTarget(id))
-                }
+            } else {
+                dispatch(updateEditStatus('add'))
+            }
+            dispatch(updateEditType(content));
+                dispatch(setCurrentCharacter(character));
+            if(id){
+                dispatch(setTarget(id))
+            }
+            if(contentId){
+                dispatch(setContentTarget(contentId));
             }
         }
     }

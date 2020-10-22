@@ -8,6 +8,7 @@ export default (state: MessageDataReducerModel = defaultMessageDataReducerModel,
         case ActionPromise(Actions.LOGIN_USER).rejected:
         case ActionPromise(Actions.CREATE_USER).rejected:
         case ActionPromise(Actions.CREATE_CHARACTER).rejected:
+        case ActionPromise(Actions.CREATE_NORMAL).rejected:
             return {
                 ...state,
                 message: action.payload?.error[0] || 'Unknown error occured',

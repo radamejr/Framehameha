@@ -6,7 +6,7 @@ import LoginDialog from './login_dialog/login_dialog';
 import React from 'react';
 import { User } from '../../models/app/user.model';
 import ContentDialog from './content_dialog/content_dialog';
-import { CharacterState } from '../../models/app/helper_models/content.models';
+import { CharacterState, NormalState } from '../../models/app/helper_models/content.models';
 import { Character } from '../../models/app';
 
 export interface StateProps {
@@ -32,7 +32,7 @@ export interface MergeProps {
     loginUser: (email: string, password: string) => void;
     createUser: (email: string, username: string, password: string, confirmPassword: string) => void;
     characterContent: (character: CharacterState, action: string | undefined, id?: number) => void
-    normalContent: (currentCharacter: number | undefined, action: string | undefined) => void
+    normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined) => void
 }
 
 export type OverlayDialogProps = StateProps & DispatchProps & MergeProps;

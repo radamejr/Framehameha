@@ -1,7 +1,7 @@
 import { getCharactersAPI } from "../../helpers/api/fetch/app_methods";
-import { createCharacterAPI, deleteCharacterAPI, updateCharacterAPI } from "../../helpers/api/fetch/character_methods";
+import { createCharacterAPI, createNormalAPI, deleteCharacterAPI, updateCharacterAPI } from "../../helpers/api/fetch/character_methods";
 import { Character } from "../../models/app/character.model";
-import { CharacterState } from "../../models/app/helper_models/content.models";
+import { CharacterState, NormalState } from "../../models/app/helper_models/content.models";
 import { Action, Actions } from "./actions";
 
 
@@ -46,6 +46,14 @@ export const deleteCharacter = (id: number): Action<Promise<void>> => {
         payload: deleteCharacterAPI(id)
     }
 }
+
+export const createNormal = (normal: NormalState, id: number): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_NORMAL,
+        payload: createNormalAPI(normal, id)
+    }
+}
+
 
 export const setCurrentCharacter = (character: Character | null) => {
     return {

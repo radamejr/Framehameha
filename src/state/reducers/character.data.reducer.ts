@@ -28,6 +28,7 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
         case ActionPromise(Actions.CREATE_CHARACTER).fulfilled:
         case ActionPromise(Actions.UPDATE_CHARACTER).fulfilled:
         case ActionPromise(Actions.DELETE_CHARACTER).fulfilled:
+        case ActionPromise(Actions.CREATE_NORMAL).fulfilled:
             return {
                 ...state,
                 characters: action.payload.characters.sort(sortCharacters),
@@ -38,6 +39,7 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
         case ActionPromise(Actions.CREATE_CHARACTER).pending:
         case ActionPromise(Actions.UPDATE_CHARACTER).pending:
         case ActionPromise(Actions.DELETE_CHARACTER).pending:
+        case ActionPromise(Actions.CREATE_NORMAL).pending:
             return {
                 ...state,
                 loading: true,
