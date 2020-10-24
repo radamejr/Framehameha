@@ -1,4 +1,4 @@
-import { Character, Normal } from "../../models/app";
+import { Character } from "../../models/app";
 import { CharacterDataReducerModel, defaultCharacterDataModel } from "../../models/reducer/characterData.reducer.model";
 import { ActionPromise, Actions } from "../actions/actions";
 

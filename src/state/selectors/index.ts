@@ -1,7 +1,6 @@
 import { Character } from "../../models/app/character.model";
 import { State } from "../reducers";
 import { User } from "../../models/app/user.model";
-import { Normal } from "../../models/app";
 
 export const selectCharacter = (state: State | null, id: {id: string}): Character | null => {
     let character = null;

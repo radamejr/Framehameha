@@ -1,10 +1,9 @@
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { bindActionCreators } from "redux";
 import { Assist, Normal, Special, Super } from "../../models/app/index";
 import { State } from "../../state/reducers";
-import { selectCharacter, selectCharacters, selectLoading, selectUser } from "../../state/selectors";
+import { selectCharacter, selectLoading, selectUser } from "../../state/selectors";
 import CharacterContainer, { CharacterProps, OwnProps, StateProps } from "./character.container";
 
 
