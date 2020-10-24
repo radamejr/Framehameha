@@ -7,9 +7,9 @@ import { connect } from 'react-redux';
 import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
 import { setMessage } from '../../helpers/api/fetch/app_methods';
-import { createCharacter, createNormal, deleteCharacter, updateCharacter, updateEditStatus, updateEditType } from '../../state/actions/character.actions';
+import { createCharacter, createNormal, deleteCharacter, deleteNormal, updateCharacter, updateEditStatus, updateEditType, updateNormal } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
-import { selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
+import { selectContentTarget, selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
 import { CharacterState, NormalState } from '../../models/app/helper_models/content.models';
 
 export const mapStateToProps = (state: State): StateProps => {
@@ -21,8 +21,9 @@ export const mapStateToProps = (state: State): StateProps => {
     const editStatus = selectEditStatus(state);
     const editType = selectEditType(state);
     const target = selectEditTarget(state);
+    const contentTarget = selectContentTarget(state);
 
-    return { user, loggingIn, loginStatus, editStatus, currentCharacter, editType, target, loading}
+    return { user, loggingIn, loginStatus, editStatus, currentCharacter, editType, target, loading, contentTarget }
 }
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -42,6 +43,7 @@ export const mapDispatchToProps = (dispatch: Dispatch) => {
 
 export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: DispatchProps) => {
     const { close, dispatch } = mapDispatchToProps;
+    const { contentTarget } = mapStateToProps;
     return {
         ...mapStateToProps,
         ...mapDispatchToProps,
@@ -103,7 +105,7 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
         characterContent: (character: CharacterState, action: string | undefined, id?: number):void => {
             if(action === 'add'){
                 dispatch(createCharacter(character))
-            } else if (action === 'update'){
+            } else if (action === 'edit'){
                 const characterUpdate: CharacterState = {
                     name: character.name,
                     dlc: character.dlc,
@@ -131,10 +133,28 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
         normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined): void => {
             if(action === 'add'){
                 dispatch(createNormal(normal, currentCharacter || 0))
-            } else if (action === 'update'){
-
+            } else if (action === 'edit'){
+                const normalUpdate: NormalState = {
+                    input: normal.input,
+                    startup: normal.startup,
+                    active: normal.active,
+                    recovery: normal.recovery,
+                    advantage: normal.advantage,
+                    immune_to: normal.immune_to,
+                    gaurd: normal.gaurd,
+                    properties: normal.properties,
+                    special_notes: normal.special_notes,
+                    move_type: normal.move_type,
+                    list_order: normal.list_order,
+                }
+                if(currentCharacter && contentTarget){
+                    dispatch(updateNormal(normalUpdate, currentCharacter, contentTarget))
+                }
+                
             } else if (action === 'delete'){
-
+                if(currentCharacter && contentTarget){
+                    dispatch(deleteNormal(currentCharacter, contentTarget))
+                }
             }
         }
     }

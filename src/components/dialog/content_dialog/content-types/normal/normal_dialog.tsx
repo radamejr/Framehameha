@@ -6,16 +6,17 @@ import './normal.scss'
 
 export interface OwnProps {
     onChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>) => void;
-    normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined) => void;
+    normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined, contentTarget?: string | undefined) => void;
     loading: boolean;
     editStatus: string | undefined;
     currentCharacter: Character | undefined,
+    contentTarget?: string | undefined,
 }
 
 export type NormalDialogProps = OwnProps;
 
 const NormalDialog = (props: NormalDialogProps) => {
-    const { onChange, normalContent, loading, currentCharacter, editStatus } = props;
+    const { onChange, normalContent, loading, currentCharacter, editStatus, contentTarget } = props;
     const normalCount = currentCharacter ? currentCharacter.normals?.length ? currentCharacter.normals?.length : 0 : 0
     const [fieldsUpdated, updateFieldsUpdated] = useState(false);
     const [input, inputUpdate] = useState('');
@@ -32,15 +33,21 @@ const NormalDialog = (props: NormalDialogProps) => {
     const [list, listUpdate] = useState(`${normalCount + 1}`);
     const [confirmDelete, confirmDeleteUpdate] = useState(false)
 
-    // if(currentCharacter && editStatus === 'edit' && !fieldsUpdated) {
-    //     inputUpdate(currentCharacter.input);
-    //     startupUpdate(currentCharacter.startup ? 'true' : 'false');
-    //     activeUpdate(currentCharacter.active);
-    //     recoveryUpdate(currentCharacter.recovery);
-    //     immuneToUpdate(currentCharacter.immune_to);
-    //     guardUpdate(currentCharacter.guard);
-    //     updateFieldsUpdated(true);
-    // }
+    if(contentTarget && currentCharacter && editStatus === 'edit' && !fieldsUpdated) {
+        inputUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].input)
+        startupUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].startup)
+        activeUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].active)
+        recoveryUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].recovery)
+        advantageUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].advantage)
+        immuneToUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].immune_to)
+        guardUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].gaurd)
+        propertiesUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].properties)
+        notesUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].special_notes)
+        typeUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].move_type)
+        listUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].list_order)
+        updateFieldsUpdated(true);
+    }
+    
     const normalState: NormalState = {
         input: input,
         startup: startup,
@@ -287,7 +294,7 @@ const NormalDialog = (props: NormalDialogProps) => {
                 </div>
                 <div className="content-row">
                     <div className="submit">
-                        <Button variant="outlined" color="primary" disabled={loading} disableElevation className='submit' onClick={() => normalContent(normalState, currentCharacter?.id, 'add')} >
+                        <Button variant="outlined" color="primary" disabled={loading} disableElevation className='submit' onClick={() => normalContent(normalState, currentCharacter?.id, editStatus)} >
                             {loading ? <CircularProgress /> : "Submit"}
                         </Button>
                     </div>

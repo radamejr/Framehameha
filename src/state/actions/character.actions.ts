@@ -1,5 +1,5 @@
 import { getCharactersAPI } from "../../helpers/api/fetch/app_methods";
-import { createCharacterAPI, createNormalAPI, deleteCharacterAPI, updateCharacterAPI } from "../../helpers/api/fetch/character_methods";
+import { createCharacterAPI, createNormalAPI, deleteCharacterAPI, deleteNormalAPI, updateCharacterAPI, updateNormalAPI } from "../../helpers/api/fetch/character_methods";
 import { Character } from "../../models/app/character.model";
 import { CharacterState, NormalState } from "../../models/app/helper_models/content.models";
 import { Action, Actions } from "./actions";
@@ -54,6 +54,19 @@ export const createNormal = (normal: NormalState, id: number): Action<Promise<vo
     }
 }
 
+export const updateNormal = (normal: NormalState, id: number, currentTarget: number | string): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_NORMAL,
+        payload: updateNormalAPI(normal, id, currentTarget)
+    }
+}
+
+export const deleteNormal = (id: number, currentTarget: number | string): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_NORMAL,
+        payload: deleteNormalAPI(id, currentTarget)
+    }
+}
 
 export const setCurrentCharacter = (character: Character | null) => {
     return {
@@ -69,7 +82,7 @@ export const setTarget = (id: number) => {
     }
 }
 
-export const setContentTarget = (id: number) => {
+export const setContentTarget = (id: string) => {
     return {
         type: Actions.UPDATE_CONTENT_TARGET,
         payload: id

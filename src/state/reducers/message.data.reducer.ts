@@ -9,12 +9,19 @@ export default (state: MessageDataReducerModel = defaultMessageDataReducerModel,
         case ActionPromise(Actions.CREATE_USER).rejected:
         case ActionPromise(Actions.CREATE_CHARACTER).rejected:
         case ActionPromise(Actions.CREATE_NORMAL).rejected:
+        case ActionPromise(Actions.UPDATE_NORMAL).rejected:
+        case ActionPromise(Actions.DELETE_NORMAL).rejected:
             return {
                 ...state,
                 message: action.payload?.error[0] || 'Unknown error occured',
                 messageType: 'error',
             }
         case ActionPromise(Actions.CREATE_CHARACTER).fulfilled:
+        case ActionPromise(Actions.UPDATE_CHARACTER).fulfilled:
+        case ActionPromise(Actions.DELETE_CHARACTER).fulfilled:
+        case ActionPromise(Actions.CREATE_NORMAL).fulfilled:
+        case ActionPromise(Actions.UPDATE_NORMAL).fulfilled:
+        case ActionPromise(Actions.DELETE_NORMAL).fulfilled:
             return {
                 ...state,
                 message: 'Success!',

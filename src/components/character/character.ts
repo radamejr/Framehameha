@@ -1,6 +1,7 @@
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { bindActionCreators } from "redux";
 import { Assist, Normal, Special, Super } from "../../models/app/index";
 import { State } from "../../state/reducers";
 import { selectCharacter, selectCharacters, selectLoading, selectUser } from "../../state/selectors";
@@ -11,7 +12,7 @@ export const mapStateToProps = (state: State, ownProps: OwnProps):StateProps => 
     const route = ownProps.match.params.id
     const character = selectCharacter(state, {id: route});
     const user = selectUser(state);
-    const normals: Normal[] | undefined = character?.normals
+    const normals: Normal[] | undefined = character?.normals.sort((a: Normal, b: Normal) => parseInt(a.list_order) - parseInt(b.list_order))
     const specials: Special[] | undefined = character?.specials
     const supers: Super[] | undefined = character?.supers
     const assists: Assist[] | undefined = character?.assists

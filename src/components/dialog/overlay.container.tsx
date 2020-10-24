@@ -18,6 +18,7 @@ export interface StateProps {
     currentCharacter: Character | undefined;
     target: string | undefined
     loading: boolean;
+    contentTarget: string | undefined;
 }
 
 export interface DispatchProps {
@@ -32,7 +33,7 @@ export interface MergeProps {
     loginUser: (email: string, password: string) => void;
     createUser: (email: string, username: string, password: string, confirmPassword: string) => void;
     characterContent: (character: CharacterState, action: string | undefined, id?: number) => void
-    normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined) => void
+    normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined, contentTarget?: string | undefined) => void
 }
 
 export type OverlayDialogProps = StateProps & DispatchProps & MergeProps;
@@ -45,6 +46,7 @@ const OverlayDialog = (props: OverlayDialogProps) => {
         editType, 
         currentCharacter, 
         loading, 
+        contentTarget,
         closeDialog, 
         toggleLogin, 
         handleChange, 
@@ -75,6 +77,7 @@ const OverlayDialog = (props: OverlayDialogProps) => {
                     editType={editType} loading={loading} 
                     characterContent={characterContent}
                     normalContent={normalContent}
+                    contentTarget={contentTarget}
                     />
             </div>
             )

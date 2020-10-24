@@ -31,6 +31,8 @@ export const selectEditType= (state: State | null): string | undefined => state?
 
 export const selectEditTarget= (state: State | null): string | undefined => state?.characterData?.target;
 
+export const selectContentTarget= (state: State | null): string | undefined => state?.characterData?.contentTarget;
+
 export const selectMessage = (state: State): string | null | undefined => state.messageData?.message
 
 export const selectMessageType = (state: State): string | null | undefined => state.messageData?.messageType

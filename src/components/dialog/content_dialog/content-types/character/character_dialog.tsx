@@ -202,7 +202,7 @@ const CharacterDialog = (props: CharacterDialogProps) => {
                 </div>
                 <div className="content-row">
                     <div className="submit">
-                        <Button variant="outlined" color="primary" disabled={loading} disableElevation className='submit' onClick={() => characterContent(characterState, 'add', currentCharacter?.id)} >
+                        <Button variant="outlined" color="primary" disabled={loading} disableElevation className='submit' onClick={() => characterContent(characterState, editStatus, currentCharacter?.id)} >
                             {loading ? <CircularProgress /> : "Submit"}
                         </Button>
                     </div>

@@ -69,9 +69,8 @@ export const fetchPut = <S, T>(address: string, data: S, id?: number | string): 
 export const fetchDelete = <S, T>(
     address: string, 
     data: S, 
-    character_id: number | string
     ): Promise<T> => {
-    const url = `${hostname}${api}${address}/${character_id}`;
+    const url = `${hostname}${api}${address}`;
     return new Promise((resolve, reject) => {
         fetchMethod('DELETE', url, data)
             .then(fetchThen(resolve, reject))

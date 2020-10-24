@@ -10,9 +10,17 @@ export const updateCharacterAPI = (character: CharacterState, id: number | undef
 }
 
 export const deleteCharacterAPI = (id: number): Promise<void> => {
-    return fetchDelete(`/characters/`, {}, id);
+    return fetchDelete(`/characters/${id}`, {});
 }
 
 export const createNormalAPI = (normal: NormalState, id: number): Promise<void> => {
     return fetchPost(`/characters/${id}/normals`, normal);
+}
+
+export const updateNormalAPI = (normal: NormalState, id: number, contentTarget: string | number): Promise<void> => {
+    return fetchPut(`/characters/${id}/normals/${contentTarget}`, normal);
+}
+
+export const deleteNormalAPI = (id: number, contentTarget: string | number): Promise<void> => {
+    return fetchDelete(`/characters/${id}/normals/${contentTarget}`, {});
 }

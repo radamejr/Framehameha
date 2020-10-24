@@ -15,7 +15,7 @@ export interface OwnProps {
     content: string,
     character: Character | null,
     id?: number,
-    contentId?: number
+    contentId?: string
 }
 
 export interface MergeProps {

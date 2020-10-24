@@ -1,4 +1,4 @@
-import { Character } from "../../models/app";
+import { Character, Normal } from "../../models/app";
 import { CharacterDataReducerModel, defaultCharacterDataModel } from "../../models/reducer/characterData.reducer.model";
 import { ActionPromise, Actions } from "../actions/actions";
 
@@ -15,6 +15,7 @@ const sortCharacters = (a: Character, b: Character) => {
     return comparison;
 } 
 
+
 export default (state: CharacterDataReducerModel = defaultCharacterDataModel, action: any): CharacterDataReducerModel => {
     switch(action.type) {       
         case Actions.GET_CHARACTERS_PENDING:
@@ -29,6 +30,8 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
         case ActionPromise(Actions.UPDATE_CHARACTER).fulfilled:
         case ActionPromise(Actions.DELETE_CHARACTER).fulfilled:
         case ActionPromise(Actions.CREATE_NORMAL).fulfilled:
+        case ActionPromise(Actions.UPDATE_NORMAL).fulfilled:
+        case ActionPromise(Actions.DELETE_NORMAL).fulfilled:
             return {
                 ...state,
                 characters: action.payload.characters.sort(sortCharacters),
@@ -40,6 +43,8 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
         case ActionPromise(Actions.UPDATE_CHARACTER).pending:
         case ActionPromise(Actions.DELETE_CHARACTER).pending:
         case ActionPromise(Actions.CREATE_NORMAL).pending:
+        case ActionPromise(Actions.UPDATE_NORMAL).pending:
+        case ActionPromise(Actions.DELETE_NORMAL).pending:    
             return {
                 ...state,
                 loading: true,
@@ -65,7 +70,11 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
                 ...state,
                 currentCharacter: action.payload,
             }
-        
+        case Actions.UPDATE_CONTENT_TARGET:
+            return {
+                ...state,
+                contentTarget: action.payload,
+            }
         default:
             return state
     }

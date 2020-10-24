@@ -26,8 +26,8 @@ const NormalsCard = (props: NormalsCardProps) => {
                         {
                             admin ? 
                                 <div className='admin-button'>
-                                    <DBButton type='edit' content='normal' character={character} id={character?.id} />
-                                    <DBButton type='delete' content='normal' character={character} id={character?.id} />
+                                    <DBButton type='edit' content='normal' character={character} id={character?.id} contentId={normal?.id}/>
+                                    <DBButton type='delete' content='normal' character={character} id={character?.id} contentId={normal?.id}/>
                                 </div>
                             :
                             null
