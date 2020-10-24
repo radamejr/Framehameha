@@ -1,15 +1,18 @@
 import React from 'react';
 import { Card, CardContent, Divider, Table, TableCell, TableContainer, TableRow, TableBody } from '@material-ui/core';
-import { Normal } from '../../../models/app';
+import { Character, Normal } from '../../../models/app';
 import VisualGraph from '../../../helpers/visual_frame_data_graph/frame_data_graph';
+import DBButton from '../../../helpers/ui/DBButton';
 
 interface OwnProps {
     normal: Normal | undefined;
+    character: Character | null;
+    admin: boolean;
 }
 type NormalsCardProps = OwnProps;
 
 const NormalsCard = (props: NormalsCardProps) => {
-    const { normal } = props;
+    const { normal, character, admin } = props;
     if(normal){
         return (
             <Card className="normal-card" variant="outlined">
@@ -17,8 +20,18 @@ const NormalsCard = (props: NormalsCardProps) => {
                     <div className="normal-image">
                         <img src={normal.picture.url} alt={normal.input}/>
                     </div>
+                    
                     <Divider orientation="vertical" variant="middle"/>
                     <div className="normal-data">
+                        {
+                            admin ? 
+                                <div className='admin-button'>
+                                    <DBButton type='edit' content='normal' character={character} id={character?.id} />
+                                    <DBButton type='delete' content='normal' character={character} id={character?.id} />
+                                </div>
+                            :
+                            null
+                        }
                         <TableContainer className="normal-data-table-one" >
                             <Table>
                                 <TableBody>

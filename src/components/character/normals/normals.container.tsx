@@ -1,6 +1,6 @@
 import React from 'react';
 import { Character, Normal } from '../../../models/app';
-import DBButton from '../../../helpers/ui/db_button'
+import DBButton from '../../../helpers/ui/DBButton'
 import NormalsCard from './normals.card';
 
 import './normal.scss'
@@ -16,7 +16,7 @@ const NormalsContainer = (props: NormalsContainerProps) => {
     const { normals, admin, character } = props;
 
     const makeNormalCard = (normal: Normal, key: number) => {
-        return ( <NormalsCard normal={normal} key={key} />)
+        return ( <NormalsCard normal={normal} character={character} admin={admin || false} key={key} />)
     }
     return (
         <div className="normals-container">

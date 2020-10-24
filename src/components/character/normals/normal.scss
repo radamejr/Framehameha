@@ -44,6 +44,15 @@
                         }
                     }
                 }
+                & .admin-button {
+                    position: relative;
+                    display: flex;
+                    justify-content: space-between;
+                    height: 35px;
+                    & button {
+                        max-height: 35px;
+                    }
+                }
             }
         }
         & .normal-graph {

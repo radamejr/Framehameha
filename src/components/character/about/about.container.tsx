@@ -1,6 +1,6 @@
 import React from 'react';
 import { Character } from '../../../models/app';
-import DBButton from '../../../helpers/ui/db_button'
+import DBButton from '../../../helpers/ui/DBButton'
 import './about.scss'
 
 interface OwnProps {
