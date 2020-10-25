@@ -8,6 +8,11 @@
         margin-bottom: 25px;
     }
 
+    & .admin-button {
+        position: relative;
+        left: 50px;
+    }
+
     & .special-card {
         width: 80%;
         margin: 15px auto 0px auto;
@@ -32,6 +37,16 @@
                 margin: auto 0px auto 0px;
                 display: flex;
                 flex-direction: column;
+                & .admin-button {
+                    position: relative;
+                    display: flex;
+                    justify-content: space-evenly;
+                    height: 35px;
+                    max-width: 100%;
+                    & button {
+                        max-height: 35px;
+                    }
+                }
                 & .MuiTableContainer-root {
                     overflow-wrap: break-word;
                     & .MuiTableRow-root {
@@ -75,6 +90,7 @@
                                 display: flex;
                                 justify-content: center;
                             }
+                            
                         }
                     }
                 }

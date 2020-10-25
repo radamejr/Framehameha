@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
 import { setMessage } from '../../helpers/api/fetch/app_methods';
-import { createCharacter, createNormal, deleteCharacter, deleteNormal, updateCharacter, updateEditStatus, updateEditType, updateNormal } from '../../state/actions/character.actions';
+import { createCharacter, createNormal, createSpecial, deleteCharacter, deleteNormal, deleteSpecial, updateCharacter, updateEditStatus, updateEditType, updateNormal, updateSpecial } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
 import { selectContentTarget, selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
 import { CharacterState, NormalState, SpecialState } from '../../models/app/helper_models/content.models';
@@ -164,7 +164,7 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
         },
         specialContent: (special: SpecialState, currentCharacter: number | undefined, action: string | undefined): void => {
             if(action === 'add'){
-                //dispatch(createNormal(special, currentCharacter || 0))
+                dispatch(createSpecial(special, currentCharacter || 0))
             } else if (action === 'edit'){
                 const specialUpdate: SpecialState = {
                     name: special.name,
@@ -177,12 +177,12 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
                 }
                 
                 if(currentCharacter && contentTarget){
-                    //ispatch(updateNormal(specialUpdate, currentCharacter, contentTarget))
+                    dispatch(updateSpecial(specialUpdate, currentCharacter, contentTarget))
                 }
                 
             } else if (action === 'delete'){
                 if(currentCharacter && contentTarget){
-                    //dispatch(deleteNormal(currentCharacter, contentTarget))
+                    dispatch(deleteSpecial(currentCharacter, contentTarget))
                 }
             }
         }

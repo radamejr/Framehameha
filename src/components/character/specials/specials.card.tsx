@@ -1,17 +1,20 @@
 import React from 'react';
 import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent, Divider, Table, TableBody, TableCell, TableContainer, TableRow } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Special, SpecialVariant } from '../../../models/app';
+import { Character, Special, SpecialVariant } from '../../../models/app';
 import SpecialVariantsCard from './special.variant.card';
+import DBButton from '../../../helpers/ui/DBButton';
 
 interface OwnProps {
     special: Special | undefined;
+    character: Character | null;
+    admin: boolean | undefined;
 }
 
 type SpecialCardProps = OwnProps;
 
 const SpecialCard = (props: SpecialCardProps) => {
-    const { special } = props;
+    const { special, admin, character } = props;
     if(special) {
         return (
             <Card className="special-card" variant="outlined">
@@ -21,6 +24,15 @@ const SpecialCard = (props: SpecialCardProps) => {
                     </div>
                     <Divider orientation="vertical" variant="middle"/>
                     <div className="special-info">
+                    {
+                            admin ? 
+                                <div className='admin-button'>
+                                    <DBButton type='edit' content='special' character={character} id={character?.id} contentId={special?.id}/>
+                                    <DBButton type='delete' content='special' character={character} id={character?.id} contentId={special?.id}/>
+                                </div>
+                            :
+                            null
+                    }
                     <TableContainer className="special-data-table-one" >
                             <Table>
                                 <TableBody>

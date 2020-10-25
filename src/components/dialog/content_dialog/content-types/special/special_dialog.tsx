@@ -15,7 +15,7 @@ export interface OwnProps {
 
 export type SpecialDialogProps = OwnProps;
 
-const NormalDialog = (props: SpecialDialogProps) => {
+const SpecialDialog = (props: SpecialDialogProps) => {
     const { onChange, specialContent, loading, currentCharacter, editStatus, contentTarget } = props;
     const [fieldsUpdated, updateFieldsUpdated] = useState(false);
     const [name, nameUpdate] = useState('');
@@ -159,4 +159,4 @@ const NormalDialog = (props: SpecialDialogProps) => {
     
 }
 
-export default NormalDialog
+export default SpecialDialog

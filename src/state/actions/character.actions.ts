@@ -193,3 +193,10 @@ export const setContentTarget = (id: string) => {
         payload: id
     }
 }
+
+export const setContentTargetParent = (id: string) => {
+    return {
+        type: Actions.UPDATE_CONTENT_TARGET_PARENT,
+        payload: id
+    }
+}

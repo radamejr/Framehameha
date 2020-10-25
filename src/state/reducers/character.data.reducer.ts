@@ -106,6 +106,11 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
                 ...state,
                 contentTarget: action.payload,
             }
+        case Actions.UPDATE_CONTENT_TARGET_PARENT:
+            return {
+                ...state,
+                contentParent: action.payload,
+            }
         default:
             return state
     }

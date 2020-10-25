@@ -1,4 +1,5 @@
 import React from 'react';
+import DBButton from '../../../helpers/ui/DBButton';
 import { Character, Special } from '../../../models/app';
 import SpecialCard from './specials.card';
 
@@ -13,10 +14,10 @@ interface OwnProps {
 type SpecialsContainerProps = OwnProps;
 
 const SpecialsContainer = (props: SpecialsContainerProps) => {
-    const { specials } = props;
+    const { specials, admin, character } = props;
 
     const makeSpecialCard = (special: Special, key: number) => {
-        return ( <SpecialCard special={special} key={key} />)
+        return ( <SpecialCard special={special} key={key} admin={admin} character={character}/>)
     }
 
     return (
@@ -25,6 +26,14 @@ const SpecialsContainer = (props: SpecialsContainerProps) => {
                 <h2>
                     Special Moves
                 </h2>
+                {
+                    admin ? 
+                        <div className='admin-button'>
+                            <DBButton type='add' content='special' character={character} id={character.id} />
+                        </div>
+                    :
+                    null
+                }
             </div>
             {
                 specials ?

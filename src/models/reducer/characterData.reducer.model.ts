@@ -8,6 +8,7 @@ export interface CharacterDataReducerModel {
     editType: string | undefined,
     target: string | undefined,
     contentTarget: string | undefined,
+    contentParent: string | undefined
 }
 
 export const defaultCharacterDataModel: CharacterDataReducerModel = {
@@ -18,4 +19,5 @@ export const defaultCharacterDataModel: CharacterDataReducerModel = {
     editType: '',
     target: '',
     contentTarget: '',
+    contentParent: '',
 }
