@@ -32,6 +32,21 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
         case ActionPromise(Actions.CREATE_NORMAL).fulfilled:
         case ActionPromise(Actions.UPDATE_NORMAL).fulfilled:
         case ActionPromise(Actions.DELETE_NORMAL).fulfilled:
+        case ActionPromise(Actions.CREATE_SPECIAL).fulfilled:
+        case ActionPromise(Actions.UPDATE_SPECIAL).fulfilled:
+        case ActionPromise(Actions.DELETE_SPECIAL).fulfilled:
+        case ActionPromise(Actions.CREATE_SPECIAL_VARIANT).fulfilled:
+        case ActionPromise(Actions.UPDATE_SPECIAL_VARIANT).fulfilled:
+        case ActionPromise(Actions.DELETE_SPECIAL_VARIANT).fulfilled:
+        case ActionPromise(Actions.CREATE_SUPER).fulfilled:
+        case ActionPromise(Actions.UPDATE_SUPER).fulfilled:
+        case ActionPromise(Actions.DELETE_SUPER).fulfilled:
+        case ActionPromise(Actions.CREATE_SUPER_VARIANT).fulfilled:
+        case ActionPromise(Actions.UPDATE_SUPER_VARIANT).fulfilled:
+        case ActionPromise(Actions.DELETE_SUPER_VARIANT).fulfilled:
+        case ActionPromise(Actions.CREATE_ASSIST).fulfilled:
+        case ActionPromise(Actions.UPDATE_ASSIST).fulfilled:
+        case ActionPromise(Actions.DELETE_ASSIST).fulfilled:
             return {
                 ...state,
                 characters: action.payload.characters.sort(sortCharacters),
@@ -39,12 +54,28 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
                 editStatus: ''
             }
 
+        case ActionPromise(Actions.GET_CHARACTERS).pending:
         case ActionPromise(Actions.CREATE_CHARACTER).pending:
         case ActionPromise(Actions.UPDATE_CHARACTER).pending:
         case ActionPromise(Actions.DELETE_CHARACTER).pending:
         case ActionPromise(Actions.CREATE_NORMAL).pending:
         case ActionPromise(Actions.UPDATE_NORMAL).pending:
-        case ActionPromise(Actions.DELETE_NORMAL).pending:    
+        case ActionPromise(Actions.DELETE_NORMAL).pending:
+        case ActionPromise(Actions.CREATE_SPECIAL).pending:
+        case ActionPromise(Actions.UPDATE_SPECIAL).pending:
+        case ActionPromise(Actions.DELETE_SPECIAL).pending:
+        case ActionPromise(Actions.CREATE_SPECIAL_VARIANT).pending:
+        case ActionPromise(Actions.UPDATE_SPECIAL_VARIANT).pending:
+        case ActionPromise(Actions.DELETE_SPECIAL_VARIANT).pending:
+        case ActionPromise(Actions.CREATE_SUPER).pending:
+        case ActionPromise(Actions.UPDATE_SUPER).pending:
+        case ActionPromise(Actions.DELETE_SUPER).pending:
+        case ActionPromise(Actions.CREATE_SUPER_VARIANT).pending:
+        case ActionPromise(Actions.UPDATE_SUPER_VARIANT).pending:
+        case ActionPromise(Actions.DELETE_SUPER_VARIANT).pending:
+        case ActionPromise(Actions.CREATE_ASSIST).pending:
+        case ActionPromise(Actions.UPDATE_ASSIST).pending:
+        case ActionPromise(Actions.DELETE_ASSIST).pending:    
             return {
                 ...state,
                 loading: true,

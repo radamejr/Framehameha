@@ -11,6 +11,21 @@ export default (state: MessageDataReducerModel = defaultMessageDataReducerModel,
         case ActionPromise(Actions.CREATE_NORMAL).rejected:
         case ActionPromise(Actions.UPDATE_NORMAL).rejected:
         case ActionPromise(Actions.DELETE_NORMAL).rejected:
+        case ActionPromise(Actions.CREATE_SPECIAL).rejected:
+        case ActionPromise(Actions.UPDATE_SPECIAL).rejected:
+        case ActionPromise(Actions.DELETE_SPECIAL).rejected:
+        case ActionPromise(Actions.CREATE_SPECIAL_VARIANT).rejected:
+        case ActionPromise(Actions.UPDATE_SPECIAL_VARIANT).rejected:
+        case ActionPromise(Actions.DELETE_SPECIAL_VARIANT).rejected:
+        case ActionPromise(Actions.CREATE_SUPER).rejected:
+        case ActionPromise(Actions.UPDATE_SUPER).rejected:
+        case ActionPromise(Actions.DELETE_SUPER).rejected:
+        case ActionPromise(Actions.CREATE_SUPER_VARIANT).rejected:
+        case ActionPromise(Actions.UPDATE_SUPER_VARIANT).rejected:
+        case ActionPromise(Actions.DELETE_SUPER_VARIANT).rejected:
+        case ActionPromise(Actions.CREATE_ASSIST).rejected:
+        case ActionPromise(Actions.UPDATE_ASSIST).rejected:
+        case ActionPromise(Actions.DELETE_ASSIST).rejected:  
             return {
                 ...state,
                 message: action.payload?.error[0] || 'Unknown error occured',
@@ -22,6 +37,21 @@ export default (state: MessageDataReducerModel = defaultMessageDataReducerModel,
         case ActionPromise(Actions.CREATE_NORMAL).fulfilled:
         case ActionPromise(Actions.UPDATE_NORMAL).fulfilled:
         case ActionPromise(Actions.DELETE_NORMAL).fulfilled:
+        case ActionPromise(Actions.CREATE_SPECIAL).pending:
+        case ActionPromise(Actions.UPDATE_SPECIAL).pending:
+        case ActionPromise(Actions.DELETE_SPECIAL).pending:
+        case ActionPromise(Actions.CREATE_SPECIAL_VARIANT).pending:
+        case ActionPromise(Actions.UPDATE_SPECIAL_VARIANT).pending:
+        case ActionPromise(Actions.DELETE_SPECIAL_VARIANT).pending:
+        case ActionPromise(Actions.CREATE_SUPER).pending:
+        case ActionPromise(Actions.UPDATE_SUPER).pending:
+        case ActionPromise(Actions.DELETE_SUPER).pending:
+        case ActionPromise(Actions.CREATE_SUPER_VARIANT).pending:
+        case ActionPromise(Actions.UPDATE_SUPER_VARIANT).pending:
+        case ActionPromise(Actions.DELETE_SUPER_VARIANT).pending:
+        case ActionPromise(Actions.CREATE_ASSIST).pending:
+        case ActionPromise(Actions.UPDATE_ASSIST).pending:
+        case ActionPromise(Actions.DELETE_ASSIST).pending:  
             return {
                 ...state,
                 message: 'Success!',

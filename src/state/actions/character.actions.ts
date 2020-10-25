@@ -1,7 +1,7 @@
 import { getCharactersAPI } from "../../helpers/api/fetch/app_methods";
-import { createCharacterAPI, createNormalAPI, deleteCharacterAPI, deleteNormalAPI, updateCharacterAPI, updateNormalAPI } from "../../helpers/api/fetch/character_methods";
+import { createAssistAPI, createCharacterAPI, createNormalAPI, createSpecialAPI, createSpecialVariantAPI, createSuperAPI, createSuperVariantAPI, deleteAssistAPI, deleteCharacterAPI, deleteNormalAPI, deleteSpecialAPI, deleteSpecialVariantAPI, deleteSuperAPI, deleteSuperVariantAPI, updateAssistAPI, updateCharacterAPI, updateNormalAPI, updateSpecialAPI, updateSpecialVariantAPI, updateSuperAPI, updateSuperVariantAPI } from "../../helpers/api/fetch/character_methods";
 import { Character } from "../../models/app/character.model";
-import { CharacterState, NormalState } from "../../models/app/helper_models/content.models";
+import { AssistState, CharacterState, NormalState, SpecialState, SpecialVariantState, SuperState, SuperVariantState } from "../../models/app/helper_models/content.models";
 import { Action, Actions } from "./actions";
 
 
@@ -65,6 +65,111 @@ export const deleteNormal = (id: number, currentTarget: number | string): Action
     return {
         type: Actions.CREATE_NORMAL,
         payload: deleteNormalAPI(id, currentTarget)
+    }
+}
+
+export const createSpecial = (special: SpecialState, id: number): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SPECIAL,
+        payload: createSpecialAPI(special, id)
+    }
+}
+
+export const updateSpecial = (special: SpecialState, id: number, currentTarget: number | string): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SPECIAL,
+        payload: updateSpecialAPI(special, id, currentTarget)
+    }
+}
+
+export const deleteSpecial = (id: number, currentTarget: number | string): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SPECIAL,
+        payload: deleteSpecialAPI(id, currentTarget)
+    }
+}
+
+export const createSpecialVariant = (special_variant: SpecialVariantState, id: number, parentId: number): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SPECIAL_VARIANT,
+        payload: createSpecialVariantAPI(special_variant, id, parentId)
+    }
+}
+
+export const updateSpecialVariant = (special_variant: SpecialVariantState, id: number, currentTarget: number | string, parentId: number, ): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SPECIAL_VARIANT,
+        payload: updateSpecialVariantAPI(special_variant, id, parentId, currentTarget)
+    }
+}
+
+export const deleteSpecialVariant = (id: number, currentTarget: number | string, parentId: number,): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SPECIAL_VARIANT,
+        payload: deleteSpecialVariantAPI(id, parentId, currentTarget)
+    }
+}
+
+export const createSuper = (superMove: SuperState, id: number): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SPECIAL,
+        payload: createSuperAPI(superMove, id)
+    }
+}
+
+export const updateSuper = (superMove: SuperState, id: number, currentTarget: number | string): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SPECIAL,
+        payload: updateSuperAPI(superMove, id, currentTarget)
+    }
+}
+
+export const deleteSuper = (id: number, currentTarget: number | string): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SPECIAL,
+        payload: deleteSuperAPI(id, currentTarget)
+    }
+}
+
+export const createSuperVariant = (super_variant: SuperVariantState, id: number, parentId: number): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SUPER_VARIANT,
+        payload: createSuperVariantAPI(super_variant, id, parentId)
+    }
+}
+
+export const updateSuperVariant = (super_variant: SuperVariantState, id: number, currentTarget: number | string, parentId: number, ): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SUPER_VARIANT,
+        payload: updateSuperVariantAPI(super_variant, id, parentId, currentTarget)
+    }
+}
+
+export const deleteSuperVariant = (id: number, currentTarget: number | string, parentId: number,): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_SUPER_VARIANT,
+        payload: deleteSuperVariantAPI(id, parentId, currentTarget)
+    }
+}
+
+export const createAssist = (assist: AssistState, id: number): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_ASSIST,
+        payload: createAssistAPI(assist, id)
+    }
+}
+
+export const updateAssist = (assist: AssistState, id: number, currentTarget: number | string): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_ASSIST,
+        payload: updateAssistAPI(assist, id, currentTarget)
+    }
+}
+
+export const deleteAssist = (id: number, currentTarget: number | string): Action<Promise<void>> => {
+    return {
+        type: Actions.CREATE_ASSIST,
+        payload: deleteAssistAPI(id, currentTarget)
     }
 }
 

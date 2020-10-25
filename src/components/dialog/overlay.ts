@@ -10,7 +10,7 @@ import { setMessage } from '../../helpers/api/fetch/app_methods';
 import { createCharacter, createNormal, deleteCharacter, deleteNormal, updateCharacter, updateEditStatus, updateEditType, updateNormal } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
 import { selectContentTarget, selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
-import { CharacterState, NormalState } from '../../models/app/helper_models/content.models';
+import { CharacterState, NormalState, SpecialState } from '../../models/app/helper_models/content.models';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
@@ -147,6 +147,11 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
                     move_type: normal.move_type,
                     list_order: normal.list_order,
                 }
+
+                if(normal.picture) {
+                    normalUpdate.picture = normal.picture
+                }
+
                 if(currentCharacter && contentTarget){
                     dispatch(updateNormal(normalUpdate, currentCharacter, contentTarget))
                 }
@@ -154,6 +159,30 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
             } else if (action === 'delete'){
                 if(currentCharacter && contentTarget){
                     dispatch(deleteNormal(currentCharacter, contentTarget))
+                }
+            }
+        },
+        specialContent: (special: SpecialState, currentCharacter: number | undefined, action: string | undefined): void => {
+            if(action === 'add'){
+                //dispatch(createNormal(special, currentCharacter || 0))
+            } else if (action === 'edit'){
+                const specialUpdate: SpecialState = {
+                    name: special.name,
+                    input: special.input,
+                    special_notes: special.special_notes,
+                }
+
+                if(special.picture) {
+                    specialUpdate.picture = special.picture
+                }
+                
+                if(currentCharacter && contentTarget){
+                    //ispatch(updateNormal(specialUpdate, currentCharacter, contentTarget))
+                }
+                
+            } else if (action === 'delete'){
+                if(currentCharacter && contentTarget){
+                    //dispatch(deleteNormal(currentCharacter, contentTarget))
                 }
             }
         }
