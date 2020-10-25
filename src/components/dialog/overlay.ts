@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
 import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
 import { setMessage } from '../../helpers/api/fetch/app_methods';
-import { createCharacter, createNormal, createSpecial, deleteCharacter, deleteNormal, deleteSpecial, updateCharacter, updateEditStatus, updateEditType, updateNormal, updateSpecial } from '../../state/actions/character.actions';
+import { createCharacter, createNormal, createSpecial, createSpecialVariant, deleteCharacter, deleteNormal, deleteSpecial, deleteSpecialVariant, updateCharacter, updateEditStatus, updateEditType, updateNormal, updateSpecial, updateSpecialVariant } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
-import { selectContentTarget, selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
-import { CharacterState, NormalState, SpecialState } from '../../models/app/helper_models/content.models';
+import { selectContentTarget, selectContentTargetParent, selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
+import { CharacterState, NormalState, SpecialState, SpecialVariantState } from '../../models/app/helper_models/content.models';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
@@ -22,8 +22,9 @@ export const mapStateToProps = (state: State): StateProps => {
     const editType = selectEditType(state);
     const target = selectEditTarget(state);
     const contentTarget = selectContentTarget(state);
+    const contentTargetParent = selectContentTargetParent(state);
 
-    return { user, loggingIn, loginStatus, editStatus, currentCharacter, editType, target, loading, contentTarget }
+    return { user, loggingIn, loginStatus, editStatus, currentCharacter, editType, target, loading, contentTarget, contentTargetParent }
 }
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -43,7 +44,7 @@ export const mapDispatchToProps = (dispatch: Dispatch) => {
 
 export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: DispatchProps) => {
     const { close, dispatch } = mapDispatchToProps;
-    const { contentTarget } = mapStateToProps;
+    const { contentTarget, contentTargetParent } = mapStateToProps;
     return {
         ...mapStateToProps,
         ...mapDispatchToProps,
@@ -65,9 +66,10 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
         handleChange: (event: React.ChangeEvent<HTMLInputElement>, id: string, update: React.Dispatch<React.SetStateAction<string>>): void => {
             if(event.target.id === id) {
                 if(id === 'icon' || id === 'picture') {
-                    const files = event?.target?.files
+                    const files = event?.target?.files || [];
+                    const targetFile = files[0];
                     const reader = new FileReader();
-                    if(files){
+                    if(targetFile && targetFile.type.match('image.*')){
                         reader.readAsDataURL(files[0]);
                         reader.onload = () => {
                             reader.result ? update(reader.result as string) : update('null')
@@ -183,6 +185,37 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
             } else if (action === 'delete'){
                 if(currentCharacter && contentTarget){
                     dispatch(deleteSpecial(currentCharacter, contentTarget))
+                }
+            }
+        },
+        specialVariantContent: (special_variant: SpecialVariantState, currentCharacter: number | undefined, action: string | undefined): void => {
+            if(action === 'add' && contentTargetParent){
+                dispatch(createSpecialVariant(special_variant, currentCharacter || 0, parseInt(contentTargetParent)))
+            } else if (action === 'edit'){
+                const specialVariantUpdate: SpecialVariantState = {
+                    input_type: special_variant.input_type,
+                    startup: special_variant.startup,
+                    active: special_variant.active,
+                    recovery: special_variant.recovery,
+                    advantage: special_variant.advantage,
+                    immune_to: special_variant.immune_to,
+                    gaurd: special_variant.gaurd,
+                    properties: special_variant.properties,
+                    special_notes: special_variant.special_notes,
+                    meter_used: special_variant.meter_used,
+                }
+
+                if(special_variant.picture) {
+                    specialVariantUpdate.picture = special_variant.picture
+                }
+                
+                if(currentCharacter && contentTarget && contentTargetParent){
+                    dispatch(updateSpecialVariant(specialVariantUpdate, currentCharacter, contentTarget, parseInt(contentTargetParent)))
+                }
+                
+            } else if (action === 'delete'){
+                if(currentCharacter && contentTarget && contentTargetParent){
+                    dispatch(deleteSpecialVariant(currentCharacter, contentTarget, parseInt(contentTargetParent)))
                 }
             }
         }

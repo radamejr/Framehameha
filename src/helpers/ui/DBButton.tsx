@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { setContentTarget, setCurrentCharacter, setTarget, updateEditStatus, updateEditType } from "../../state/actions/character.actions";
+import { setContentTarget, setContentTargetParent, setCurrentCharacter, setTarget, updateEditStatus, updateEditType } from "../../state/actions/character.actions";
 import { Button } from '@material-ui/core';
 import { Character } from '../../models/app';
 
@@ -15,7 +15,8 @@ export interface OwnProps {
     content: string,
     character: Character | null,
     id?: number,
-    contentId?: string
+    contentId?: string,
+    contentParent?: string
 }
 
 export interface MergeProps {
@@ -32,7 +33,7 @@ const mapDispatchToProps = (dispatch: Dispatch):DispatchProps => {
 
 const mergeProps = (mapStateToProps: null, mapDispatchToProps: DispatchProps, ownProps: OwnProps) => {
     const { dispatch } = mapDispatchToProps;
-    const { type, content, character, id, contentId} = ownProps;
+    const { type, content, character, id, contentId, contentParent} = ownProps;
 
     return {
         ...mapDispatchToProps,
@@ -52,6 +53,9 @@ const mergeProps = (mapStateToProps: null, mapDispatchToProps: DispatchProps, ow
             }
             if(contentId){
                 dispatch(setContentTarget(contentId));
+            }
+            if(contentParent){
+                dispatch(setContentTargetParent(contentParent))
             }
         }
     }

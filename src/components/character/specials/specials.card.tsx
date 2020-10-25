@@ -63,12 +63,20 @@ const SpecialCard = (props: SpecialCardProps) => {
                                 expandIcon={<ExpandMoreIcon />}
                             >
                                 {special.name} Variants
+                                {
+                                    admin ? 
+                                        <div className='admin-button'>
+                                            <DBButton type='add' content='special_variant' character={character} id={character?.id} contentParent={special?.id} />
+                                        </div>
+                                    :
+                                    null
+                                }
                             </AccordionSummary>
                             <AccordionDetails>
                                 <div className="special-variants-container">
                                     {special.special_variants.map((v: SpecialVariant, key: number) => {
                                         return (
-                                            <SpecialVariantsCard variant={v} key={key}/>
+                                            <SpecialVariantsCard variant={v} key={key} admin={admin} character={character} parentId={special.id}/>
                                         )
                                     })}  
                                 </div>  

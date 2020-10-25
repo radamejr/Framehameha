@@ -6,7 +6,7 @@ import LoginDialog from './login_dialog/login_dialog';
 import React from 'react';
 import { User } from '../../models/app/user.model';
 import ContentDialog from './content_dialog/content_dialog';
-import { CharacterState, NormalState, SpecialState } from '../../models/app/helper_models/content.models';
+import { CharacterState, NormalState, SpecialState, SpecialVariantState } from '../../models/app/helper_models/content.models';
 import { Character } from '../../models/app';
 
 export interface StateProps {
@@ -19,6 +19,7 @@ export interface StateProps {
     target: string | undefined
     loading: boolean;
     contentTarget: string | undefined;
+    contentTargetParent: string | undefined;
 }
 
 export interface DispatchProps {
@@ -35,6 +36,7 @@ export interface MergeProps {
     characterContent: (character: CharacterState, action: string | undefined, id?: number) => void
     normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined, contentTarget?: string | undefined) => void
     specialContent: (special: SpecialState, currentCharacter: number | undefined, action: string | undefined) => void;
+    specialVariantContent: (special_variant: SpecialVariantState, currentCharacter: number | undefined, action: string | undefined) => void;
 }
 
 export type OverlayDialogProps = StateProps & DispatchProps & MergeProps;
@@ -48,6 +50,7 @@ const OverlayDialog = (props: OverlayDialogProps) => {
         currentCharacter, 
         loading, 
         contentTarget,
+        contentTargetParent,
         closeDialog, 
         toggleLogin, 
         handleChange, 
@@ -56,6 +59,7 @@ const OverlayDialog = (props: OverlayDialogProps) => {
         characterContent, 
         normalContent, 
         specialContent,
+        specialVariantContent,
     } = props;
 
     if(loginStatus === 'login'){
@@ -81,7 +85,9 @@ const OverlayDialog = (props: OverlayDialogProps) => {
                     characterContent={characterContent}
                     normalContent={normalContent}
                     specialContent={specialContent}
+                    specialVariantContent={specialVariantContent}
                     contentTarget={contentTarget}
+                    contentParent={contentTargetParent}
                     />
             </div>
             )

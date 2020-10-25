@@ -1,19 +1,23 @@
 import { TableContainer, Table, TableBody, TableRow, TableCell } from '@material-ui/core';
 import React from 'react';
+import DBButton from '../../../helpers/ui/DBButton';
 import VisualGraph from '../../../helpers/visual_frame_data_graph/frame_data_graph';
-import { SpecialVariant } from '../../../models/app';
+import { Character, SpecialVariant } from '../../../models/app';
 
 import './specials.scss'
 
 interface OwnProps {
     variant: SpecialVariant;
-    key: number
+    key: number;
+    admin: boolean | undefined;
+    character: Character | null;
+    parentId: string;
 }
 
 type SpecialVariantsProps = OwnProps;
 
 const SpecialVariantsCard = (props: SpecialVariantsProps) => {
-    const { variant } = props;
+    const { variant, admin, character, parentId } = props;
     return (
         <div className="special-variant-card">
             <div className="special-variant-content">
@@ -27,6 +31,15 @@ const SpecialVariantsCard = (props: SpecialVariantsProps) => {
                 }
                 
                 <div className="variant-data">
+                    {
+                        admin ? 
+                            <div className='admin-button'>
+                                <DBButton type='edit' content='special_variant' character={character} id={character?.id} contentId={variant?.id} contentParent={parentId} />
+                                <DBButton type='delete' content='special_variant' character={character} id={character?.id} contentId={variant?.id} contentParent={parentId} />
+                            </div>
+                        :
+                        null
+                    }
                     <TableContainer className="variant-data-table-one" >
                         <Table>
                             <TableBody>

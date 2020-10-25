@@ -13,6 +13,12 @@
         left: 50px;
     }
 
+    & .accordion .admin-button {
+        position: relative;
+        left: 0px;
+        margin: 0px 10px 0px 10px;
+    }
+
     & .special-card {
         width: 80%;
         margin: 15px auto 0px auto;
@@ -73,6 +79,12 @@
                         & .special-variant-content {
                             display: flex;
                             flex-direction: column;
+                            & .admin-button {
+                                position: relative;
+                                left: 0px;
+                                display: flex;
+                                justify-content: space-evenly;
+                            }
                             & .special-variant-image {
                                 padding: 24px 24px 24px 24px;
                                 max-width: 400px;
