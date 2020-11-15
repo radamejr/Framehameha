@@ -13,7 +13,7 @@
     }
 
     & .normal-card {
-        width: 80%;
+        width: 90%;
         margin: 15px auto 0px auto;
         align-items: center;
         & .normal-details {
@@ -26,6 +26,7 @@
                 & .normal-image {
                     width: 615px;
                     display: flex;
+                    min-width: 300px;
                     & img{
                         max-height: 300px;
                         vertical-align: middle;

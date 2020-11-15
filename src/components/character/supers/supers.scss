@@ -14,7 +14,7 @@
     }
 
     & .super-card {
-        width: 80%;
+        width: 90%;
         margin: 15px auto 0px auto;
         align-items: center;
         & .super-details {
@@ -28,6 +28,7 @@
                     width: 615px;
                     margin-top: auto;
                     margin-bottom: auto;
+                    min-width: 300px;
                     & img{
                         max-height: 300px;
                         vertical-align: middle;
@@ -87,6 +88,7 @@
                                     max-width: 340px;
                                     margin: auto;
                                     display: flex;
+                                    min-width: 300px;
                                     & img{
                                         max-height: 300px;
                                         vertical-align: middle;

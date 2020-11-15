@@ -20,7 +20,7 @@
     }
 
     & .special-card {
-        width: 80%;
+        width: 90%;
         margin: 15px auto 0px auto;
         align-items: center;
         & .special-content {
@@ -30,6 +30,7 @@
             & .special-image {
                 width: 615px;
                 display: flex;
+                min-width: 300px;
                 & img{
                     max-height: 300px;
                     vertical-align: middle;
@@ -88,6 +89,7 @@
                             & .special-variant-image {
                                 padding: 24px 24px 24px 24px;
                                 max-width: 400px;
+                                min-width: 300px;
                                 margin: auto;
                                 display: flex;
                                 & img{
