@@ -25,9 +25,12 @@ const SpecialDialog = (props: SpecialDialogProps) => {
     const [confirmDelete, confirmDeleteUpdate] = useState(false)
 
     if(contentTarget && currentCharacter && editStatus === 'edit' && !fieldsUpdated) {
-        nameUpdate(currentCharacter.specials[parseInt(contentTarget) - 1].name)
-        inputUpdate(currentCharacter.specials[parseInt(contentTarget) - 1].input)
-        notesUpdate(currentCharacter.specials[parseInt(contentTarget) - 1].special_notes)
+        const target = currentCharacter.specials.find(x => x.id === contentTarget);
+        if(target){
+            nameUpdate(target.name)
+            inputUpdate(target.input)
+            notesUpdate(target.special_notes)
+        }
         updateFieldsUpdated(true);
     }
     

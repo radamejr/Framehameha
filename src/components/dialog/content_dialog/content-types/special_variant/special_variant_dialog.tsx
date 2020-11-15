@@ -33,16 +33,19 @@ const SpecialVariantDialog = (props: SpecialVariantDialogProps) => {
     const [confirmDelete, confirmDeleteUpdate] = useState(false)
     
     if(contentTarget && currentCharacter && contentParent && editStatus === 'edit' && !fieldsUpdated) {
-        inputTypeUpdate(currentCharacter.specials[parseInt(contentParent) - 1].special_variants[parseInt(contentTarget)].input_type)
-        startupUpdate(currentCharacter.specials[parseInt(contentParent) - 1].special_variants[parseInt(contentTarget)].startup)
-        activeUpdate(currentCharacter.specials[parseInt(contentParent) - 1].special_variants[parseInt(contentTarget)].active)
-        recoveryUpdate(currentCharacter.specials[parseInt(contentParent) - 1].special_variants[parseInt(contentTarget)].recovery)
-        advantageUpdate(currentCharacter.specials[parseInt(contentParent) - 1].special_variants[parseInt(contentTarget)].advantage)
-        immuneToUpdate(currentCharacter.specials[parseInt(contentParent) - 1].special_variants[parseInt(contentTarget)].immune_to)
-        guardUpdate(currentCharacter.specials[parseInt(contentParent) - 1].special_variants[parseInt(contentTarget)].gaurd)
-        propertiesUpdate(currentCharacter.specials[parseInt(contentParent) - 1].special_variants[parseInt(contentTarget)].properties)
-        meterUsedUpdate(currentCharacter.specials[parseInt(contentParent) - 1].special_variants[parseInt(contentTarget)].meter_used)
-        notesUpdate(currentCharacter.specials[parseInt(contentParent) - 1].special_variants[parseInt(contentTarget)].special_notes)
+        const variantTarget = currentCharacter.specials[parseInt(contentParent) - 1].special_variants.find(x => x.id === contentTarget);
+        if(variantTarget){
+            inputTypeUpdate(variantTarget.input_type)
+            startupUpdate(variantTarget.startup)
+            activeUpdate(variantTarget.active)
+            recoveryUpdate(variantTarget.recovery)
+            advantageUpdate(variantTarget.advantage)
+            immuneToUpdate(variantTarget.immune_to)
+            guardUpdate(variantTarget.gaurd)
+            propertiesUpdate(variantTarget.properties)
+            meterUsedUpdate(variantTarget.meter_used)
+            notesUpdate(variantTarget.special_notes)
+        }
         updateFieldsUpdated(true);
     }
     

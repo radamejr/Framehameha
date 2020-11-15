@@ -35,19 +35,22 @@ const SuperDialog = (props: SuperDialogProps) => {
     const [confirmDelete, confirmDeleteUpdate] = useState(false)
 
     if(contentTarget && currentCharacter && editStatus === 'edit' && !fieldsUpdated) {
-        nameUpdate(currentCharacter.supers[parseInt(contentTarget)- 1].name)
-        inputUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].input)
-        startupUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].startup)
-        activeUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].active)
-        recoveryUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].recovery)
-        advantageUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].advantage)
-        immuneToUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].immune_to)
-        guardUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].gaurd)
-        propertiesUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].properties)
-        notesUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].special_notes)
-        meterUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].meter_used)
-        rawUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].raw_damage)
-        scaledUpdate(currentCharacter.supers[parseInt(contentTarget) - 1].scaled_damage)
+        const target = currentCharacter.supers.find(x => x.id === contentTarget);
+        if (target) {
+            nameUpdate(target.name)
+            inputUpdate(target.input)
+            startupUpdate(target.startup)
+            activeUpdate(target.active)
+            recoveryUpdate(target.recovery)
+            advantageUpdate(target.advantage)
+            immuneToUpdate(target.immune_to)
+            guardUpdate(target.gaurd)
+            propertiesUpdate(target.properties)
+            notesUpdate(target.special_notes)
+            meterUpdate(target.meter_used)
+            rawUpdate(target.raw_damage)
+            scaledUpdate(target.scaled_damage)
+        }
         updateFieldsUpdated(true);
     }
     

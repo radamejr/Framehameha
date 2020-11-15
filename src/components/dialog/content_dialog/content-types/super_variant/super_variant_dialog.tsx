@@ -33,16 +33,19 @@ const SuperVariantDialog = (props: SuperVariantDialogProps) => {
     const [confirmDelete, confirmDeleteUpdate] = useState(false)
     
     if(contentTarget && currentCharacter && contentParent && editStatus === 'edit' && !fieldsUpdated) {
-        inputTypeUpdate(currentCharacter.supers[parseInt(contentParent) - 1].super_variants[parseInt(contentTarget)].input_type)
-        startupUpdate(currentCharacter.supers[parseInt(contentParent) - 1].super_variants[parseInt(contentTarget)].startup)
-        activeUpdate(currentCharacter.supers[parseInt(contentParent) - 1].super_variants[parseInt(contentTarget)].active)
-        recoveryUpdate(currentCharacter.supers[parseInt(contentParent) - 1].super_variants[parseInt(contentTarget)].recovery)
-        advantageUpdate(currentCharacter.supers[parseInt(contentParent) - 1].super_variants[parseInt(contentTarget)].advantage)
-        immuneToUpdate(currentCharacter.supers[parseInt(contentParent) - 1].super_variants[parseInt(contentTarget)].immune_to)
-        guardUpdate(currentCharacter.supers[parseInt(contentParent) - 1].super_variants[parseInt(contentTarget)].gaurd)
-        propertiesUpdate(currentCharacter.supers[parseInt(contentParent) - 1].super_variants[parseInt(contentTarget)].properties)
-        meterUsedUpdate(currentCharacter.supers[parseInt(contentParent) - 1].super_variants[parseInt(contentTarget)].meter_used)
-        notesUpdate(currentCharacter.supers[parseInt(contentParent) - 1].super_variants[parseInt(contentTarget)].special_notes)
+        const variantTarget = currentCharacter.supers[parseInt(contentParent) - 1].super_variants.find(x => x.id === contentTarget);
+        if(variantTarget){
+            inputTypeUpdate(variantTarget.input_type)
+            startupUpdate(variantTarget.startup)
+            activeUpdate(variantTarget.active)
+            recoveryUpdate(variantTarget.recovery)
+            advantageUpdate(variantTarget.advantage)
+            immuneToUpdate(variantTarget.immune_to)
+            guardUpdate(variantTarget.gaurd)
+            propertiesUpdate(variantTarget.properties)
+            meterUsedUpdate(variantTarget.meter_used)
+            notesUpdate(variantTarget.special_notes)
+        }
         updateFieldsUpdated(true);
     }
     

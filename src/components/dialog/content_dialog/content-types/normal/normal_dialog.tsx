@@ -34,17 +34,20 @@ const NormalDialog = (props: NormalDialogProps) => {
     const [confirmDelete, confirmDeleteUpdate] = useState(false)
 
     if(contentTarget && currentCharacter && editStatus === 'edit' && !fieldsUpdated) {
-        inputUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].input)
-        startupUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].startup)
-        activeUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].active)
-        recoveryUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].recovery)
-        advantageUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].advantage)
-        immuneToUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].immune_to)
-        guardUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].gaurd)
-        propertiesUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].properties)
-        notesUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].special_notes)
-        typeUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].move_type)
-        listUpdate(currentCharacter.normals[parseInt(contentTarget) - 1].list_order)
+        const target = currentCharacter.normals.find(x => x.id === contentTarget);
+        if(target){
+            inputUpdate(target.input)
+            startupUpdate(target.startup)
+            activeUpdate(target.active)
+            recoveryUpdate(target.recovery)
+            advantageUpdate(target.advantage)
+            immuneToUpdate(target.immune_to)
+            guardUpdate(target.gaurd)
+            propertiesUpdate(target.properties)
+            notesUpdate(target.special_notes)
+            typeUpdate(target.move_type)
+            listUpdate(target.list_order)
+        }
         updateFieldsUpdated(true);
     }
     
