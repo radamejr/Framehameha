@@ -1,0 +1,29 @@
+.super-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+
+    & .content-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 5px 0 5px 0;
+        & input {
+            width: 150px
+        }
+        & .submit {
+            margin: 15px 0px 0px 0px;
+            width: 90%;
+            text-align: center;
+            align-items: center;
+        }
+    }
+    
+}
+.delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}

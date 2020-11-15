@@ -1,11 +1,12 @@
 import { Card, CardContent } from "@material-ui/core";
 import React from "react";
 import { Character } from "../../../models/app";
-import { CharacterState, NormalState, SpecialState, SpecialVariantState } from "../../../models/app/helper_models/content.models";
+import { CharacterState, NormalState, SpecialState, SpecialVariantState, SuperState } from "../../../models/app/helper_models/content.models";
 import CharacterDialog from "./content-types/character/character_dialog";
 import NormalDialog from "./content-types/normal/normal_dialog";
 import SpecialDialog from "./content-types/special/special_dialog";
 import SpecialVariantDialog from "./content-types/special_variant/special_variant_dialog";
+import SuperDialog from "./content-types/super/super_dialog";
 import './content_dialog.scss'
 
 export interface OwnProps {
@@ -18,6 +19,7 @@ export interface OwnProps {
     normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined) => void;
     specialContent: (special: SpecialState, currentCharacter: number | undefined, action: string | undefined) => void;
     specialVariantContent: (special_variant: SpecialVariantState, currentCharacter: number | undefined, action: string | undefined) => void;
+    superContent: (superMove: SuperState, currentCharacter: number | undefined, action: string | undefined) => void;
     contentTarget?: string | undefined;
     contentParent?: string | undefined,
 }
@@ -34,6 +36,7 @@ export const renderContentType = (
     normalContent: { (normal: NormalState, currentCharacter: number | undefined, action: string | undefined, contenTarget?: string | undefined): void },
     specialContent: { (special: SpecialState, currentCharacter: number | undefined, action: string | undefined): void },
     specialVariantContent: { (special_variant: SpecialVariantState, currentCharacter: number | undefined, action: string | undefined): void },
+    superContent: { (superMove: SuperState, currentCharacter: number | undefined, action: string | undefined): void },
     contentTarget?: string | undefined,
     contentParent?: string | undefined,
     ) => {
@@ -47,7 +50,7 @@ export const renderContentType = (
         case 'special_variant':
             return <SpecialVariantDialog onChange={onChange} currentCharacter={currentCharacter} specialVariantContent={specialVariantContent} loading={loading} editStatus={editStatus} contentTarget={contentTarget} contentParent={contentParent} />
         case 'super':
-            return 'super'
+            return <SuperDialog onChange={onChange} currentCharacter={currentCharacter} superContent={superContent} loading={loading} editStatus={editStatus} contentTarget={contentTarget}/>
         case 'super_variant':
             return 'super_variant'
         case 'assist':
@@ -69,6 +72,7 @@ const ContentDialog = (props: ContentDialogProps) => {
             normalContent, 
             specialContent,
             specialVariantContent,
+            superContent,
         } = props;
     return (
         <Card className={`content-dialog ${editType}`}>
@@ -88,6 +92,7 @@ const ContentDialog = (props: ContentDialogProps) => {
                                 normalContent, 
                                 specialContent, 
                                 specialVariantContent,
+                                superContent,
                                 contentTarget,
                                 contentParent)
                         }

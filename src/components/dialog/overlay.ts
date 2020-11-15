@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
 import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
 import { setMessage } from '../../helpers/api/fetch/app_methods';
-import { createCharacter, createNormal, createSpecial, createSpecialVariant, deleteCharacter, deleteNormal, deleteSpecial, deleteSpecialVariant, updateCharacter, updateEditStatus, updateEditType, updateNormal, updateSpecial, updateSpecialVariant } from '../../state/actions/character.actions';
+import { createCharacter, createNormal, createSpecial, createSpecialVariant, createSuperMove, deleteCharacter, deleteNormal, deleteSpecial, deleteSpecialVariant, deleteSuperMove, updateCharacter, updateEditStatus, updateEditType, updateNormal, updateSpecial, updateSpecialVariant, updateSuperMove } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
 import { selectContentTarget, selectContentTargetParent, selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
-import { CharacterState, NormalState, SpecialState, SpecialVariantState } from '../../models/app/helper_models/content.models';
+import { CharacterState, NormalState, SpecialState, SpecialVariantState, SuperState } from '../../models/app/helper_models/content.models';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
@@ -216,6 +216,40 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
             } else if (action === 'delete'){
                 if(currentCharacter && contentTarget && contentTargetParent){
                     dispatch(deleteSpecialVariant(currentCharacter, contentTarget, parseInt(contentTargetParent)))
+                }
+            }
+        },
+        superContent: (superMove: SuperState, currentCharacter: number | undefined, action: string | undefined): void => {
+            if(action === 'add'){
+                dispatch(createSuperMove(superMove, currentCharacter || 0))
+            } else if (action === 'edit'){
+                const superUpdate: SuperState = {
+                    name: superMove.name,
+                    input: superMove.input,
+                    startup: superMove.startup,
+                    active: superMove.active,
+                    recovery: superMove.recovery,
+                    advantage: superMove.advantage,
+                    immune_to: superMove.immune_to,
+                    gaurd: superMove.gaurd,
+                    properties: superMove.properties,
+                    special_notes: superMove.special_notes,
+                    meter_used: superMove.meter_used,
+                    raw_damage: superMove.raw_damage,
+                    scaled_damage: superMove.scaled_damage
+                }
+
+                if(superMove.picture) {
+                    superUpdate.picture = superMove.picture;
+                }
+                
+                if(currentCharacter && contentTarget){
+                    dispatch(updateSuperMove(superUpdate, currentCharacter, contentTarget))
+                }
+                
+            } else if (action === 'delete'){
+                if(currentCharacter && contentTarget){
+                    dispatch(deleteSuperMove(currentCharacter, contentTarget))
                 }
             }
         }

@@ -110,42 +110,42 @@ export const deleteSpecialVariant = (id: number, currentTarget: number | string,
     }
 }
 
-export const createSuper = (superMove: SuperState, id: number): Action<Promise<void>> => {
+export const createSuperMove = (superMove: SuperState, id: number): Action<Promise<void>> => {
     return {
         type: Actions.CREATE_SPECIAL,
         payload: createSuperAPI(superMove, id)
     }
 }
 
-export const updateSuper = (superMove: SuperState, id: number, currentTarget: number | string): Action<Promise<void>> => {
+export const updateSuperMove = (superMove: SuperState, id: number, currentTarget: number | string): Action<Promise<void>> => {
     return {
         type: Actions.CREATE_SPECIAL,
         payload: updateSuperAPI(superMove, id, currentTarget)
     }
 }
 
-export const deleteSuper = (id: number, currentTarget: number | string): Action<Promise<void>> => {
+export const deleteSuperMove = (id: number, currentTarget: number | string): Action<Promise<void>> => {
     return {
         type: Actions.CREATE_SPECIAL,
         payload: deleteSuperAPI(id, currentTarget)
     }
 }
 
-export const createSuperVariant = (super_variant: SuperVariantState, id: number, parentId: number): Action<Promise<void>> => {
+export const createSuperMoveVariant = (super_variant: SuperVariantState, id: number, parentId: number): Action<Promise<void>> => {
     return {
         type: Actions.CREATE_SUPER_VARIANT,
         payload: createSuperVariantAPI(super_variant, id, parentId)
     }
 }
 
-export const updateSuperVariant = (super_variant: SuperVariantState, id: number, currentTarget: number | string, parentId: number, ): Action<Promise<void>> => {
+export const updateSuperMoveVariant = (super_variant: SuperVariantState, id: number, currentTarget: number | string, parentId: number, ): Action<Promise<void>> => {
     return {
         type: Actions.CREATE_SUPER_VARIANT,
         payload: updateSuperVariantAPI(super_variant, id, parentId, currentTarget)
     }
 }
 
-export const deleteSuperVariant = (id: number, currentTarget: number | string, parentId: number,): Action<Promise<void>> => {
+export const deleteSuperMoveVariant = (id: number, currentTarget: number | string, parentId: number,): Action<Promise<void>> => {
     return {
         type: Actions.CREATE_SUPER_VARIANT,
         payload: deleteSuperVariantAPI(id, parentId, currentTarget)

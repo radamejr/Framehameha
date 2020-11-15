@@ -6,7 +6,7 @@ import LoginDialog from './login_dialog/login_dialog';
 import React from 'react';
 import { User } from '../../models/app/user.model';
 import ContentDialog from './content_dialog/content_dialog';
-import { CharacterState, NormalState, SpecialState, SpecialVariantState } from '../../models/app/helper_models/content.models';
+import { CharacterState, NormalState, SpecialState, SpecialVariantState, SuperState } from '../../models/app/helper_models/content.models';
 import { Character } from '../../models/app';
 
 export interface StateProps {
@@ -37,6 +37,7 @@ export interface MergeProps {
     normalContent: (normal: NormalState, currentCharacter: number | undefined, action: string | undefined, contentTarget?: string | undefined) => void
     specialContent: (special: SpecialState, currentCharacter: number | undefined, action: string | undefined) => void;
     specialVariantContent: (special_variant: SpecialVariantState, currentCharacter: number | undefined, action: string | undefined) => void;
+    superContent: (superMove: SuperState, currentCharacter: number | undefined, action: string | undefined) => void;
 }
 
 export type OverlayDialogProps = StateProps & DispatchProps & MergeProps;
@@ -60,6 +61,7 @@ const OverlayDialog = (props: OverlayDialogProps) => {
         normalContent, 
         specialContent,
         specialVariantContent,
+        superContent
     } = props;
 
     if(loginStatus === 'login'){
@@ -86,6 +88,7 @@ const OverlayDialog = (props: OverlayDialogProps) => {
                     normalContent={normalContent}
                     specialContent={specialContent}
                     specialVariantContent={specialVariantContent}
+                    superContent={superContent}
                     contentTarget={contentTarget}
                     contentParent={contentTargetParent}
                     />
