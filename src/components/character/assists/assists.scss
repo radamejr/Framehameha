@@ -32,6 +32,12 @@
                 margin: auto 0px auto 0px;
                 display: flex;
                 flex-direction: column;
+                & .admin-button {
+                    position: relative;
+                    left: 0px;
+                    display: flex;
+                    justify-content: space-evenly;
+                }
                 & .MuiTableContainer-root {
                     overflow-wrap: break-word;
                     & .notes-row {

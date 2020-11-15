@@ -1,14 +1,18 @@
 import React from 'react';
 import { Card, CardContent, Divider, Table, TableCell, TableContainer, TableRow, TableBody } from '@material-ui/core';
-import { Assist } from '../../../models/app';
+import { Assist, Character } from '../../../models/app';
+import VisualGraph from '../../../helpers/visual_frame_data_graph/frame_data_graph';
+import DBButton from '../../../helpers/ui/DBButton';
 
 interface OwnProps {
     assist: Assist | undefined;
+    admin: boolean | undefined;
+    character: Character | null;
 }
 type AssistsCardProps = OwnProps;
 
 const AssistCard = (props: AssistsCardProps) => {
-    const { assist } = props;
+    const { assist, admin, character } = props;
     if(assist){
         return (
             <Card className="assist-card" variant="outlined">
@@ -18,6 +22,15 @@ const AssistCard = (props: AssistsCardProps) => {
                     </div>
                     <Divider orientation="vertical" variant="middle"/>
                     <div className="assist-data">
+                        {
+                            admin ? 
+                                <div className='admin-button'>
+                                    <DBButton type='edit' content='assist' character={character} id={character?.id} contentId={assist?.id}/>
+                                    <DBButton type='delete' content='assist' character={character} id={character?.id} contentId={assist?.id}/>
+                                </div>
+                            :
+                            null
+                        }
                         <TableContainer className="assist-data-table-one" >
                             <Table>
                                 <TableBody>
@@ -47,6 +60,9 @@ const AssistCard = (props: AssistsCardProps) => {
                                 </TableBody>
                             </Table>
                         </TableContainer>
+                        {/* <div className="assist-graph">
+                            <VisualGraph startup={assist.startup} active={assist.active} recovery={assist.recovery} />
+                        </div> */}
                     </div>
                 </CardContent>
             </Card>        

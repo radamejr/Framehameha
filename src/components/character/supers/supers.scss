@@ -73,6 +73,12 @@
                         & .super-variant-content {
                             display: flex;
                             flex-direction: column;
+                            & .admin-button {
+                                position: relative;
+                                left: 0px;
+                                display: flex;
+                                justify-content: space-evenly;
+                            }
                             & .super-variant-image {
                                 padding: 24px 24px 24px 24px;
                                 max-width: 340px;

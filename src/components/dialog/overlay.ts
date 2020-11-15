@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
 import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
 import { setMessage } from '../../helpers/api/fetch/app_methods';
-import { createCharacter, createNormal, createSpecial, createSpecialVariant, createSuperMove, createSuperMoveVariant, deleteCharacter, deleteNormal, deleteSpecial, deleteSpecialVariant, deleteSuperMove, deleteSuperMoveVariant, updateCharacter, updateEditStatus, updateEditType, updateNormal, updateSpecial, updateSpecialVariant, updateSuperMove, updateSuperMoveVariant } from '../../state/actions/character.actions';
+import { createAssist, createCharacter, createNormal, createSpecial, createSpecialVariant, createSuperMove, createSuperMoveVariant, deleteAssist, deleteCharacter, deleteNormal, deleteSpecial, deleteSpecialVariant, deleteSuperMove, deleteSuperMoveVariant, updateAssist, updateCharacter, updateEditStatus, updateEditType, updateNormal, updateSpecial, updateSpecialVariant, updateSuperMove, updateSuperMoveVariant } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
 import { selectContentTarget, selectContentTargetParent, selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
-import { CharacterState, NormalState, SpecialState, SpecialVariantState, SuperState, SuperVariantState } from '../../models/app/helper_models/content.models';
+import { AssistState, CharacterState, NormalState, SpecialState, SpecialVariantState, SuperState, SuperVariantState } from '../../models/app/helper_models/content.models';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
@@ -281,6 +281,34 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
             } else if (action === 'delete'){
                 if(currentCharacter && contentTarget && contentTargetParent){
                     dispatch(deleteSuperMoveVariant(currentCharacter, contentTarget, parseInt(contentTargetParent)))
+                }
+            }
+        },
+        assistContent: (assist: AssistState, currentCharacter: number | undefined, action: string | undefined): void => {
+            if(action === 'add'){
+                dispatch(createAssist(assist, currentCharacter || 0))
+            } else if (action === 'edit'){
+                const assistUpdate: AssistState = {
+                    startup: assist.startup,
+                    active: assist.active,
+                    blockstun: assist.blockstun,
+                    onscreen: assist.onscreen,
+                    hitstop: assist.hitstop,
+                    hit_stun: assist.hit_stun,
+                    special_notes: assist.special_notes,
+                }
+
+                if(assist.picture) {
+                    assistUpdate.picture = assist.picture;
+                }
+
+                if(currentCharacter && contentTarget){
+                    dispatch(updateAssist(assistUpdate, currentCharacter, contentTarget))
+                }
+                
+            } else if (action === 'delete'){
+                if(currentCharacter && contentTarget){
+                    dispatch(deleteAssist(currentCharacter, contentTarget))
                 }
             }
         },
