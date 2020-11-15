@@ -11,7 +11,7 @@ interface OwnProps {
     admin: boolean | undefined;
     character: Character | null;
 }
-//TODO: fix super card to look like normals, with added variants for some characters (add accordion if variants exist)
+
 type SuperCardProps = OwnProps;
 
 const SuperCard = (props: SuperCardProps) => {
@@ -88,7 +88,7 @@ const SuperCard = (props: SuperCardProps) => {
                     null
                 }
                 {
-                    super_move.special_variants 
+                    super_move.super_variants.length > 0 
                     ? 
                     <CardContent className="super-content accordion" >
                         <Accordion>
@@ -99,9 +99,9 @@ const SuperCard = (props: SuperCardProps) => {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <div className="super-variants-container">
-                                    {super_move.special_variants.map((v: SuperVariant, key: number) => {
+                                    {super_move.super_variants.map((v: SuperVariant, key: number) => {
                                         return (
-                                            <SuperVariantsCard variant={v} key={key}/>
+                                            <SuperVariantsCard variant={v} key={key} admin={admin} character={character} parentId={super_move?.id}/>
                                         )
                                     })}  
                                 </div>  

@@ -17,7 +17,7 @@ export interface Super {
     meter_used: string,
     raw_damage: string,
     scaled_damage: string,
-    special_variants: SuperVariant[],
+    super_variants: SuperVariant[],
     created_at: string,
     updated_at: string,
 }

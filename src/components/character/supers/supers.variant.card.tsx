@@ -1,19 +1,23 @@
 import { TableContainer, Table, TableBody, TableRow, TableCell } from '@material-ui/core';
 import React from 'react';
+import DBButton from '../../../helpers/ui/DBButton';
 import VisualGraph from '../../../helpers/visual_frame_data_graph/frame_data_graph';
-import { SuperVariant } from '../../../models/app';
+import { Character, SuperVariant } from '../../../models/app';
 
 import './supers.scss'
 
 interface OwnProps {
     variant: SuperVariant;
-    key: number
+    key: number;
+    admin: boolean | undefined;
+    character: Character | null;
+    parentId: string;
 }
 
 type SuperVariantsProps = OwnProps;
 
 const SuperVariantsCard = (props: SuperVariantsProps) => {
-    const { variant } = props;
+    const { variant, admin, character, parentId } = props;
     return (
         <div className="super-variant-card">
             <div className="super-variant-content">
@@ -27,6 +31,15 @@ const SuperVariantsCard = (props: SuperVariantsProps) => {
                 }
                 
                 <div className="variant-data">
+                    {
+                        admin ? 
+                            <div className='admin-button'>
+                                <DBButton type='edit' content='super_variant' character={character} id={character?.id} contentId={variant?.id} contentParent={parentId} />
+                                <DBButton type='delete' content='super_variant' character={character} id={character?.id} contentId={variant?.id} contentParent={parentId} />
+                            </div>
+                        :
+                        null
+                    }
                     <TableContainer className="variant-data-table-one" >
                         <Table>
                             <TableBody>
@@ -56,7 +69,7 @@ const SuperVariantsCard = (props: SuperVariantsProps) => {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    <div className="variant-graph">
+                    <div className="super-graph">
                         <VisualGraph startup={variant.startup} active={variant.active} recovery={variant.recovery} />
                     </div>
                 </div>

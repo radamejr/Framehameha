@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
 import { createUser, loginUser, setLoginStatus } from '../../state/actions/user.actions';
 import { CreateUserState, LoginUserState } from '../../models/app/helper_models/user.models';
 import { setMessage } from '../../helpers/api/fetch/app_methods';
-import { createCharacter, createNormal, createSpecial, createSpecialVariant, createSuperMove, deleteCharacter, deleteNormal, deleteSpecial, deleteSpecialVariant, deleteSuperMove, updateCharacter, updateEditStatus, updateEditType, updateNormal, updateSpecial, updateSpecialVariant, updateSuperMove } from '../../state/actions/character.actions';
+import { createCharacter, createNormal, createSpecial, createSpecialVariant, createSuperMove, createSuperMoveVariant, deleteCharacter, deleteNormal, deleteSpecial, deleteSpecialVariant, deleteSuperMove, deleteSuperMoveVariant, updateCharacter, updateEditStatus, updateEditType, updateNormal, updateSpecial, updateSpecialVariant, updateSuperMove, updateSuperMoveVariant } from '../../state/actions/character.actions';
 import OverlayDialog, { DispatchProps, StateProps } from './overlay.container';
 import { selectContentTarget, selectContentTargetParent, selectCurrentCharacter, selectEditStatus, selectEditTarget, selectEditType, selectLoading, selectLoggingIn, selectLoginStatus, selectUser } from '../../state/selectors';
-import { CharacterState, NormalState, SpecialState, SpecialVariantState, SuperState } from '../../models/app/helper_models/content.models';
+import { CharacterState, NormalState, SpecialState, SpecialVariantState, SuperState, SuperVariantState } from '../../models/app/helper_models/content.models';
 
 export const mapStateToProps = (state: State): StateProps => {
     const user = selectUser(state);
@@ -252,7 +252,38 @@ export const mergeProps = (mapStateToProps: StateProps, mapDispatchToProps: Disp
                     dispatch(deleteSuperMove(currentCharacter, contentTarget))
                 }
             }
-        }
+        },
+        superVariantContent: (super_variant: SuperVariantState, currentCharacter: number | undefined, action: string | undefined): void => {
+            if(action === 'add' && contentTargetParent){
+                dispatch(createSuperMoveVariant(super_variant, currentCharacter || 0, parseInt(contentTargetParent)))
+            } else if (action === 'edit'){
+                const superVariantUpdate: SuperVariantState = {
+                    input_type: super_variant.input_type,
+                    startup: super_variant.startup,
+                    active: super_variant.active,
+                    recovery: super_variant.recovery,
+                    advantage: super_variant.advantage,
+                    immune_to: super_variant.immune_to,
+                    gaurd: super_variant.gaurd,
+                    properties: super_variant.properties,
+                    special_notes: super_variant.special_notes,
+                    meter_used: super_variant.meter_used,
+                }
+
+                if(super_variant.picture) {
+                    superVariantUpdate.picture = super_variant.picture
+                }
+                
+                if(currentCharacter && contentTarget && contentTargetParent){
+                    dispatch(updateSuperMoveVariant(superVariantUpdate, currentCharacter, contentTarget, parseInt(contentTargetParent)))
+                }
+                
+            } else if (action === 'delete'){
+                if(currentCharacter && contentTarget && contentTargetParent){
+                    dispatch(deleteSuperMoveVariant(currentCharacter, contentTarget, parseInt(contentTargetParent)))
+                }
+            }
+        },
     }
 }
 
