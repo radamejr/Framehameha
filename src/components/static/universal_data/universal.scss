@@ -12,39 +12,42 @@
         width: 90%;
         margin: 15px auto 0px auto;
         align-items: center;
-        & .universal-content {
+        & .universal-details {
             display: flex;
-            align-items: center;
-            padding: 24px 24px 24px 24px;
-            & .universal-image {
-                width: 615px;
+            flex-direction: column;
+            & .universal-content {
                 display: flex;
-                & img{
-                    max-height: 300px;
-                    vertical-align: middle;
-                    max-width: 100%;
-                    margin: 0 auto 0 auto
+                align-items: center;
+                padding: 24px 24px 24px 24px;
+                & .universal-image {
+                    width: 615px;
+                    display: flex;
+                    & img{
+                        max-height: 300px;
+                        vertical-align: middle;
+                        max-width: 100%;
+                        margin: 0 auto 0 auto
+                    }
                 }
-            }
-            
-            & .universal-data {
-                width: 100%;
-                margin: auto 0px auto 0px;
-                display: flex;
-                flex-direction: column;
-                & .MuiTableContainer-root {
-                    overflow-wrap: break-word;
-                    & .notes-row {
-                        & td {
-                            height: 65px;
+                
+                & .universal-data {
+                    width: 100%;
+                    margin: auto 0px auto 0px;
+                    display: flex;
+                    flex-direction: column;
+                    & .MuiTableContainer-root {
+                        overflow-wrap: break-word;
+                        & .notes-row {
+                            & td {
+                                height: 65px;
+                            }
                         }
                     }
                 }
             }
+            & .universal-graph {
+                margin: 15px auto 15px auto;
+            }
         }
-        & .universal-graph {
-            margin: 15px auto 15px auto;
-        }
-    }
-        
+    }   
 }

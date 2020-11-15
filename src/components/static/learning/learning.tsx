@@ -6,6 +6,9 @@ import NeutralContent from './neutral/neutral';
 import OffenseContent from './offense/offense';
 import './learning.scss'
 
+interface OwnProps {
+    mediaType: string;
+}
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -40,13 +43,15 @@ function TabPanel(props: TabPanelProps) {
     );
   }
 
-const LearningPage = () => {
+export type LearningPageProps = OwnProps;
+const LearningPage = (props: LearningPageProps) => {
+    const { mediaType } = props;
     const [currentContent, setCurrentcontent] = React.useState(0);
     const handleChange = (event: React.ChangeEvent<{}>, content: number) => {
         setCurrentcontent(content)
     }
     return (
-        <div className="kame-container">
+        <div className={`kame-container ${mediaType}`}>
             <div className="kame-row">
                 <div className="kame-details">
                     <p>

@@ -22,11 +22,12 @@ export interface StateProps {
 }
 export interface OwnProps extends RouteComponentProps<{id: string}> {
     id?: number | null,
+    mediaType: string,
 }
 export type CharacterProps = StateProps & OwnProps;
 
 const CharacterContainer = (props: CharacterProps) => {
-    const { character, normals, specials, supers, assists, user, loadingCharacters } = props;
+    const { character, normals, specials, supers, assists, user, loadingCharacters, mediaType } = props;
     const history = useHistory();
     if(!character){
         if(!loadingCharacters){
@@ -35,7 +36,7 @@ const CharacterContainer = (props: CharacterProps) => {
         return (null)
     } else {
         return (
-            <div className="character-container">
+            <div className={`character-container ${mediaType}`}>
                 <AboutContainer character={character} admin={user?.admin}/>
                 <Divider variant="middle" />
                 <NormalsContainer normals={normals} admin={user?.admin} character={character}/>

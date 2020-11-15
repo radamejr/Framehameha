@@ -3,10 +3,15 @@ import UniversalStaticData from '../../../helpers/static_data/universal_data'
 import { UniversalData } from '../../../models/app'
 import UniversalCard from './universal_card'
 import './universal.scss'
+interface OwnProps {
+    mediaType: string;
+}
+type UniversalDataProps = OwnProps;
 
-const UniversalDataPage = () => {
+const UniversalDataPage = (props: UniversalDataProps) => {
+    const { mediaType } = props;
     return (
-        <div className="universals-container">
+        <div className={`universals-container ${mediaType}`}>
             {
                 UniversalStaticData.map((data: UniversalData, key: number) => {
                    return (
