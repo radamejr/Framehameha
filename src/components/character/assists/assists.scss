@@ -12,45 +12,48 @@
         width: 80%;
         margin: 15px auto 0px auto;
         align-items: center;
-        & .assist-content {
+        & .assist-details{
             display: flex;
-            align-items: center;
-            padding: 24px 24px 24px 24px;
-            & .assist-image {
-                width: 615px;
+            flex-direction: column;
+            & .assist-content {
                 display: flex;
-                & img{
-                    max-height: 300px;
-                    vertical-align: middle;
-                    max-width: 100%;
-                    margin: 0 auto 0 auto
-                }
-            }
-            
-            & .assist-data {
-                width: 100%;
-                margin: auto 0px auto 0px;
-                display: flex;
-                flex-direction: column;
-                & .admin-button {
-                    position: relative;
-                    left: 0px;
+                align-items: center;
+                padding: 24px 24px 24px 24px;
+                & .assist-image {
+                    width: 615px;
                     display: flex;
-                    justify-content: space-evenly;
+                    & img{
+                        max-height: 300px;
+                        vertical-align: middle;
+                        max-width: 100%;
+                        margin: 0 auto 0 auto
+                    }
                 }
-                & .MuiTableContainer-root {
-                    overflow-wrap: break-word;
-                    & .notes-row {
-                        & td {
-                            height: 65px;
+                
+                & .assist-data {
+                    width: 100%;
+                    margin: auto 0px auto 0px;
+                    display: flex;
+                    flex-direction: column;
+                    & .admin-button {
+                        position: relative;
+                        left: 0px;
+                        display: flex;
+                        justify-content: space-evenly;
+                    }
+                    & .MuiTableContainer-root {
+                        overflow-wrap: break-word;
+                        & .notes-row {
+                            & td {
+                                height: 65px;
+                            }
                         }
                     }
                 }
             }
-        }
-        & .assist-graph {
-            margin: 15px auto 15px auto;
-        }
-    }
-        
+            & .assist-graph {
+                margin: 15px auto 15px auto;
+            }
+        }  
+    }    
 }

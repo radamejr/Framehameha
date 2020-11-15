@@ -1,6 +1,7 @@
 .frame-data-container {
     display: flex;
     flex-direction: row;
+    flex-flow: wrap;
     .frame-block {
         margin: 1px;
         border: 1px black solid;

@@ -17,94 +17,97 @@
         width: 80%;
         margin: 15px auto 0px auto;
         align-items: center;
-        & .super-content {
+        & .super-details {
             display: flex;
-            align-items: center;
-            padding: 24px 24px 24px 24px;
-            & .super-image {
-                width: 615px;
-                margin-top: auto;
-                margin-bottom: auto;
-                & img{
-                    max-height: 300px;
-                    vertical-align: middle;
-                    max-width: 100%;
-                }
-            }
-            
-            & .super-info {
-                width: 100%;
-                margin: auto 0px auto 0px;
+            flex-direction: column;
+            & .super-content {
                 display: flex;
-                flex-direction: column;
-                & .admin-button {
-                    position: relative;
-                    display: flex;
-                    justify-content: space-evenly;
-                    height: 35px;
-                    max-width: 100%;
-                    & button {
-                        max-height: 35px;
+                align-items: center;
+                padding: 24px 24px 24px 24px;
+                & .super-image {
+                    width: 615px;
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    & img{
+                        max-height: 300px;
+                        vertical-align: middle;
+                        max-width: 100%;
                     }
                 }
-                & .MuiTableContainer-root {
-                    overflow-wrap: break-word;
-                    & .MuiTableRow-root {
-                        & .notes-row {
-                            & td {
-                                height: 65px;
-                            }
+                
+                & .super-info {
+                    width: 100%;
+                    margin: auto 0px auto 0px;
+                    display: flex;
+                    flex-direction: column;
+                    & .admin-button {
+                        position: relative;
+                        display: flex;
+                        justify-content: space-evenly;
+                        height: 35px;
+                        max-width: 100%;
+                        & button {
+                            max-height: 35px;
                         }
                     }
-                }  
-            }
-            & .MuiAccordion-root {
-                width: 100%;
-                & .MuiAccordionSummary-content {
-                    flex-grow: 0;
-                }
-                & .super-variants-container {
-                    margin: 10px auto 10px auto;
-                    min-width: 90%;
-                    & .super-variant-card {
-                        width: 100%;
-                        margin: 0px auto 0px auto;
-                        align-items: center;
-                        & .super-variant-content {
-                            display: flex;
-                            flex-direction: column;
-                            & .admin-button {
-                                position: relative;
-                                left: 0px;
-                                display: flex;
-                                justify-content: space-evenly;
-                            }
-                            & .super-variant-image {
-                                padding: 24px 24px 24px 24px;
-                                max-width: 340px;
-                                margin: auto;
-                                display: flex;
-                                & img{
-                                    max-height: 300px;
-                                    vertical-align: middle;
-                                    max-width: 100%;
-                                    margin: 0 auto 0 auto
+                    & .MuiTableContainer-root {
+                        overflow-wrap: break-word;
+                        & .MuiTableRow-root {
+                            & .notes-row {
+                                & td {
+                                    height: 65px;
                                 }
                             }
-                            & .variant-graph {
-                                margin: 15px auto 15px auto;
+                        }
+                    }  
+                }
+                & .MuiAccordion-root {
+                    width: 100%;
+                    & .MuiAccordionSummary-content {
+                        flex-grow: 0;
+                    }
+                    & .super-variants-container {
+                        margin: 10px auto 10px auto;
+                        min-width: 90%;
+                        & .super-variant-card {
+                            width: 100%;
+                            margin: 0px auto 0px auto;
+                            align-items: center;
+                            & .super-variant-content {
                                 display: flex;
-                                justify-content: center;
+                                flex-direction: column;
+                                & .admin-button {
+                                    position: relative;
+                                    left: 0px;
+                                    display: flex;
+                                    justify-content: space-evenly;
+                                }
+                                & .super-variant-image {
+                                    padding: 24px 24px 24px 24px;
+                                    max-width: 340px;
+                                    margin: auto;
+                                    display: flex;
+                                    & img{
+                                        max-height: 300px;
+                                        vertical-align: middle;
+                                        max-width: 100%;
+                                        margin: 0 auto 0 auto
+                                    }
+                                }
+                                & .variant-graph {
+                                    margin: 15px auto 15px auto;
+                                    display: flex;
+                                    justify-content: center;
+                                }
                             }
                         }
                     }
                 }
+                
             }
-            
+            & .super-graph {
+                margin: 15px auto 15px auto;
+            }
         }
-        & .super-graph {
-            margin: 15px auto 15px auto;
-        }
-    }
-        
+    }   
 }

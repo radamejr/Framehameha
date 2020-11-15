@@ -16,48 +16,51 @@
         width: 80%;
         margin: 15px auto 0px auto;
         align-items: center;
-        & .normal-content {
+        & .normal-details {
             display: flex;
-            align-items: center;
-            padding: 24px 24px 24px 24px;
-            & .normal-image {
-                width: 615px;
+            flex-direction: column;
+            & .normal-content {
                 display: flex;
-                & img{
-                    max-height: 300px;
-                    vertical-align: middle;
-                    max-width: 100%;
-                    margin: 0 auto 0 auto
+                align-items: center;
+                padding: 24px 24px 24px 24px;
+                & .normal-image {
+                    width: 615px;
+                    display: flex;
+                    & img{
+                        max-height: 300px;
+                        vertical-align: middle;
+                        max-width: 100%;
+                        margin: 0 auto 0 auto
+                    }
                 }
-            }
-            
-            & .normal-data {
-                width: 100%;
-                margin: auto 0px auto 0px;
-                display: flex;
-                flex-direction: column;
-                & .MuiTableContainer-root {
-                    overflow-wrap: break-word;
-                    & .notes-row {
-                        & td {
-                            height: 65px;
+                
+                & .normal-data {
+                    width: 100%;
+                    margin: auto 0px auto 0px;
+                    display: flex;
+                    flex-direction: column;
+                    & .MuiTableContainer-root {
+                        overflow-wrap: break-word;
+                        & .notes-row {
+                            & td {
+                                height: 65px;
+                            }
+                        }
+                    }
+                    & .admin-button {
+                        position: relative;
+                        display: flex;
+                        justify-content: space-between;
+                        height: 35px;
+                        & button {
+                            max-height: 35px;
                         }
                     }
                 }
-                & .admin-button {
-                    position: relative;
-                    display: flex;
-                    justify-content: space-between;
-                    height: 35px;
-                    & button {
-                        max-height: 35px;
-                    }
-                }
+            }
+            & .normal-graph {
+                margin: 15px auto 15px auto;
             }
         }
-        & .normal-graph {
-            margin: 15px auto 15px auto;
-        }
-    }
-        
+    }   
 }
