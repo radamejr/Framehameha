@@ -16,15 +16,18 @@ export interface DispatchProps {
   dispatch: Dispatch;
 }
 
+export interface OwnProps {
+  mediaType: string;
+}
 export interface MergeProps  {
    handleCharacterClick: (id: number) => any;
    toggleLogin: (user: User | null) => void;
 }
 
-export type HeaderProps = MergeProps & StateProps & DispatchProps;
+export type HeaderProps = MergeProps & StateProps & DispatchProps & OwnProps;
 
 const Header = (props: HeaderProps) => {
-  const { characters, user, toggleLogin, handleCharacterClick} = props;
+  const { characters, user, mediaType, toggleLogin, handleCharacterClick} = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const characterMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -44,7 +47,7 @@ const Header = (props: HeaderProps) => {
   }
     return(
       <React.Fragment>
-        <div className="header-bar">
+        <div className={`header-bar ${mediaType}`}>
           <div className="links-container">
             <div className="home-container">
               <Link to='/'>
@@ -57,7 +60,7 @@ const Header = (props: HeaderProps) => {
                 <ArrowDropDownIcon />
               </button>
             </div>
-            <div className="univseral-page-container">
+            <div className="universal-page-container">
               <Link to='/universal'>
                 Universal Data
               </Link>

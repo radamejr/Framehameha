@@ -1,8 +1,16 @@
 import React from 'react'
 import './home.scss'
-const Home = () => {
+
+export interface OwnProps {
+    mediaType: string;
+}
+
+export type HomeComponentProps = OwnProps;
+
+const Home = (props: HomeComponentProps) => {
+    const { mediaType } = props;
     return (
-        <div className="announcements-container">
+        <div className={`announcements-container ${mediaType}`}>
                 <div className="post-card">
                     <h5>
                         Date: 02/25/20

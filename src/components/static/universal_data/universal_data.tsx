@@ -3,9 +3,11 @@ import UniversalStaticData from '../../../helpers/static_data/universal_data'
 import { UniversalData } from '../../../models/app'
 import UniversalCard from './universal_card'
 import './universal.scss'
+
 interface OwnProps {
     mediaType: string;
 }
+
 type UniversalDataProps = OwnProps;
 
 const UniversalDataPage = (props: UniversalDataProps) => {

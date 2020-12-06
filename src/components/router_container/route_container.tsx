@@ -1,59 +1,38 @@
 import { Switch, Route, Redirect } from "react-router-dom";
-import Media from 'react-media';
-import React, { Fragment } from "react";
+import React from "react";
 import Home from "../static/home/home";
 import Character from "../character/character";
 import UniversalDataPage from "../static/universal_data/universal_data";
 import LearningPage from "../static/learning/learning";
 import AdminContainer from "../admin/admin";
-const mediaQueries = {
-    small: "(max-width: 599px)",
-    medium: "(min-width: 600px) and (max-width: 1199px)",
-    large: "(min-width: 1200px)"
+
+export interface OwnProps {
+    mediaType: string;
 }
 
-const RouteContainer = () => {
+export type RouteContainerProps = OwnProps;
+
+const RouteContainer = (props: RouteContainerProps) => {
+
+    const { mediaType } = props;
+
     return (
-        <div className="route-body">
+        <div className={`route-body ${mediaType}`}>
             <Switch>
                 <Route exact path = '/'>
-                    <Home />
+                    <Home mediaType={mediaType} />
                 </Route>
                 <Route exact path = '/admin'>
                     <AdminContainer />
                 </Route>
                 <Route exact path = '/characters/:id'>
-                    <Media queries={mediaQueries}>
-                        {matches => (
-                            <Fragment>
-                                {matches.small && <Character mediaType='mobile' />}
-                                {matches.medium && <Character mediaType='tablet' />}
-                                {matches.large && <Character mediaType='desktop' />}
-                            </Fragment>
-                        )}
-                    </Media>
+                    <Character mediaType={mediaType} />
                 </Route>
                 <Route exact path = '/universal'>
-                    <Media queries={mediaQueries}>
-                        {matches => (
-                            <Fragment>
-                                {matches.small && <UniversalDataPage mediaType='mobile' />}
-                                {matches.medium && <UniversalDataPage mediaType='tablet' />}
-                                {matches.large && <UniversalDataPage mediaType='desktop' />}
-                            </Fragment>
-                        )}
-                    </Media>
+                    <UniversalDataPage mediaType={mediaType} />
                 </Route>
                 <Route exact path = '/learning'>
-                    <Media queries={mediaQueries}>
-                        {matches => (
-                            <Fragment>
-                                {matches.small && <LearningPage mediaType='mobile' />}
-                                {matches.medium && <LearningPage mediaType='tablet' />}
-                                {matches.large && <LearningPage mediaType='desktop' />}
-                            </Fragment>
-                        )}
-                    </Media>
+                    <LearningPage mediaType={mediaType} />
                 </Route>
                 <Route path='*'>
                     <Redirect to = '/' />

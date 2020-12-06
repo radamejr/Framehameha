@@ -6,14 +6,16 @@
     overflow: hidden;
     justify-content: space-between;
     & .links-container {
-        width: 90%;
+        width: 100vw;
         display: flex;
         margin: 0px 20px 0px 20px;
         & .home-container {
             margin: 0px 10px 0px 10px;
+            width: 75px;
         }
         & .character-container {
             margin: 0px 10px 0px 10px;
+            width: 125px;
             & button {
                 color: #007bff;
                 text-decoration: none;
@@ -31,15 +33,17 @@
         }
         & .universal-page-container {
             margin: 0px 10px 0px 10px;
+            width: 125px;
         }
         & .learning-page-container {
             margin: 0px 10px 0px 10px;
+            width: 125px;
         }
     }
     & .user-container {
         display: flex;
         justify-content: center;
-        width: 200px;
+        width: 300px;
         float: right;
         margin: 0px 10px 0px 10px;
         & button {
