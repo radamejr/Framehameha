@@ -5,8 +5,9 @@ import Header from "./header/header"
 
 const mediaQueries = {
     small: "(max-width: 599px)",
-    medium: "(min-width: 600px) and (max-width: 1199px)",
-    large: "(min-width: 1200px)"
+    medium: "(min-width: 600px) and (max-width: 999px)",
+    large: "(min-width: 1000px) and (max-width: 1199px)",
+    extra_large: "(min-width: 1200px)"
 }
 
 const Navigation = () => {
@@ -35,8 +36,16 @@ const Navigation = () => {
                             matches.large 
                             && 
                             <div>
-                                <Header mediaType='desktop' /> 
-                                <RouteContainer mediaType='desktop' />
+                                <Header mediaType='small_desktop' /> 
+                                <RouteContainer mediaType='small_desktop' />
+                            </div>
+                        }
+                        { 
+                            matches.extra_large 
+                            && 
+                            <div>
+                                <Header mediaType='large_desktop' /> 
+                                <RouteContainer mediaType='large_desktop' />
                             </div>
                         }
                     </Fragment> 

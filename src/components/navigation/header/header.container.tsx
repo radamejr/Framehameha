@@ -61,7 +61,7 @@ const Header = (props: HeaderProps) => {
   }
     return(
       <React.Fragment>
-        { mediaType === 'desktop' ?
+        { (mediaType === 'small_desktop' || mediaType === 'large_desktop') ?
           <div className={`header-bar ${mediaType}`}>
             <div className="links-container">
               <div className="home-container">
