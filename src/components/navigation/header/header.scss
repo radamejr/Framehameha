@@ -130,6 +130,8 @@
             border-radius: 0px;
         }
         .MuiAccordion-root {
+            margin: 0px;
+            box-shadow: none;
             &.Mui-expanded {
                 margin: 0px;
             }

@@ -5,4 +5,7 @@
     animation: fadeIn 700ms ease-in-out 1s both;
     cursor: pointer;
     z-index: 1;
+    & button {
+      background-color: #FF9000;
+    }
   }
