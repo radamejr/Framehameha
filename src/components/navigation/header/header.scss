@@ -5,6 +5,23 @@
     align-items: center;
     overflow: hidden;
     justify-content: space-between;
+    & .header-menu-button {
+        margin-left: 35px;
+        & button {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent;
+            border: none;
+        }
+        & button:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        & button:focus {
+            border: none;
+            outline: none;
+        }
+    }
     & .links-container {
         width: 100vw;
         display: flex;
@@ -66,6 +83,7 @@
 
 .MuiList-root {
     display: flex;
+    flex-wrap: wrap;
     & ul {
         padding: 8px 8px 8px 8px;
     }
@@ -77,6 +95,64 @@
         & img {
             max-width:100%;
             max-height:100%;
+        }
+    }
+}
+
+.header-bar-menu {
+    & .MuiPaper-root {
+        width: 350px;
+        & .MuiList-root {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            & li {
+                height: auto;
+                width: auto;
+            }
+        }
+        & button {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+        & button:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        & button:focus {
+            border: none;
+            outline: none;
+        }
+        & .MuiPaper-rounded {
+            border-radius: 0px;
+        }
+        .MuiAccordion-root {
+            &.Mui-expanded {
+                margin: 0px;
+            }
+            & .MuiAccordionSummary-root {
+                padding: 0px;
+                min-height: 0px;
+                color: #007bff;
+                & .MuiAccordionSummary-content {
+                    margin: 0px;
+                }
+            }
+            & .MuiAccordionDetails-root {
+                display: contents;
+                & .character-list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    & .icon-select {
+                        width: 75px;
+                        padding: 0px;
+                        margin: 1px -4px 1px -4px;
+                    }
+                }
+            }
         }
     }
 }
