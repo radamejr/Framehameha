@@ -505,6 +505,7 @@
     
     & .basics-container {
         & .basics-card {
+            margin: 5px;
             & .basics-card-title-container {
                 display: flex;
                 & .basics-card-title {
@@ -542,6 +543,7 @@
     }
     & .defense-container {
         & .defense-card {
+            margin: 5px;
             & .defense-card-title-container {
                 display: flex;
                 & .defense-card-title {
@@ -579,6 +581,7 @@
     }
     & .neutral-container {
         & .neutral-card {
+            margin: 5px;
             & .neutral-card-title-container {
                 display: flex;
                 & .neutral-card-title {
@@ -616,6 +619,7 @@
     }
     & .offense-container {
         & .offense-card {
+            margin: 5px;
             & .offense-card-title-container {
                 display: flex;
                 & .offense-card-title {
