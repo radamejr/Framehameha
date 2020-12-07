@@ -21,9 +21,16 @@ const SpecialCard = (props: SpecialCardProps) => {
         return (
             <Card className={`special-card ${mediaType}`} variant="outlined">
                 <CardContent className="special-content" >
-                    <div className="special-image">
-                        <img src={special.picture.url} alt={special.input}/>
-                    </div>
+                    {
+                        special.picture.url !== null 
+                        ?
+                        <div className="special-image">
+                            <img src={special.picture.url} alt={special.input}/>
+                        </div>
+                        :
+                        null
+
+                    }
                     <Divider orientation="vertical" variant="middle"/>
                     <div className="special-info">
                     {
