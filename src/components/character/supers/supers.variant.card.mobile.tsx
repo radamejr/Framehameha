@@ -21,7 +21,7 @@ const SuperVariantsMobileCard = (props: SuperVariantsMobileProps) => {
     return (
         <div className="super-variant-card">
             <div className="super-variant-content">
-                {(variant.picture.url !== null || variant.picture.url !== '')
+                {variant.picture.url !== null
                 ? 
                 <div className="super-variant-image">
                     <img src={variant.picture.url} alt={variant.input_type}/>

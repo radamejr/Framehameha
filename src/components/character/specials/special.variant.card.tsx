@@ -21,7 +21,7 @@ const SpecialVariantsCard = (props: SpecialVariantsProps) => {
     return (
         <div className="special-variant-card">
             <div className="special-variant-content">
-                {(variant.picture.url !== null || variant.picture.url !== '')
+                {variant.picture.url !== null
                 ? 
                 <div className="special-variant-image">
                     <img src={variant.picture.url} alt={variant.input_type}/>
