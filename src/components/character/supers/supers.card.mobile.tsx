@@ -5,6 +5,7 @@ import { Character, Super, SuperVariant } from '../../../models/app';
 import SuperVariantsCard from './supers.variant.card';
 import DBButton from '../../../helpers/ui/DBButton';
 import VisualGraph from '../../../helpers/visual_frame_data_graph/frame_data_graph';
+import SuperVariantsMobileCard from './supers.variant.card.mobile';
 
 interface OwnProps {
     super_move: Super | undefined;
@@ -12,9 +13,9 @@ interface OwnProps {
     character: Character | null;
 }
 
-type SuperCardProps = OwnProps;
+type SuperCardMobileProps = OwnProps;
 
-const SuperCard = (props: SuperCardProps) => {
+const SuperCardMobile = (props: SuperCardMobileProps) => {
     const { super_move, admin, character } = props;
     if(super_move) {
         return (
@@ -39,30 +40,38 @@ const SuperCard = (props: SuperCardProps) => {
                             <Table>
                                 <TableBody>
                                     <TableRow>
-                                        <TableCell colSpan={2} align='center'>Name:</TableCell>
-                                        <TableCell colSpan={2} align='center'>{super_move.name}</TableCell>
+                                        <TableCell>Name:</TableCell>
+                                        <TableCell>{super_move.name}</TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell>Input:</TableCell>
                                         <TableCell>{super_move.input}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
                                         <TableCell>Recovery:</TableCell>
                                         <TableCell>{super_move.recovery}</TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell>Startup:</TableCell>
                                         <TableCell>{super_move.startup}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
                                         <TableCell>Advantage:</TableCell>
                                         <TableCell>{super_move.advantage}</TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell>Active:</TableCell>
                                         <TableCell>{super_move.active}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
                                         <TableCell>Guard:</TableCell>
                                         <TableCell>{super_move.gaurd}</TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell>Raw Damage:</TableCell>
                                         <TableCell>{super_move.raw_damage}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
                                         <TableCell>Scaled Damage:</TableCell>
                                         <TableCell>{super_move.scaled_damage}</TableCell>
                                     </TableRow>
@@ -97,26 +106,18 @@ const SuperCard = (props: SuperCardProps) => {
                 {
                     super_move.super_variants.length > 0 
                     ? 
-                    <CardContent className="super-content accordion" >
+                    <CardContent className="super-variant-content accordion" >
                         <Accordion>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
                             >
                                 {super_move.name} Variants
-                                {
-                                    admin ? 
-                                        <div className='admin-button'>
-                                            <DBButton type='add' content='super_variant' character={character} id={character?.id} contentParent={super_move?.id} />
-                                        </div>
-                                    :
-                                    null
-                                }
                             </AccordionSummary>
                             <AccordionDetails>
                                 <div className="super-variants-container">
                                     {super_move.super_variants.map((v: SuperVariant, key: number) => {
                                         return (
-                                            <SuperVariantsCard variant={v} key={key} admin={admin} character={character} parentId={super_move?.id}/>
+                                            <SuperVariantsMobileCard variant={v} key={key} admin={admin} character={character} parentId={super_move?.id}/>
                                         )
                                     })}  
                                 </div>  
@@ -133,4 +134,4 @@ const SuperCard = (props: SuperCardProps) => {
     }
 }
 
-export default SuperCard;
+export default SuperCardMobile;

@@ -25,10 +25,7 @@
                 align-items: center;
                 padding: 24px 24px 24px 24px;
                 & .super-image {
-                    width: 615px;
-                    margin-top: auto;
-                    margin-bottom: auto;
-                    min-width: 300px;
+                    margin: auto;
                     & img{
                         max-height: 300px;
                         vertical-align: middle;
@@ -62,54 +59,70 @@
                         }
                     }  
                 }
-                & .MuiAccordion-root {
-                    width: 100%;
-                    & .MuiAccordionSummary-content {
-                        flex-grow: 0;
-                    }
-                    & .super-variants-container {
-                        margin: 10px auto 10px auto;
-                        min-width: 90%;
-                        & .super-variant-card {
-                            width: 100%;
-                            margin: 0px auto 0px auto;
-                            align-items: center;
-                            & .super-variant-content {
+            }
+        }
+        & .super-variant-content {
+            display:flex;
+            & .MuiAccordion-root {
+                width: 100%;
+                & .MuiAccordionSummary-content {
+                    flex-grow: 0;
+                    color: #007bff;
+                }
+                & .super-variants-container {
+                    margin: 10px auto 10px auto;
+                    min-width: 90%;
+                    & .super-variant-card {
+                        width: 100%;
+                        margin: 0px auto 0px auto;
+                        align-items: center;
+                        & .super-variant-content {
+                            display: flex;
+                            flex-direction: column;
+                            & .admin-button {
+                                position: relative;
+                                left: 0px;
                                 display: flex;
-                                flex-direction: column;
-                                & .admin-button {
-                                    position: relative;
-                                    left: 0px;
-                                    display: flex;
-                                    justify-content: space-evenly;
+                                justify-content: space-evenly;
+                            }
+                            & .super-variant-image {
+                                padding: 24px 24px 24px 24px;
+                                max-width: 340px;
+                                margin: auto;
+                                display: flex;
+                                min-width: 300px;
+                                & img{
+                                    max-height: 300px;
+                                    vertical-align: middle;
+                                    max-width: 100%;
+                                    margin: 0 auto 0 auto
                                 }
-                                & .super-variant-image {
-                                    padding: 24px 24px 24px 24px;
-                                    max-width: 340px;
-                                    margin: auto;
-                                    display: flex;
-                                    min-width: 300px;
-                                    & img{
-                                        max-height: 300px;
-                                        vertical-align: middle;
-                                        max-width: 100%;
-                                        margin: 0 auto 0 auto
-                                    }
-                                }
-                                & .variant-graph {
-                                    margin: 15px auto 15px auto;
-                                    display: flex;
-                                    justify-content: center;
-                                }
+                            }
+                            & .variant-graph {
+                                margin: 15px auto 15px auto;
+                                display: flex;
+                                justify-content: center;
                             }
                         }
                     }
                 }
-                
-            }
-            & .super-graph {
-                margin: 15px auto 15px auto;
             }
         }
+        
+        & .super-graph {
+            margin: 15px auto 15px auto;
+        }
     }   
+
+    &.tablet {
+        & .super-content {
+            flex-direction: column;
+        }
+    }
+    &.mobile {
+        & .super-content {
+            flex-direction: column;
+            padding: 0px !important;
+        }
+    }
 }
