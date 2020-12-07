@@ -33,7 +33,7 @@ const SuperVariantDialog = (props: SuperVariantDialogProps) => {
     const [confirmDelete, confirmDeleteUpdate] = useState(false)
     
     if(contentTarget && currentCharacter && contentParent && editStatus === 'edit' && !fieldsUpdated) {
-        const variantTarget = currentCharacter.supers[parseInt(contentParent) - 1].super_variants.find(x => x.id === contentTarget);
+        const variantTarget = currentCharacter.supers.find(y => y.id === contentParent)?.super_variants.find(x => x.id === contentTarget);
         if(variantTarget){
             inputTypeUpdate(variantTarget.input_type)
             startupUpdate(variantTarget.startup)

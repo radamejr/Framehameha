@@ -33,7 +33,7 @@ const SpecialVariantDialog = (props: SpecialVariantDialogProps) => {
     const [confirmDelete, confirmDeleteUpdate] = useState(false)
     
     if(contentTarget && currentCharacter && contentParent && editStatus === 'edit' && !fieldsUpdated) {
-        const variantTarget = currentCharacter.specials[parseInt(contentParent) - 1].special_variants.find(x => x.id === contentTarget);
+        const variantTarget = currentCharacter.specials.find(y => y.id === contentParent)?.special_variants.find(x => x.id === contentTarget);
         if(variantTarget){
             inputTypeUpdate(variantTarget.input_type)
             startupUpdate(variantTarget.startup)

@@ -97,7 +97,7 @@ const SuperCard = (props: SuperCardProps) => {
                 {
                     super_move.super_variants.length > 0 
                     ? 
-                    <CardContent className="super-content accordion" >
+                    <CardContent className="super-variant-content accordion" >
                         <Accordion>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}

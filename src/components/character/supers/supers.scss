@@ -124,5 +124,12 @@
             flex-direction: column;
             padding: 0px !important;
         }
+        & .super-variant-content {
+            & .super-variant-image {
+                padding: 12px !important;
+                max-width: none !important;
+                min-width: 0px !important;
+            }
+        }
     }
 }
