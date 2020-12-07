@@ -4,6 +4,7 @@ import DBButton from '../../../helpers/ui/DBButton'
 import NormalsCard from './normals.card';
 
 import './normal.scss'
+import NormalsCardMobile from './normals.card.mobile';
 
 interface OwnProps {
     normals: Normal[] | undefined;
@@ -14,13 +15,19 @@ interface OwnProps {
 type NormalsContainerProps = OwnProps;
 
 const NormalsContainer = (props: NormalsContainerProps) => {
-    const { normals, admin, character } = props;
+    const { normals, admin, character, mediaType } = props;
 
     const makeNormalCard = (normal: Normal, key: number) => {
-        return ( <NormalsCard normal={normal} character={character} admin={admin || false} key={key} />)
+        return ( 
+            mediaType !== 'mobile' 
+            ? 
+            <NormalsCard normal={normal} character={character} admin={admin || false} key={key} /> 
+            :
+            <NormalsCardMobile normal={normal} character={character} admin={admin || false} key={key} />
+        )
     }
     return (
-        <div className="normals-container">
+        <div className={`normals-container ${mediaType}`}>
             <div className="normals-header">
                 <h2>
                     Normal Moves

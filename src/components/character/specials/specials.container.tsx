@@ -7,22 +7,22 @@ import './specials.scss'
 
 interface OwnProps {
     specials: Special[] | undefined;
-    admin: boolean | undefined,
-    character: Character,
-    mediaType: string,
+    admin: boolean | undefined;
+    character: Character;
+    mediaType: string;
 }
 
 type SpecialsContainerProps = OwnProps;
 
 const SpecialsContainer = (props: SpecialsContainerProps) => {
-    const { specials, admin, character } = props;
+    const { specials, admin, character, mediaType } = props;
 
     const makeSpecialCard = (special: Special, key: number) => {
-        return ( <SpecialCard special={special} key={key} admin={admin} character={character}/>)
+        return ( <SpecialCard special={special} key={key} admin={admin} character={character} mediaType={mediaType}/>)
     }
 
     return (
-        <div className="specials-container">
+        <div className={`specials-container ${mediaType}`}>
             <div className="specials-header">
                 <h2>
                     Special Moves

@@ -4,20 +4,22 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Character, Special, SpecialVariant } from '../../../models/app';
 import SpecialVariantsCard from './special.variant.card';
 import DBButton from '../../../helpers/ui/DBButton';
+import SpecialVariantsCardMobile from './special.variant.card.mobile';
 
 interface OwnProps {
     special: Special | undefined;
     character: Character | null;
     admin: boolean | undefined;
+    mediaType: string;
 }
 
 type SpecialCardProps = OwnProps;
 
 const SpecialCard = (props: SpecialCardProps) => {
-    const { special, admin, character } = props;
+    const { special, admin, character, mediaType } = props;
     if(special) {
         return (
-            <Card className="special-card" variant="outlined">
+            <Card className={`special-card ${mediaType}`} variant="outlined">
                 <CardContent className="special-content" >
                     <div className="special-image">
                         <img src={special.picture.url} alt={special.input}/>
@@ -37,12 +39,12 @@ const SpecialCard = (props: SpecialCardProps) => {
                             <Table>
                                 <TableBody>
                                     <TableRow>
-                                        <TableCell>Name:</TableCell>
-                                        <TableCell>{special.name}</TableCell>
+                                        <TableCell >Name:</TableCell>
+                                        <TableCell >{special.name}</TableCell>
                                     </TableRow>
                                     <TableRow>
-                                        <TableCell>Input:</TableCell>
-                                        <TableCell>{special.input}</TableCell>
+                                        <TableCell >Input:</TableCell>
+                                        <TableCell >{special.input}</TableCell>
                                     </TableRow>
                                     <TableRow className="notes-row"> 
                                         <TableCell colSpan={4}>
@@ -76,7 +78,11 @@ const SpecialCard = (props: SpecialCardProps) => {
                                 <div className="special-variants-container">
                                     {special.special_variants.map((v: SpecialVariant, key: number) => {
                                         return (
+                                            mediaType !== 'mobile' 
+                                            ?
                                             <SpecialVariantsCard variant={v} key={key} admin={admin} character={character} parentId={special.id}/>
+                                            :
+                                            <SpecialVariantsCardMobile variant={v} key={key} admin={admin} character={character} parentId={special.id}/>
                                         )
                                     })}  
                                 </div>  

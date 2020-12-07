@@ -64,4 +64,25 @@
             }
         }
     }   
+    &.tablet {
+        & .normal-card {
+            & .normal-content {
+                flex-direction: column;
+            }
+        }
+    }
+    &.mobile {
+        & .normal-card {
+            & .normal-content {
+                flex-direction: column;
+                padding: 0px;
+                & .normal-details {
+                    padding: 0px;
+                }
+            }
+            & .normal-graph {
+                padding: 0 20px 0 20px;
+            }
+        }
+    }
 }
