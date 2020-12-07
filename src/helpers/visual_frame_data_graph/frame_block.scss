@@ -1,19 +1,24 @@
-.frame-data-container {
-    display: flex;
-    flex-direction: row;
-    flex-flow: wrap;
-    .frame-block {
-        margin: 1px;
-        border: 1px black solid;
-        height: 20px;
-        width: 8px;
-        background-color: green;
-        &.active {
-            background-color: red;
+.frame-data{
+    & p {
+        margin: 0;
+    }
+    .frame-data-container {
+        display: flex;
+        flex-direction: row;
+        flex-flow: wrap;
+        .frame-block {
+            margin: 1px;
+            border: 1px black solid;
+            height: 20px;
+            width: 8px;
+            background-color: green;
+            &.active {
+                background-color: red;
+            }
+            &.recovery {
+                background-color: yellow;
+            }
+            
         }
-        &.recovery {
-            background-color: yellow;
-        }
-        
     }
 }

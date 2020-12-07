@@ -8,7 +8,7 @@ interface OwnProps {
 }
 type UniversalCardProps = OwnProps;
 
-const UniversalCard = (props: UniversalCardProps) => {
+const UniversalCardDesktop = (props: UniversalCardProps) => {
     const { universalData } = props;
     if(universalData){
         return (
@@ -70,4 +70,4 @@ const UniversalCard = (props: UniversalCardProps) => {
     
 }   
 
-export default UniversalCard;
+export default UniversalCardDesktop;
