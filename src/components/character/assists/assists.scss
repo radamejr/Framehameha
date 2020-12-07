@@ -61,4 +61,9 @@
             flex-direction: column;
         }
     }
+    &.mobile {
+        & .assist-content {
+            flex-direction: column;
+        }
+    }
 }

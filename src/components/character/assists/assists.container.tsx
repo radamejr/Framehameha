@@ -2,6 +2,7 @@ import React from 'react';
 import DBButton from '../../../helpers/ui/DBButton';
 import { Assist, Character } from '../../../models/app';
 import AssistCard from './assists.card';
+import AssistCardMobile from './assists.card.mobile';
 
 import './assists.scss'
 
@@ -17,7 +18,13 @@ const AssistsContainer = (props: AssistsContainerProps) => {
     const { assists, admin, character, mediaType } = props;
 
     const makeAssistCard = (assist: Assist, key: number) => {
-        return ( <AssistCard assist={assist} key={key} admin={admin} character={character} />)
+        return ( 
+            mediaType !== 'mobile' 
+            ?
+            <AssistCard assist={assist} key={key} admin={admin} character={character} />
+            :
+            <AssistCardMobile assist={assist} key={key} admin={admin} character={character} />
+        )
     }
     return (
         <div className={`assists-container ${mediaType}`}>
