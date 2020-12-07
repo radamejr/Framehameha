@@ -1,6 +1,6 @@
 .assists-container {
-    margin-top: 75px;
-    margin-bottom: 75px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 
     & .assists-header {
         justify-content: center;
@@ -20,9 +20,7 @@
                 align-items: center;
                 padding: 24px 24px 24px 24px;
                 & .assist-image {
-                    width: 615px;
                     display: flex;
-                    min-width: 300px;
                     & img{
                         max-height: 300px;
                         vertical-align: middle;
@@ -57,4 +55,10 @@
             }
         }  
     }    
+
+    &.tablet {
+        & .assist-content {
+            flex-direction: column;
+        }
+    }
 }

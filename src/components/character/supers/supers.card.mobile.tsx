@@ -2,7 +2,6 @@ import React from 'react';
 import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent, Divider, Table, TableBody, TableCell, TableContainer, TableRow } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Character, Super, SuperVariant } from '../../../models/app';
-import SuperVariantsCard from './supers.variant.card';
 import DBButton from '../../../helpers/ui/DBButton';
 import VisualGraph from '../../../helpers/visual_frame_data_graph/frame_data_graph';
 import SuperVariantsMobileCard from './supers.variant.card.mobile';

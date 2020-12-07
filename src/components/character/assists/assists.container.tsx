@@ -14,13 +14,13 @@ interface OwnProps {
 type AssistsContainerProps = OwnProps;
 
 const AssistsContainer = (props: AssistsContainerProps) => {
-    const { assists, admin, character } = props;
+    const { assists, admin, character, mediaType } = props;
 
     const makeAssistCard = (assist: Assist, key: number) => {
         return ( <AssistCard assist={assist} key={key} admin={admin} character={character} />)
     }
     return (
-        <div className="assists-container">
+        <div className={`assists-container ${mediaType}`}>
             <div className="assists-header">
                 <h2>
                     Assists
