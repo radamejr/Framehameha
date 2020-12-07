@@ -22,7 +22,7 @@ const LearningBasicData: LearningData[] = [
     {
         title: 'Superdash',
         details: ['Blocking is done by pressing, 4 (back, remember our input image) against the opponents moves. Some moves have a low property which means you must block low (press 1) and some moves have overhead properties which means you must block high (still 4) or block while jumping. If you block a move in the air you are subject to additional blockstun when landing.'],
-        embedContent: 'https://dbfz-image.s3.amazonaws.com/uploads/static-images/block.gif',
+        embedContent: 'https://dbfz-image.s3.amazonaws.com/uploads/static-images/superdash.gif',
         contributor: null,
     },
     {

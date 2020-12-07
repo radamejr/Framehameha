@@ -20,7 +20,7 @@ const UniversalStaticData: UniversalData[] = [
         recovery: 'Varies - See character details',
         advantage: 'Varies - See character details',
         gaurd: 'All',
-        notes: 'Each character comes equipped with 3 assists. Assists will not begin recharging until the opponent has not been in blockstun for 20 frames. Once recharging has begun, A and B Type assists take 300 frames to charge. C assist Tpe will take 720 frames.',
+        notes: 'Each character comes equipped with 3 assists. Assists will not begin recharging until the opponent has not been in blockstun for 20 frames. Once recharging has begun, A and B Type assists take 300 frames to charge. C assist Type will take 720 frames.',
         img: 'https://dbfz-image.s3.amazonaws.com/uploads/static-images/assist.gif',
     },
     {

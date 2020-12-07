@@ -41,18 +41,23 @@ const VisualGraph = (props: VisualGraphProps) => {
             const totalFrames = parseInt(startup) + parseInt(active) - 1 + parseInt(recovery || '0')
             frameData = generateBlocks(totalFrames, parseInt(active), parseInt(startup), false)
         }
-        return (
-            <div className="frame-data">
-                <p>Frames Visual:</p><br/>
-                <div className="frame-data-container">
-                    {
-                        frameData.map((f: string, key: number) => {
-                        return(<div className={`frame-block ${f}`} key={key} title={`frame ${key + 1}`} />)
-                        })
-                    }
+        
+        if(frameData.length > 0) {
+            return (
+                <div className="frame-data">
+                    <p>Frames Visual:</p><br/>
+                    <div className="frame-data-container">
+                        {
+                            frameData.map((f: string, key: number) => {
+                            return(<div className={`frame-block ${f}`} key={key} title={`frame ${key + 1}`} />)
+                            })
+                        }
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        } else {
+            return (null)
+        }
     } else {
         return (null)
     }
