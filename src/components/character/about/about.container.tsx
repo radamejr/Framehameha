@@ -6,14 +6,15 @@ import './about.scss'
 interface OwnProps {
     character: Character,
     admin: boolean | undefined,
+    mediaType: string,
 }
 
 type AboutContainerProps = OwnProps;
 
 const AboutContainer = (props: AboutContainerProps) => {
-    const { character, admin } = props;
+    const { character, admin, mediaType } = props;
     return (
-        <div className="about-container">
+        <div className={`about-container ${mediaType}`}>
             <div className="about-text">
                 <h4>
                     {character.name}

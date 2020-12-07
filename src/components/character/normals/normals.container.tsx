@@ -9,6 +9,7 @@ interface OwnProps {
     normals: Normal[] | undefined;
     admin: boolean | undefined,
     character: Character,
+    mediaType: string,
 }
 type NormalsContainerProps = OwnProps;
 

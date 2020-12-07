@@ -9,6 +9,7 @@ interface OwnProps {
     assists: Assist[] | undefined;
     admin: boolean | undefined,
     character: Character,
+    mediaType: string,
 }
 type AssistsContainerProps = OwnProps;
 

@@ -37,15 +37,15 @@ const CharacterContainer = (props: CharacterProps) => {
     } else {
         return (
             <div className={`character-container ${mediaType}`}>
-                <AboutContainer character={character} admin={user?.admin}/>
+                <AboutContainer character={character} admin={user?.admin} mediaType={mediaType}/>
                 <Divider variant="middle" />
-                <NormalsContainer normals={normals} admin={user?.admin} character={character}/>
+                <NormalsContainer normals={normals} admin={user?.admin} character={character} mediaType={mediaType}/>
                 <Divider variant="middle" />
-                <SpecialsContainer specials={specials} admin={user?.admin} character={character}/>
+                <SpecialsContainer specials={specials} admin={user?.admin} character={character} mediaType={mediaType}/>
                 <Divider variant="middle" />
-                <SupersContainer supers={supers} admin={user?.admin} character={character} />
+                <SupersContainer supers={supers} admin={user?.admin} character={character} mediaType={mediaType}/>
                 <Divider variant="middle" />
-                <AssistsContainer assists={assists} admin={user?.admin} character={character} />
+                <AssistsContainer assists={assists} admin={user?.admin} character={character} mediaType={mediaType}/>
             </div>
         )
     }

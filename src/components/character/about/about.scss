@@ -6,7 +6,6 @@
     position: relative;
     & .character-img {
         height: 500px;
-        min-width: 275px;
         & img {
             height: 100%
         }
@@ -23,5 +22,23 @@
         width: 250px;
         display: flex;
         justify-content: space-between;
+    }
+    &.tablet {
+        margin-bottom: 25px;
+        & .character-img {
+            height: 400px;
+            margin: auto
+        }
+    }
+    &.mobile {
+        margin-bottom: 25px;
+        & .character-img {
+            height: 300px;
+            margin: auto;
+            display: none;
+        }
+        & .about-text {
+            margin: 5px;
+        }
     }
 }

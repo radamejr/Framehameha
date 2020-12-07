@@ -9,6 +9,7 @@ interface OwnProps {
     specials: Special[] | undefined;
     admin: boolean | undefined,
     character: Character,
+    mediaType: string,
 }
 
 type SpecialsContainerProps = OwnProps;
