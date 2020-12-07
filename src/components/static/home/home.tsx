@@ -13,6 +13,17 @@ const Home = (props: HomeComponentProps) => {
         <div className={`announcements-container ${mediaType}`}>
                 <div className="post-card">
                     <h5>
+                        Date: December, 2020 (what is this year....)
+                        <br />
+                        The DBFZ national championship has been in full swing for several weeks now. It's been great watching it and a real reminder to get this rather large visual / technical upgrade done!. Overall for you guys the biggest change is going to just be the visual layout and responsiveness of the site. I did not want to try and add a bunch of features while also converting over the technical back-end. (However I did get one feature launched to help show frame data, similar to other sites such as the Skullgirls wiki :D )
+                        <br />
+                        I have been dealing with a new job and a new house which has also made this whole process slower than I wanted. But it's here! ENJOY!
+                        <br />
+                        -KP
+                    </h5>
+                </div>
+                <div className="post-card">
+                    <h5>
                         Date: 02/25/20
                         <br />
                         SEASON 3 is upon us! 

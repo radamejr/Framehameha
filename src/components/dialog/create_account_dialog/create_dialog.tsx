@@ -94,8 +94,8 @@ const CreateDialog = (props: CreateDialogProps) => {
                     </div>                    
                     <div className='buttons'>
                         <div className='create'>
-                            <Button className='create-button' disabled={loggingIn} onClick={() => createUser(email, username, password, confirmPassword)} >
-                                {loggingIn ? <CircularProgress /> : 'Sign Up'}
+                            <Button className='create-button' disabled={true} onClick={() => createUser(email, username, password, confirmPassword)} >
+                                {loggingIn ? <CircularProgress /> : 'Coming Soon!'}
                             </Button>
                         </div>
                         <div className="create-account">
