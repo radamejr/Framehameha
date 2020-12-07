@@ -1,0 +1,25 @@
+.footer {
+    background-color: rgb(61, 59, 59);
+    padding: 25px;
+    & p {
+        color: white;
+        text-decoration: underline;
+    }
+    & .footer-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    & ul {
+        list-style: none;
+        padding: 0px;
+        & li {
+            text-decoration: underline;
+        }
+    }
+    &.mobile {
+        & .footer-row {
+            flex-direction: column;
+        }
+    }
+}

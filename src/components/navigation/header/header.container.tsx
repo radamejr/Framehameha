@@ -1,5 +1,4 @@
 import { Accordion, AccordionDetails, AccordionSummary, Menu, MenuItem } from '@material-ui/core';
-
 import ArrowDropDownIcon  from '@material-ui/icons/ArrowDropDown';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Character } from "../../../models/app/character.model";

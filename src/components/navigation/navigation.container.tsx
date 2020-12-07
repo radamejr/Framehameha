@@ -1,7 +1,10 @@
-import React, { Fragment } from "react"
-import Media from "react-media"
-import RouteContainer from "../router_container/route_container"
-import Header from "./header/header"
+import React, { Fragment } from "react";
+import Media from "react-media";
+import RouteContainer from "../router_container/route_container";
+import FooterComponent from "./footer/footer.container";
+import Header from "./header/header";
+
+import './navigation.scss';
 
 const mediaQueries = {
     small: "(max-width: 599px)",
@@ -19,33 +22,45 @@ const Navigation = () => {
                         { 
                             matches.small 
                             && 
-                            <div>
-                                <Header mediaType='mobile' /> 
-                                <RouteContainer mediaType='mobile' />
+                            <div className="app-container">
+                                <div className="app-content-container">
+                                    <Header mediaType='mobile' /> 
+                                    <RouteContainer mediaType='mobile' />
+                                </div>
+                                <FooterComponent mediaType='mobile'/>
                             </div>
                         }
                         { 
                             matches.medium 
                             && 
-                            <div>
-                                <Header mediaType='tablet' /> 
-                                <RouteContainer mediaType='tablet' />
+                            <div className="app-container">
+                                <div className="app-content-container">
+                                    <Header mediaType='tablet' /> 
+                                    <RouteContainer mediaType='tablet' />
+                                </div>
+                                <FooterComponent mediaType='tablet' />
                             </div>
                         } 
                         { 
                             matches.large 
                             && 
-                            <div>
-                                <Header mediaType='small_desktop' /> 
-                                <RouteContainer mediaType='small_desktop' />
+                            <div className="app-container">
+                                <div className="app-content-container">
+                                    <Header mediaType='small_desktop' /> 
+                                    <RouteContainer mediaType='small_desktop' />
+                                </div>
+                                <FooterComponent mediaType='small_desktop' />
                             </div>
                         }
                         { 
                             matches.extra_large 
                             && 
-                            <div>
-                                <Header mediaType='large_desktop' /> 
-                                <RouteContainer mediaType='large_desktop' />
+                            <div className="app-container">
+                                <div className="app-content-container">
+                                    <Header mediaType='large_desktop' /> 
+                                    <RouteContainer mediaType='large_desktop' />
+                                </div>
+                                <FooterComponent mediaType='large_desktop' />
                             </div>
                         }
                     </Fragment> 
