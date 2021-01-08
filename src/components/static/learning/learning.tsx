@@ -73,6 +73,8 @@ const LearningPage = (props: LearningPageProps) => {
                         indicatorColor="primary"
                         textColor="primary"
                         centered
+                        variant="scrollable"
+                        scrollButtons="auto"
                     >
                         <Tab label="Basics" {...learningTabProps(0)} />
                         <Tab label="Neutral" {...learningTabProps(1)} />

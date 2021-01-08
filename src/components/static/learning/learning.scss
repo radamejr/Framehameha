@@ -341,166 +341,179 @@
         & .kame-row {
             flex-direction: column-reverse;
             & .kame-details {
-                margin: auto;
+                margin:  0px 10px 0px 10px;
+                max-width: 100%;
             }
             & .kame-image {
                 max-width: 325px;
                 margin: auto;
             }
         }
+        & .learning-tab-box {
+            padding: 0px;
+        }
         & .basics-container {
             & .basics-card {
-                & .basics-card-title-container {
-                    display: flex;
-                    & .basics-card-title {
-                        margin: 0px auto 0px auto;
-                        font-size: 26px;
-                        text-decoration: underline;
+                & .basics-card-container {
+                    padding: 8px;
+                    & .basics-card-title-container {
+                        display: flex;
+                        & .basics-card-title {
+                            margin: 0px auto 0px auto;
+                            font-size: 26px;
+                            text-decoration: underline;
+                        }
                     }
-                }
-                & .basics-card-details-container {
-                    display: flex;
-                    margin: 15px;
-                    flex-direction: column;
-                    &.flip-true {
+                    & .basics-card-details-container {
+                        display: flex;
+                        margin: 10px;
                         flex-direction: column;
-                    }
-                    & .basics-card-embed {
-                        margin: auto 10px auto 10px;
-                        & img {
-                            max-width: 400px;
+                        &.flip-true {
+                            flex-direction: column;
                         }
-                    }
-                    & .basics-card-details {
-                        margin: auto;
-                        max-width: 90%;
-                        & p {
-                            font-size: 14px;
+                        & .basics-card-embed {
+                            margin: auto 10px auto 10px;
+                            & img {
+                                max-width: 100%;
+                            }
                         }
-                        & ul {
-                            font-size: 14px;
+                        & .basics-card-details {
+                            margin: auto;
+                            max-width: 90%;
+                            & p {
+                                font-size: 14px;
+                            }
+                            & ul {
+                                font-size: 14px;
+                            }
                         }
+                        
                     }
-                    
                 }
             }
             
         }
         & .defense-container {
             & .defense-card {
-                & .defense-card-title-container {
-                    display: flex;
-                    & .defense-card-title {
-                        margin: 0px auto 0px auto;
-                        font-size: 26px;
-                        text-decoration: underline;
+                & .defense-card-container {
+                    padding: 8px;
+                    & .defense-card-title-container {
+                        display: flex;
+                        & .defense-card-title {
+                            margin: 0px auto 0px auto;
+                            font-size: 26px;
+                            text-decoration: underline;
+                        }
                     }
-                }
-                & .defense-card-details-container {
-                    display: flex;
-                    margin: 15px;
-                    flex-direction: column;
-                    &.flip-true {
+                    & .defense-card-details-container {
+                        display: flex;
+                        margin: 10px;
                         flex-direction: column;
-                    }
-                    & .defense-card-embed {
-                        margin: auto 10px auto 10px;
-                        & img {
-                            max-width: 400px;
+                        &.flip-true {
+                            flex-direction: column;
                         }
-                    }
-                    & .defense-card-details {
-                        margin: auto;
-                        max-width: 90%;
-                        & p {
-                            font-size: 14px;
+                        & .defense-card-embed {
+                            margin: auto 10px auto 10px;
+                            & img {
+                                max-width: 100%;
+                            }
                         }
-                        & ul {
-                            font-size: 14px;
+                        & .defense-card-details {
+                            margin: auto;
+                            max-width: 90%;
+                            & p {
+                                font-size: 14px;
+                            }
+                            & ul {
+                                font-size: 14px;
+                            }
                         }
+                        
                     }
-                    
                 }
             }
             
         }
         & .neutral-container {
             & .neutral-card {
-                & .neutral-card-title-container {
-                    display: flex;
-                    & .neutral-card-title {
-                        margin: 0px auto 0px auto;
-                        font-size: 26px;
-                        text-decoration: underline;
+                & .neutral-card-container {
+                    padding: 8px;
+                    & .neutral-card-title-container {
+                        display: flex;
+                        & .neutral-card-title {
+                            margin: 0px auto 0px auto;
+                            font-size: 26px;
+                            text-decoration: underline;
+                        }
                     }
-                }
-                & .neutral-card-details-container {
-                    display: flex;
-                    margin: 15px;
-                    flex-direction: column;
-                    &.flip-true {
+                    & .neutral-card-details-container {
+                        display: flex;
+                        margin: 10px;
                         flex-direction: column;
-                    }
-                    & .neutral-card-embed {
-                        margin: auto 10px auto 10px;
-                        & img {
-                            max-width: 400px;
+                        &.flip-true {
+                            flex-direction: column;
                         }
-                    }
-                    & .neutral-card-details {
-                        margin: auto;
-                        max-width: 90%;
-                        & p {
-                            font-size: 14px;
+                        & .neutral-card-embed {
+                            margin: auto 10px auto 10px;
+                            & img {
+                                max-width: 100%;
+                            }
                         }
-                        & ul {
-                            font-size: 14px;
+                        & .neutral-card-details {
+                            margin: auto;
+                            max-width: 90%;
+                            & p {
+                                font-size: 14px;
+                            }
+                            & ul {
+                                font-size: 14px;
+                            }
                         }
+                        
                     }
-                    
                 }
             }
-            
         }
         & .offense-container {
             & .offense-card {
-                & .offense-card-title-container {
-                    display: flex;
-                    & .offense-card-title {
-                        margin: 0px auto 0px auto;
-                        font-size: 26px;
-                        text-decoration: underline;
+                & .offense-card-container {
+                    padding: 8px;
+                    & .offense-card-title-container {
+                        display: flex;
+                        & .offense-card-title {
+                            margin: 0px auto 0px auto;
+                            font-size: 26px;
+                            text-decoration: underline;
+                        }
                     }
-                }
-                & .offense-card-details-container {
-                    display: flex;
-                    margin: 15px;
-                    flex-direction: column;
-                    &.flip-true {
+                    & .offense-card-details-container {
+                        display: flex;
+                        margin: 10px;
                         flex-direction: column;
-                    }
-                    & .offense-card-embed {
-                        margin: auto 10px auto 10px;
-                        & img {
-                            max-width: 400px;
+                        &.flip-true {
+                            flex-direction: column;
                         }
-                    }
-                    & .offense-card-details {
-                        margin: auto;
-                        max-width: 90%;
-                        & p {
-                            font-size: 14px;
+                        & .offense-card-embed {
+                            margin: auto 10px auto 10px;
+                            & img {
+                                max-width: 100%;
+                            }
                         }
-                        & ul {
-                            font-size: 14px;
+                        & .offense-card-details {
+                            margin: auto;
+                            max-width: 90%;
+                            & p {
+                                font-size: 14px;
+                            }
+                            & ul {
+                                font-size: 14px;
+                            }
                         }
+                        
                     }
-                    
                 }
             }
-            
         }
-
     }
     
     & .basics-container {
