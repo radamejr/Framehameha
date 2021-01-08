@@ -49,7 +49,7 @@ export default (state: CharacterDataReducerModel = defaultCharacterDataModel, ac
         case ActionPromise(Actions.DELETE_ASSIST).fulfilled:
             return {
                 ...state,
-                characters: action.payload.characters.sort(sortCharacters),
+                characters: action.payload.characters ? action.payload.characters.sort(sortCharacters) : null,
                 loading: false,
                 editStatus: ''
             }

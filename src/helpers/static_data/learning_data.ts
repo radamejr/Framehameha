@@ -21,7 +21,7 @@ const LearningBasicData: LearningData[] = [
     },
     {
         title: 'Superdash',
-        details: ['Blocking is done by pressing, 4 (back, remember our input image) against the opponents moves. Some moves have a low property which means you must block low (press 1) and some moves have overhead properties which means you must block high (still 4) or block while jumping. If you block a move in the air you are subject to additional blockstun when landing.'],
+        details: ['Superdash is done by pressing H + S at the same time. Upon activation, you will fly towards your opponent locking onto their position, and tracking them if they move. Known as the "no neutral" tool of this game, this ability can yield some interesting interactions! Superdash is immune to ki-blasts.'],
         embedContent: 'https://dbfz-image.s3.amazonaws.com/uploads/static-images/superdash.gif',
         contributor: null,
     },
