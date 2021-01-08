@@ -67,6 +67,9 @@ const LearningPage = (props: LearningPageProps) => {
             </div>
             <div className="kame-page-details">
                 <Paper className={'details-paper'}>
+                    {
+                    mediaType == "mobile" 
+                    ? 
                     <Tabs
                         value={currentContent}
                         onChange={handleChange}
@@ -81,6 +84,20 @@ const LearningPage = (props: LearningPageProps) => {
                         <Tab label="Offense" {...learningTabProps(2)} />
                         <Tab label="Defense" {...learningTabProps(3)} />
                     </Tabs>
+                    : 
+                    <Tabs
+                        value={currentContent}
+                        onChange={handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        centered
+                    >
+                        <Tab label="Basics" {...learningTabProps(0)} />
+                        <Tab label="Neutral" {...learningTabProps(1)} />
+                        <Tab label="Offense" {...learningTabProps(2)} />
+                        <Tab label="Defense" {...learningTabProps(3)} />
+                    </Tabs>
+                    }
                 </Paper>
                 <TabPanel value={currentContent} index={0} >
                     <BasicsContent />
